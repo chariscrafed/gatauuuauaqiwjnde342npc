@@ -1,0 +1,1626 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCA HOTS — 340 Soal 17 Kitab Nabi</title>
+
+    <style>
+         :root {
+            --bg: #08111f;
+            --panel: #0e1b2e;
+            --panel2: #12243b;
+            --line: #243b5a;
+            --text: #edf4ff;
+            --muted: #9fb2ca;
+            --gold: #e7b95e;
+            --green: #48d597;
+            --red: #ff6b6b;
+            --blue: #65a9ff;
+            --purple: #a98bff;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            font-family: Inter, Segoe UI, Arial, sans-serif;
+            background: radial-gradient(circle at top right, #132a4b 0, transparent 35%), radial-gradient(circle at bottom left, #101f36 0, transparent 35%), var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+        
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: rgba(8, 17, 31, .94);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--line);
+            padding: 18px 25px;
+        }
+        
+        .header-inner {
+            max-width: 1400px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 13px;
+            background: linear-gradient(135deg, #e7b95e, #b67d28);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #15100a;
+            font-size: 22px;
+            font-weight: 900;
+        }
+        
+        .logo h1 {
+            margin: 0;
+            font-size: 20px;
+        }
+        
+        .logo p {
+            margin: 3px 0 0;
+            color: var(--muted);
+            font-size: 12px;
+        }
+        
+        .stats {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .stat {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 10px;
+            padding: 8px 13px;
+            font-size: 12px;
+        }
+        
+        .stat strong {
+            color: var(--gold);
+        }
+        
+        .layout {
+            max-width: 1400px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 270px 1fr;
+            min-height: calc(100vh - 82px);
+        }
+        
+        .sidebar {
+            border-right: 1px solid var(--line);
+            padding: 20px 14px;
+            position: sticky;
+            top: 82px;
+            height: calc(100vh - 82px);
+            overflow-y: auto;
+        }
+        
+        .sidebar-title {
+            color: var(--muted);
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin: 4px 10px 12px;
+        }
+        
+        .book-btn {
+            width: 100%;
+            text-align: left;
+            border: 1px solid transparent;
+            background: transparent;
+            color: var(--muted);
+            padding: 10px 11px;
+            border-radius: 9px;
+            cursor: pointer;
+            margin-bottom: 3px;
+            transition: .2s;
+        }
+        
+        .book-btn:hover {
+            background: var(--panel);
+            color: white;
+        }
+        
+        .book-btn.active {
+            background: linear-gradient(90deg, #1a304d, #122238);
+            border-color: #315273;
+            color: white;
+        }
+        
+        .book-number {
+            display: inline-flex;
+            width: 27px;
+            height: 27px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 7px;
+            background: #15283f;
+            margin-right: 7px;
+            font-size: 11px;
+            color: var(--gold);
+        }
+        
+        .main {
+            padding: 30px;
+            min-width: 0;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, rgba(40, 76, 115, .35), rgba(14, 27, 46, .8)), var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 27px;
+            margin-bottom: 22px;
+        }
+        
+        .hero-top {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            align-items: flex-start;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 20px;
+            background: #1d3048;
+            color: var(--gold);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: .5px;
+        }
+        
+        .hero h2 {
+            font-size: 32px;
+            margin: 10px 0 5px;
+        }
+        
+        .hero p {
+            color: var(--muted);
+            line-height: 1.65;
+            margin: 0;
+        }
+        
+        .progress-wrap {
+            min-width: 210px;
+        }
+        
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            color: var(--muted);
+            font-size: 11px;
+            margin-bottom: 7px;
+        }
+        
+        .progress {
+            height: 8px;
+            background: #18283d;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--gold), #f3d58b);
+            transition: .3s;
+        }
+        
+        .toolbar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .search {
+            flex: 1;
+            min-width: 220px;
+            background: var(--panel);
+            border: 1px solid var(--line);
+            color: white;
+            padding: 12px 15px;
+            border-radius: 10px;
+            outline: none;
+        }
+        
+        .search:focus {
+            border-color: #547ba5;
+        }
+        
+        .tool-btn {
+            border: 1px solid var(--line);
+            background: var(--panel);
+            color: var(--text);
+            padding: 11px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        
+        .tool-btn:hover {
+            background: var(--panel2);
+        }
+        
+        .question-card {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 17px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .12);
+        }
+        
+        .question-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .question-number {
+            color: var(--gold);
+            font-weight: 900;
+            font-size: 13px;
+        }
+        
+        .level {
+            padding: 5px 9px;
+            border-radius: 15px;
+            font-size: 10px;
+            font-weight: 800;
+            background: #241e36;
+            color: #c5b4ff;
+        }
+        
+        .question {
+            font-size: 18px;
+            line-height: 1.65;
+            font-weight: 650;
+            margin-bottom: 18px;
+        }
+        
+        .options {
+            display: grid;
+            gap: 10px;
+        }
+        
+        .option {
+            border: 1px solid #29415f;
+            background: #0b1728;
+            color: #dce8f7;
+            padding: 14px 16px;
+            border-radius: 11px;
+            text-align: left;
+            cursor: pointer;
+            transition: .2s;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .option:hover:not(:disabled) {
+            border-color: #547ba5;
+            background: #11233a;
+            transform: translateX(2px);
+        }
+        
+        .option:disabled {
+            cursor: default;
+        }
+        
+        .option.correct {
+            border-color: var(--green);
+            background: rgba(72, 213, 151, .12);
+            color: #9ff1cd;
+        }
+        
+        .option.wrong {
+            border-color: var(--red);
+            background: rgba(255, 107, 107, .10);
+            color: #ffb0b0;
+        }
+        
+        .result {
+            margin-top: 18px;
+            padding: 17px;
+            border-radius: 12px;
+            display: none;
+            line-height: 1.65;
+        }
+        
+        .result.show {
+            display: block;
+        }
+        
+        .result.correct-box {
+            border: 1px solid rgba(72, 213, 151, .35);
+            background: rgba(72, 213, 151, .08);
+        }
+        
+        .result.wrong-box {
+            border: 1px solid rgba(255, 107, 107, .35);
+            background: rgba(255, 107, 107, .07);
+        }
+        
+        .result-title {
+            font-weight: 900;
+            margin-bottom: 7px;
+        }
+        
+        .explanation {
+            color: #c5d3e4;
+            font-size: 13px;
+        }
+        
+        .answer {
+            color: var(--gold);
+            font-weight: 800;
+        }
+        
+        .why {
+            margin-top: 8px;
+        }
+        
+        .book-section {
+            display: none;
+        }
+        
+        .book-section.active {
+            display: block;
+        }
+        
+        .empty {
+            text-align: center;
+            padding: 60px;
+            color: var(--muted);
+        }
+        
+        @media(max-width:900px) {
+            .layout {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                position: relative;
+                top: 0;
+                height: auto;
+                border-right: 0;
+                border-bottom: 1px solid var(--line);
+                max-height: 300px;
+            }
+            .main {
+                padding: 17px;
+            }
+            .hero-top {
+                flex-direction: column;
+            }
+            .progress-wrap {
+                width: 100%;
+            }
+        }
+        
+        @media(max-width:600px) {
+            header {
+                padding: 14px;
+            }
+            .header-inner {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+            .hero h2 {
+                font-size: 25px;
+            }
+            .question {
+                font-size: 16px;
+            }
+            .question-card {
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="header-inner">
+
+            <div class="logo">
+                <div class="logo-icon">✝</div>
+                <div>
+                    <h1>CCA HOTS — 17 Kitab Nabi</h1>
+                    <p>340 Soal Analisis • 20 Soal per Kitab</p>
+                </div>
+            </div>
+
+            <div class="stats">
+                <div class="stat">Soal: <strong id="totalStat">340</strong></div>
+                <div class="stat">Benar: <strong id="correctStat">0</strong></div>
+                <div class="stat">Dijawab: <strong id="answeredStat">0</strong></div>
+                <div class="stat">Nilai: <strong id="scoreStat">0%</strong></div>
+            </div>
+
+        </div>
+    </header>
+
+    <div class="layout">
+
+        <aside class="sidebar">
+            <div class="sidebar-title">17 Kitab Nabi</div>
+            <div id="bookList"></div>
+        </aside>
+
+        <main class="main">
+
+            <div class="toolbar">
+                <input class="search" id="searchInput" type="text" placeholder="🔎 Cari soal, kitab, tokoh, atau kata kunci...">
+
+                <button class="tool-btn" onclick="resetAll()">
+        ↻ Reset
+    </button>
+
+                <button class="tool-btn" onclick="showAllBooks()">
+        📚 Semua Kitab
+    </button>
+            </div>
+
+            <div id="content"></div>
+
+        </main>
+    </div>
+
+    <script>
+        /* ============================================================
+           DATABASE 17 KITAB
+           20 SOAL HOTS PER KITAB = 340 SOAL
+        ============================================================ */
+
+        const BOOKS = [
+
+            {
+                name: "Yesaya",
+                theme: "Kekudusan Allah, penghakiman, pengharapan dan keselamatan",
+                questions: [
+                    [
+                        "Yesaya 6 menggambarkan Yesaya melihat TUHAN dalam kekudusan-Nya. Mengapa pengalaman tersebut justru membuat Yesaya menyadari kenajisannya sebelum menerima panggilan?", ["Karena kekudusan Allah memperlihatkan kontras dengan kondisi manusia", "Karena Yesaya tidak mengenal Israel", "Karena Yesaya ingin menjadi imam", "Karena Yesaya sedang mencari kedudukan"],
+                        0,
+                        "Kekudusan Allah menjadi cermin yang membuat manusia menyadari keberdosaannya. Setelah mengakui keadaan dirinya, Yesaya mengalami penyucian dan kemudian siap diutus."
+                    ],
+                    [
+                        "Jika Yesaya 1 menegur ibadah yang penuh ritual tetapi tidak disertai keadilan, kesimpulan paling tepat adalah...", ["Ritual ibadah tidak diperlukan sama sekali", "Allah menolak semua bentuk ibadah", "Ibadah sejati harus berjalan bersama pertobatan dan kehidupan yang benar", "Keadilan sosial lebih penting daripada Allah"],
+                        2,
+                        "Yesaya tidak sedang menghapus ibadah. Ia menolak ibadah yang dipisahkan dari pertobatan, keadilan, dan ketaatan."
+                    ],
+                    [
+                        "Bangsa Yehuda merasa aman karena memiliki Yerusalem. Berdasarkan Yesaya, mengapa rasa aman tersebut keliru?", ["Karena Yerusalem bukan kota yang penting", "Karena keberadaan kota tidak otomatis berarti bangsa hidup benar di hadapan Allah", "Karena semua kota akan dihancurkan", "Karena Allah hanya tinggal di Babel"],
+                        1,
+                        "Yesaya menunjukkan bahwa identitas religius dan tempat kudus tidak boleh menjadi alasan untuk mengabaikan dosa."
+                    ],
+                    [
+                        "Yesaya 7:14 kemudian dihubungkan Matius dengan kelahiran Yesus. Prinsip membaca hubungan ini yang paling tepat adalah...", ["Setiap detail Yesaya harus memiliki arti politik yang sama persis", "Matius melihat penggenapan karya Allah yang berpuncak pada Kristus", "Yesaya menulis Injil Matius", "Ayat tersebut tidak pernah berkaitan dengan pengharapan"],
+                        1,
+                        "Dalam pembacaan Kristen, Matius melihat karya keselamatan Allah dalam Kristus sebagai penggenapan yang lebih penuh dari pola nubuat tersebut."
+                    ],
+                    [
+                        "Jika seseorang hanya membaca Yesaya sebagai kitab tentang hukuman, bagian mana yang paling mengoreksi kesimpulan itu?", ["Pengharapan tentang Hamba TUHAN dan pemulihan umat", "Daftar bangsa-bangsa", "Teguran terhadap Yehuda", "Hukuman atas bangsa asing"],
+                        0,
+                        "Yesaya memiliki dua sisi besar: dosa membawa penghakiman, tetapi Allah juga menjanjikan keselamatan, pemulihan, dan Hamba-Nya."
+                    ],
+                    [
+                        "Yesaya 53 menggambarkan Hamba yang menderita. Mengapa bagian ini penting dalam teologi Kristen?", ["Karena menjelaskan pembangunan Bait Allah", "Karena menjadi salah satu teks utama yang dibaca sebagai gambaran penderitaan penebusan Kristus", "Karena membahas pemerintahan Salomo", "Karena hanya membicarakan pertanian"],
+                        1,
+                        "Tradisi Kristen memahami Hamba yang menderita sebagai teks penting untuk memahami karya penebusan Kristus."
+                    ],
+                    [
+                        "Jika Allah disebut 'Kudus, kudus, kudus' dalam Yesaya 6, respons Yesaya menunjukkan bahwa...", ["Semakin dekat dengan Allah seharusnya membuat manusia semakin sombong", "Pengalaman akan kekudusan Allah mendorong pengakuan dosa dan kesiapan melayani", "Allah tidak ingin manusia melayani", "Nabi tidak membutuhkan pertobatan"],
+                        1,
+                        "Kesadaran akan kekudusan Allah tidak membuat Yesaya menjauh setelah disucikan; ia justru menjawab panggilan."
+                    ],
+                    [
+                        "Yesaya 9 berbicara tentang terang yang bersinar bagi mereka yang berjalan dalam kegelapan. Jika diterapkan pada alur kitab, terang itu menunjukkan...", ["Allah mengabaikan dosa", "Allah memberi harapan ketika umat berada dalam krisis", "Israel tidak pernah berdosa", "Yehuda tidak pernah mengalami perang"],
+                        1,
+                        "Terang menjadi simbol pengharapan Allah di tengah kondisi gelap akibat dosa dan krisis."
+                    ],
+                    [
+                        "Seruan 'Sebab seorang anak telah lahir untuk kita' dalam Yesaya 9 menjadi penting bagi pembacaan Kristen karena...", ["Kerajaan manusia dianggap tidak penting", "Harapan pemerintahan ilahi kemudian dibaca dalam terang Kristus", "Yesaya sedang menceritakan masa kecil Paulus", "Nabi sedang menulis kitab sejarah Romawi"],
+                        1,
+                        "Teks ini memiliki konteks kerajaan dan harapan bagi umat, kemudian dibaca dalam tradisi Kristen dalam hubungan dengan pemerintahan Kristus."
+                    ],
+                    [
+                        "Jika Yehuda ingin meminta pertolongan bangsa asing daripada percaya kepada TUHAN, kritik Yesaya terutama menyangkut...", ["Strategi ekonomi", "Kegagalan mempercayakan keamanan kepada Allah", "Kurangnya tentara", "Masalah bahasa"],
+                        1,
+                        "Yesaya berkali-kali mengkritik kecenderungan Yehuda mencari keselamatan politik tanpa kepercayaan kepada Allah."
+                    ],
+                    [
+                        "Yesaya 40 dimulai dengan penghiburan setelah bagian-bagian penuh hukuman. Apa fungsi perubahan nada tersebut?", ["Menunjukkan bahwa hukuman adalah akhir segala sesuatu", "Menunjukkan bahwa penghakiman tidak membatalkan kesetiaan Allah terhadap janji-Nya", "Menghapus seluruh dosa tanpa pertobatan", "Menyatakan Israel tidak pernah bersalah"],
+                        1,
+                        "Penghiburan menunjukkan bahwa Allah tetap bekerja setelah masa penghukuman dan membawa umat kepada pemulihan."
+                    ],
+                    [
+                        "Ungkapan bahwa orang yang menanti-nantikan TUHAN mendapat kekuatan baru mengajarkan bahwa...", ["Kekuatan hanya berasal dari kemampuan manusia", "Pengharapan kepada Allah memberi daya tahan ketika manusia sendiri terbatas", "Orang percaya tidak boleh lelah", "Menunggu berarti tidak melakukan apa pun"],
+                        1,
+                        "Menanti Tuhan dalam konteks Yesaya bukan pasif tanpa iman, melainkan mengandalkan Dia di tengah keterbatasan."
+                    ],
+                    [
+                        "Yesaya 44–45 menyebut Koresh sebagai alat Allah. Hal ini terutama menunjukkan...", ["Allah hanya bekerja melalui raja Israel", "Kedaulatan Allah dapat memakai penguasa asing untuk melaksanakan rencana-Nya", "Koresh adalah nabi Israel", "Babel adalah umat pilihan"],
+                        1,
+                        "Koresh adalah penguasa Persia yang dipakai Allah dalam pembebasan umat dari pembuangan."
+                    ],
+                    [
+                        "Jika Allah dapat memakai Koresh yang bukan raja Israel, kesimpulan teologis paling kuat adalah...", ["Allah kehilangan kendali atas sejarah", "Kedaulatan Allah tidak terbatas pada batas politik Israel", "Israel tidak diperlukan lagi", "Semua raja pasti diselamatkan"],
+                        1,
+                        "Yesaya menekankan bahwa Allah berdaulat atas bangsa-bangsa dan sejarah."
+                    ],
+                    [
+                        "Yesaya 55 mengundang orang datang kepada Allah tanpa membeli makanan. Secara simbolis hal ini menekankan...", ["Keselamatan dapat dibeli", "Anugerah Allah tidak dapat diperlakukan seperti transaksi ekonomi", "Manusia tidak membutuhkan pertobatan", "Makanan jasmani tidak penting"],
+                        1,
+                        "Undangan itu menggambarkan kemurahan Allah yang tidak dapat dibeli manusia."
+                    ],
+                    [
+                        "Jika Yesaya berbicara tentang bangsa-bangsa juga datang kepada Allah, hal tersebut memperluas pemahaman keselamatan karena...", ["Allah hanya peduli kepada Yehuda", "Rencana Allah memiliki cakupan bagi bangsa-bangsa", "Israel tidak lagi memiliki sejarah", "Bangsa asing menjadi nabi"],
+                        1,
+                        "Pengharapan Yesaya memiliki dimensi universal: bangsa-bangsa juga akan melihat karya keselamatan Allah."
+                    ],
+                    [
+                        "Yesaya 58 menegur puasa yang tidak menghasilkan kepedulian terhadap orang tertindas. Prinsip yang dapat ditarik adalah...", ["Puasa tidak pernah berguna", "Kesalehan yang benar harus menghasilkan kehidupan yang sesuai dengan kehendak Allah", "Orang miskin tidak terkait dengan iman", "Allah hanya melihat ritual"],
+                        1,
+                        "Yesaya menghubungkan ibadah dengan keadilan, belas kasih, dan pembebasan dari penindasan."
+                    ],
+                    [
+                        "Jika seseorang berkata, 'Aku sudah beribadah, jadi cara hidupku tidak penting,' kitab Yesaya akan paling kuat membantahnya melalui...", ["Yesaya 1 dan 58", "Yesaya 7 saja", "Yesaya 14 saja", "Yesaya 23 saja"],
+                        0,
+                        "Kedua bagian tersebut sama-sama menunjukkan bahwa ibadah tidak dapat dipisahkan dari pertobatan dan keadilan."
+                    ],
+                    [
+                        "Hubungan antara Yesaya 6 dan Yesaya 53 menunjukkan perkembangan besar dalam kitab: dari...", ["Kekudusan Allah dan panggilan nabi menuju karya keselamatan melalui Hamba", "Pembangunan kota menuju pertanian", "Kerajaan Babel menuju Mesir", "Kejatuhan manusia menuju penyembahan berhala"],
+                        0,
+                        "Yesaya memperlihatkan kebutuhan manusia akan penyucian sekaligus harapan keselamatan melalui karya Hamba TUHAN."
+                    ],
+                    [
+                        "Benang merah paling kuat kitab Yesaya adalah...", ["Allah hanya menghukum Israel", "Allah yang kudus menghakimi dosa tetapi tetap menyediakan keselamatan dan pengharapan", "Politik Timur Dekat", "Sejarah pembangunan istana"],
+                        1,
+                        "Penghakiman dan keselamatan bukan dua pesan yang terpisah. Keduanya berada dalam kerangka kekudusan dan kesetiaan Allah."
+                    ]
+                ]
+            },
+
+            {
+                name: "Yeremia",
+                theme: "Pertobatan, perjanjian baru, penderitaan nabi dan kesetiaan Allah",
+                questions: [
+                    ["Mengapa Yeremia sering mengalami penolakan walaupun menyampaikan pesan Allah?", ["Pesannya menuntut pertobatan dan membongkar rasa aman palsu umat", "Ia tidak pernah berbicara kepada Yehuda", "Ia menolak Allah", "Ia hanya membahas pertanian"], 0, "Pesan Yeremia berhadapan langsung dengan dosa, penyembahan palsu, dan rasa aman religius."],
+                    ["Jika bangsa menganggap Bait Allah otomatis menjamin keselamatan, Yeremia 7 menunjukkan bahwa...", ["Tempat kudus tidak dapat dijadikan alasan untuk terus berbuat dosa", "Bait Allah tidak penting", "Yerusalem tidak pernah dipilih Allah", "Allah membenci ibadah"], 0, "Yeremia menentang kepercayaan bahwa keberadaan Bait Allah membuat dosa menjadi tidak berbahaya."],
+                    ["Mengapa Yeremia membeli ladang ketika Yerusalem berada dalam krisis?", ["Sebagai tindakan simbolis bahwa pemulihan dan kehidupan normal akan kembali", "Karena ia ingin menjadi kaya", "Karena perang telah selesai", "Karena Babel memberikan hadiah"], 0, "Pembelian ladang menjadi tanda pengharapan di tengah ancaman kehancuran."],
+                    ["Yeremia 31 berbicara tentang perjanjian baru. Fokus utamanya adalah...", ["Hukum Allah ditulis dalam hati dan relasi dengan Allah dipulihkan", "Israel tidak membutuhkan Allah", "Semua hukum dihapus", "Bait Allah menjadi lebih besar"], 0, "Perjanjian baru menyangkut pembaruan relasi dan ketaatan batin kepada Allah."],
+                    ["Jika Yeremia harus menyampaikan pesan yang tidak populer, teladan utamanya adalah...", ["Kesetiaan kepada panggilan Allah tidak bergantung pada penerimaan manusia", "Nabi harus selalu disukai", "Nabi boleh mengubah pesan", "Kebenaran ditentukan mayoritas"], 0, "Yeremia menunjukkan keberanian menyampaikan firman meskipun ditolak."],
+                    ["Mengapa kisah pergumulan Yeremia penting untuk memahami pelayanan nabi?", ["Nabi dapat mengalami penderitaan pribadi tanpa berarti panggilannya gagal", "Nabi tidak boleh memiliki emosi", "Allah tidak peduli pada nabi", "Penderitaan membuktikan nabi salah"], 0, "Yeremia memperlihatkan bahwa kesetiaan dan penderitaan dapat berjalan bersama."],
+                    ["Kontras antara Yeremia 7 dan 31 menunjukkan bahwa Allah...", ["Menghakimi ketidaksetiaan tetapi juga menjanjikan pembaruan perjanjian", "Tidak pernah menghukum", "Hanya memberi hukuman", "Tidak pernah membuat perjanjian"], 0, "Penghakiman dan pemulihan berada dalam satu alur karya Allah."],
+                    ["Mengapa Yeremia menentang nabi-nabi palsu yang mengatakan damai?", ["Mereka memberikan rasa aman tanpa menghadapi dosa yang nyata", "Mereka berasal dari Babel", "Mereka tidak mengenal Yerusalem", "Mereka tidak bisa membaca"], 0, "Masalahnya bukan sekadar optimisme, tetapi pesan yang meniadakan pertobatan."],
+                    ["Jika raja meminta nabi hanya menyampaikan kabar baik, bahaya yang muncul adalah...", ["Firman Allah berubah menjadi alat untuk menyenangkan penguasa", "Rakyat menjadi lebih rajin", "Babel kalah", "Nabi menjadi imam"], 0, "Yeremia menunjukkan bahwa firman Allah tidak boleh tunduk pada kepentingan politik."],
+                    ["Mengapa Yeremia sering menggunakan tindakan simbolis?", ["Agar pesan abstrak tentang penghakiman atau pemulihan dapat terlihat secara konkret", "Karena ia tidak bisa berbicara", "Karena ia bukan nabi", "Karena tindakan lebih penting daripada firman"], 0, "Kendi, kuk, ladang, dan tindakan lain membantu memperjelas pesan profetik."],
+                    ["Jika Yeremia 29 berbicara kepada orang buangan untuk mengusahakan kesejahteraan kota tempat mereka tinggal, sikap yang tepat adalah...", ["Tetap hidup setia kepada Allah sambil berbuat baik dalam lingkungan yang sedang dijalani", "Membalas kejahatan Babel", "Melupakan Allah", "Menolak semua masyarakat"], 0, "Pesan itu mengajarkan kesetiaan kepada Allah tanpa isolasi atau pembalasan."],
+                    ["Apa hubungan antara pembuangan dan dosa Israel dalam Yeremia?", ["Pembuangan dipahami sebagai konsekuensi serius dari ketidaksetiaan perjanjian", "Pembuangan terjadi tanpa sebab", "Babel adalah umat pilihan", "Israel dihukum karena tidak cukup kaya"], 0, "Yeremia menghubungkan krisis nasional dengan pelanggaran perjanjian."],
+                    ["Jika Allah menjanjikan perjanjian baru setelah kegagalan perjanjian, ini menunjukkan...", ["Kesetiaan Allah menyediakan jalan pemulihan ketika manusia gagal", "Manusia tidak perlu bertobat", "Perjanjian lama tidak pernah ada", "Allah berubah-ubah"], 0, "Janji perjanjian baru menonjolkan inisiatif dan kesetiaan Allah."],
+                    ["Mengapa Yeremia 20 penting dibandingkan hanya membaca nubuatnya?", ["Kita melihat biaya emosional dan pribadi dari pelayanan yang setia", "Karena seluruh kitab hanya tentang perasaan", "Karena Yeremia bukan nabi", "Karena nubuat tidak penting"], 0, "Bagian ini memperlihatkan pergumulan batin seorang nabi yang tetap menjalankan panggilannya."],
+                    ["Jika seseorang mengalami penolakan karena menyatakan kebenaran dengan kasih, pelajaran Yeremia yang paling tepat adalah...", ["Penolakan manusia tidak otomatis berarti pesan itu salah", "Setiap penolakan pasti berarti benar", "Kita harus membalas", "Kita tidak perlu memeriksa kebenaran"], 0, "Ukuran kebenaran bukan penerimaan publik, tetapi kesetiaan terhadap firman Allah."],
+                    ["Mengapa Yeremia disebut nabi pada masa menjelang kehancuran Yerusalem?", ["Ia menjadi saksi dan pemberi peringatan sebelum krisis nasional terjadi", "Ia membangun Yerusalem", "Ia memimpin tentara Babel", "Ia menjadi raja"], 0, "Pelayanan Yeremia berlangsung dalam periode menuju kehancuran Yehuda dan pembuangan."],
+                    ["Apa kesalahan logika bangsa yang berkata 'Bait Allah ada di tengah kita, maka kita aman'?", ["Mereka menyamakan simbol kehadiran Allah dengan kekebalan terhadap akibat dosa", "Mereka terlalu sedikit beribadah", "Mereka tinggal terlalu jauh", "Mereka tidak punya raja"], 0, "Kehadiran simbolis tidak dapat dipakai untuk membenarkan ketidaktaatan."],
+                    ["Mengapa air mata Yeremia tidak berarti ia nabi yang lemah?", ["Pergumulan emosional dapat muncul justru karena ia sungguh peduli pada Allah dan umat", "Nabi tidak boleh menangis", "Nabi harus selalu keras", "Air mata berarti nubuat palsu"], 0, "Yeremia adalah figur nabi yang sangat manusiawi sekaligus setia."],
+                    ["Apa hubungan paling kuat antara Yeremia 31 dan Perjanjian Baru?", ["Perjanjian baru dalam Kristus dibaca sebagai penggenapan janji pembaruan relasi dengan Allah", "Yeremia menulis Injil", "Paulus menjadi raja Yehuda", "Bait Allah dibangun Yeremia"], 0, "Perjanjian Baru mengutip Yeremia 31 dalam pembahasan tentang perjanjian baru."],
+                    ["Kesimpulan utama kitab Yeremia adalah...", ["Dosa membawa penghakiman, tetapi Allah tetap membuka harapan pemulihan dan perjanjian baru", "Yehuda tidak pernah berdosa", "Nabi harus selalu menang", "Politik lebih penting daripada iman"], 0, "Yeremia adalah kitab peringatan keras sekaligus kitab pengharapan besar."]
+                ]
+            },
+
+            {
+                name: "Ratapan",
+                theme: "Duka atas kehancuran Yerusalem dan harapan pada kasih setia Allah",
+                questions: [
+                    ["Mengapa Ratapan penting setelah membaca Yeremia?", ["Ratapan memperlihatkan secara puitis realitas penderitaan setelah kehancuran Yerusalem", "Karena Ratapan menceritakan masa penciptaan", "Karena kitab ini membahas kerajaan Persia", "Karena tidak berkaitan dengan Yehuda"], 0, "Ratapan membantu pembaca merasakan dampak kehancuran yang dinubuatkan."],
+                    ["Ratapan 1 menggambarkan Yerusalem seperti seorang janda. Fungsi gambaran itu adalah...", ["Menggambarkan kehilangan, kesepian, dan kehancuran kota secara emosional", "Menggambarkan pesta", "Menggambarkan kemenangan perang", "Menggambarkan panen"], 0, "Personifikasi membuat kehancuran Yerusalem terasa sebagai penderitaan pribadi."],
+                    ["Mengapa Ratapan tidak langsung menyelesaikan masalah dengan kalimat optimistis?", ["Kitab memberi ruang bagi pengakuan duka sebelum mengarahkan pembaca kepada pengharapan", "Karena Allah tidak peduli", "Karena penulis tidak percaya Allah", "Karena tidak ada harapan"], 0, "Iman Alkitabiah tidak harus meniadakan ratapan."],
+                    ["Ratapan 3:22–23 menjadi sangat penting karena muncul di tengah kitab penuh penderitaan. Artinya...", ["Harapan dapat muncul justru ketika penderitaan belum selesai", "Penderitaan tidak nyata", "Yerusalem sudah pulih", "Allah tidak pernah menghukum"], 0, "Kasih setia Allah menjadi dasar harapan bahkan ketika keadaan belum berubah."],
+                    ["Jika Ratapan mengakui dosa bangsa, mengapa kitab itu tetap menangis?", ["Pengakuan dosa tidak membuat penderitaan menjadi tidak menyakitkan", "Karena penulis menyangkal dosa", "Karena dosa tidak penting", "Karena Allah tidak ada"], 0, "Ratapan memegang dua kenyataan sekaligus: dosa nyata dan penderitaan juga nyata."],
+                    ["Pola Ratapan menunjukkan bahwa iman yang sehat...", ["Dapat membawa kesedihan kepada Allah tanpa kehilangan pengharapan", "Harus menyembunyikan emosi", "Tidak boleh bertanya", "Tidak boleh mengingat dosa"], 0, "Ratapan menunjukkan bahwa keluhan dapat menjadi bagian dari doa."],
+                    ["Jika kehancuran Yerusalem dibaca hanya sebagai hukuman, apa yang hilang dari Ratapan?", ["Dimensi kesedihan manusia dan harapan kepada kasih setia Allah", "Sejarah Babel", "Nama Yerusalem", "Tema dosa"], 0, "Kitab ini bukan sekadar laporan hukuman, melainkan puisi duka dan pengharapan."],
+                    ["Mengapa struktur puitis Ratapan penting?", ["Bentuk sastra membantu mengatur dan mengekspresikan kedalaman duka", "Puisi tidak memiliki makna", "Semua kitab harus berupa sejarah", "Karena penulis tidak tahu sejarah"], 0, "Struktur puisi menjadi sarana teologis untuk mengolah pengalaman kehancuran."],
+                    ["Jika seseorang berkata, 'Orang beriman tidak boleh menangis,' Ratapan membantahnya dengan...", ["Menunjukkan bahwa ratapan dapat menjadi bagian dari iman kepada Allah", "Mengatakan Allah tidak ada", "Menghapus doa", "Menolak pengharapan"], 0, "Tangisan dan iman tidak harus bertentangan."],
+                    ["Apa yang membuat Ratapan 3 berbeda secara emosional dari Ratapan 1?", ["Di tengah penderitaan muncul pengakuan tentang kasih setia dan harapan", "Tidak ada kesedihan", "Yerusalem langsung dibangun", "Babel bertobat"], 0, "Ratapan 3 memiliki titik balik pengharapan yang sangat kuat."],
+                    ["Jika dosa membawa konsekuensi, apakah Ratapan mengajarkan bahwa setiap penderitaan individu pasti akibat dosa tertentu?", ["Tidak; kitab ini berbicara dalam konteks kehancuran umat dan perjanjian, bukan rumus sederhana untuk semua penderitaan", "Ya, selalu", "Hanya orang miskin berdosa", "Hanya nabi menderita"], 0, "Kita tidak boleh mengubah konteks kitab menjadi rumus bahwa setiap penderitaan pasti disebabkan dosa pribadi tertentu."],
+                    ["Mengapa doa dalam Ratapan penting?", ["Karena penderitaan dibawa langsung kepada Allah, bukan hanya dipendam", "Karena doa menghapus sejarah", "Karena penulis tidak percaya Allah", "Karena doa menggantikan pertobatan"], 0, "Ratapan adalah bentuk doa dan pergumulan di hadapan Allah."],
+                    ["Jika seseorang kehilangan sesuatu yang sangat berharga, prinsip Ratapan yang dapat diterapkan adalah...", ["Mengakui kehilangan dengan jujur sambil tetap mengingat karakter Allah", "Berpura-pura tidak sedih", "Menyalahkan semua orang", "Menolak Allah"], 0, "Ratapan memberi ruang bagi kesedihan sekaligus pengharapan."],
+                    ["Apa hubungan Ratapan dengan Yeremia?", ["Tradisi mengaitkan Ratapan dengan Yeremia, meskipun teks kitab tidak menyebut penulisnya secara eksplisit", "Ratapan ditulis Musa", "Ratapan ditulis Daniel", "Ratapan ditulis Koresh"], 0, "Dalam tradisi Yahudi dan Kristen, Ratapan sering dikaitkan dengan Yeremia, tetapi teksnya anonim."],
+                    ["Mengapa pengakuan 'TUHAN adalah bagianku' penting?", ["Harapan akhirnya berakar pada Allah, bukan keadaan yang sedang berubah", "Karena Yerusalem tidak penting", "Karena penderitaan tidak ada", "Karena manusia sempurna"], 0, "Dasar pengharapan bukan situasi, tetapi siapa Allah."],
+                    ["Jika Ratapan mengandung pengakuan bahwa Allah menghukum, bagaimana kita menghindari gambaran Allah yang kejam?", ["Dengan membaca hukuman dalam kerangka keadilan, perjanjian, kasih setia, dan harapan pemulihan", "Dengan menyangkal hukuman", "Dengan menghapus kitab", "Dengan mengatakan dosa tidak penting"], 0, "Kitab menempatkan penghakiman dalam konteks relasi perjanjian dan kasih setia Allah."],
+                    ["Apa fungsi ingatan dalam Ratapan?", ["Mengingat kasih setia Allah menjadi dasar untuk berharap ketika keadaan gelap", "Membuat manusia lupa sejarah", "Menghapus dosa", "Membenarkan Babel"], 0, "Ingatan akan karakter Allah menopang pengharapan."],
+                    ["Mengapa Ratapan tetap relevan bagi pembaca modern?", ["Karena iman dapat mengajarkan manusia membawa duka kepada Allah dengan jujur", "Karena semua kota pasti hancur", "Karena semua orang harus menangis", "Karena kitab hanya tentang perang"], 0, "Ratapan memberi bahasa bagi duka tanpa menghilangkan iman."],
+                    ["Apa titik balik teologis terpenting dalam Ratapan?", ["Kasih setia Allah tetap menjadi alasan untuk berharap", "Babel menang", "Yerusalem hilang", "Raja mati"], 0, "Pengharapan muncul bukan karena keadaan sudah baik, tetapi karena karakter Allah tetap setia."],
+                    ["Benang merah Ratapan adalah...", ["Duka atas akibat dosa namun tetap berharap pada kasih setia dan belas kasihan Allah", "Kemenangan militer", "Kejayaan kerajaan", "Pembangunan Bait Allah"], 0, "Ratapan menggabungkan pengakuan, kesedihan, doa, dan pengharapan."]
+                ]
+            },
+
+            {
+                name: "Yehezkiel",
+                theme: "Kemuliaan Allah, tanggung jawab pribadi, hati baru dan pemulihan",
+                questions: [
+                    ["Mengapa Yehezkiel melihat kemuliaan Allah dalam konteks pembuangan?", ["Untuk menunjukkan bahwa kehadiran dan kedaulatan Allah tidak terbatas pada Yerusalem", "Karena Allah pindah menjadi dewa Babel", "Karena Yerusalem tidak penting", "Karena Yehezkiel menjadi raja"], 0, "Visi Yehezkiel menegaskan bahwa Allah tetap berdaulat bahkan ketika umat berada di pembuangan."],
+                    ["Apa makna penting dari Yehezkiel 18 tentang tanggung jawab pribadi?", ["Seseorang tidak boleh menggunakan dosa generasi sebelumnya sebagai alasan untuk menolak pertobatan", "Anak selalu dihukum atas semua dosa orang tua", "Dosa tidak ada", "Pertobatan tidak berguna"], 0, "Yehezkiel menekankan tanggung jawab moral setiap pribadi."],
+                    ["Jika Yehezkiel 18 menekankan pertobatan orang fasik, gambaran Allah yang muncul adalah...", ["Allah berkenan pada pertobatan dan kehidupan, bukan kematian orang fasik", "Allah ingin manusia binasa", "Allah tidak peduli", "Allah hanya melihat masa lalu"], 0, "Allah mengundang pertobatan dan perubahan hidup."],
+                    ["Visi tulang-tulang kering terutama melambangkan...", ["Pemulihan Israel yang tampak mati menjadi hidup kembali", "Pembangunan rumah", "Kemenangan Mesir", "Kematian semua nabi"], 0, "Tulang kering menjadi gambaran simbolis tentang pemulihan umat."],
+                    ["Jika tulang kering hidup karena Roh Allah, pelajaran utamanya adalah...", ["Pemulihan sejati bergantung pada tindakan Allah, bukan kekuatan manusia semata", "Manusia dapat menghidupkan orang mati", "Tentara Israel sangat kuat", "Babel bertobat"], 0, "Roh Allah menjadi sumber kehidupan dan pemulihan."],
+                    ["Yehezkiel 36 berbicara tentang hati baru. Ini menunjukkan bahwa masalah Israel bukan hanya...", ["Situasi politik, tetapi juga kondisi batin dan ketidaktaatan kepada Allah", "Kurangnya uang", "Kurangnya tanah", "Tidak punya tentara"], 0, "Pemulihan membutuhkan pembaruan batin, bukan hanya perubahan keadaan."],
+                    ["Mengapa Yehezkiel menggunakan banyak tindakan simbolis?", ["Untuk menyampaikan pesan Allah secara visual dan mudah diingat dalam situasi krisis", "Karena ia tidak bisa berbicara", "Karena ia bukan nabi", "Karena simbol tidak memiliki arti"], 0, "Tindakan profetik menjadi media komunikasi pesan Allah."],
+                    ["Jika kemuliaan Allah meninggalkan Bait dalam visi Yehezkiel, implikasi teologisnya adalah...", ["Dosa umat membawa konsekuensi serius terhadap kehidupan mereka di hadapan Allah", "Allah kalah dari Babel", "Bait tidak pernah penting", "Allah tidak ada"], 0, "Visi tersebut menggambarkan seriusnya kenajisan dan penyembahan berhala umat."],
+                    ["Mengapa pemulihan dalam Yehezkiel juga menyangkut tanah dan umat?", ["Karena keselamatan dipahami sebagai pemulihan menyeluruh terhadap umat dan kehidupan mereka", "Karena hanya tanah yang penting", "Karena manusia tidak penting", "Karena Babel akan memimpin Israel"], 0, "Pengharapan Yehezkiel mencakup umat, tanah, penyembahan, dan kehadiran Allah."],
+                    ["Jika seorang Israel berkata 'Aku menderita hanya karena dosa nenek moyang,' Yehezkiel 18 akan mengoreksinya dengan...", ["Setiap orang bertanggung jawab atas respons moralnya sendiri", "Tidak ada dosa generasi sebelumnya", "Semua orang pasti dihukum", "Pertobatan tidak penting"], 0, "Yehezkiel menolak fatalisme moral."],
+                    ["Mengapa gembala-gembala Israel dikritik?", ["Karena mereka memakai umat untuk kepentingan sendiri dan tidak merawat kawanan", "Karena mereka terlalu banyak berdoa", "Karena mereka tinggal di Babel", "Karena mereka bukan nabi"], 0, "Pemimpin umat seharusnya melayani, bukan mengeksploitasi."],
+                    ["Jika Allah sendiri digambarkan mencari domba yang hilang, pesan utamanya adalah...", ["Allah mengambil inisiatif memulihkan umat yang tercerai-berai", "Domba tidak penting", "Pemimpin tidak diperlukan", "Israel harus mencari Babel"], 0, "Gambaran gembala menonjolkan kepedulian dan tindakan pemulihan Allah."],
+                    ["Hubungan antara Yehezkiel 36 dan 37 menunjukkan bahwa...", ["Hati yang diperbarui dan kehidupan baru merupakan bagian dari pemulihan Allah", "Pemulihan hanya politik", "Roh tidak penting", "Tulang adalah tokoh nyata"], 0, "Kedua pasal tersebut bersama-sama menggambarkan pembaruan umat."],
+                    ["Mengapa bait baru dalam bagian akhir Yehezkiel penting?", ["Menunjukkan pengharapan tentang keteraturan ibadah dan kehadiran Allah setelah kehancuran", "Karena Babel membangun bait", "Karena Israel tidak lagi membutuhkan Allah", "Karena nabi menjadi raja"], 0, "Bait menjadi bagian dari visi pemulihan dan kehadiran Allah."],
+                    ["Jika nama kota terakhir berkaitan dengan 'TUHAN hadir di sana', titik klimaksnya adalah...", ["Kehadiran Allah di tengah umat yang dipulihkan", "Kekuatan militer Israel", "Kekayaan Yerusalem", "Kemenangan ekonomi"], 0, "Kehadiran Allah menjadi puncak pengharapan pemulihan."],
+                    ["Apa hubungan Yehezkiel dengan tema kekudusan Allah?", ["Kekudusan Allah menuntut penghakiman tetapi juga mendorong pemulihan umat agar mengenal siapa TUHAN", "Kekudusan berarti Allah jauh selamanya", "Kekudusan hanya berkaitan dengan imam", "Kekudusan tidak penting"], 0, "Frasa 'supaya mereka mengetahui bahwa Akulah TUHAN' menjadi motif penting kitab."],
+                    ["Mengapa pembuangan tidak menjadi akhir cerita dalam Yehezkiel?", ["Karena Allah menjanjikan pemulihan, hati baru, Roh, dan kehidupan bagi umat", "Karena Babel kalah sejak awal", "Karena Israel tidak berdosa", "Karena Yehezkiel menjadi raja"], 0, "Penghakiman bukan kata terakhir dalam kitab."],
+                    ["Jika pembaruan hanya dilakukan secara eksternal tanpa perubahan hati, apakah itu cukup menurut Yehezkiel?", ["Tidak, karena Allah menjanjikan hati baru dan roh yang baru", "Ya, selalu", "Hanya jika ada bait", "Hanya jika raja kuat"], 0, "Pemulihan sejati mencakup transformasi batin."],
+                    ["Apa pelajaran dari penjaga dalam Yehezkiel?", ["Orang yang diberi tanggung jawab memperingatkan orang lain harus menjalankan tugasnya dengan setia", "Penjaga tidak perlu berbicara", "Nabi tidak bertanggung jawab", "Dosa tidak perlu diperingatkan"], 0, "Gambaran penjaga menekankan tanggung jawab menyampaikan peringatan."],
+                    ["Benang merah Yehezkiel adalah...", ["Kemuliaan Allah, seriusnya dosa, tanggung jawab manusia, dan janji pemulihan oleh Allah", "Sejarah Persia", "Politik Mesir", "Pembangunan kapal"], 0, "Kitab bergerak dari kehancuran menuju pemulihan dan kehadiran Allah."]
+                ]
+            },
+
+            {
+                name: "Daniel",
+                theme: "Kesetiaan kepada Allah di tengah kerajaan dunia",
+                questions: [
+                    ["Mengapa keputusan Daniel tidak makan makanan raja penting secara teologis?", ["Ia menunjukkan bahwa identitas dan kesetiaan kepada Allah tidak boleh ditelan oleh budaya kerajaan", "Karena Daniel membenci makanan", "Karena makanan selalu berdosa", "Karena Babel tidak punya makanan"], 0, "Tindakan Daniel menjadi simbol kesetiaan di tengah tekanan asimilasi."],
+                    ["Ketika Daniel menolak berhenti berdoa, konflik sebenarnya adalah antara...", ["Kesetiaan kepada Allah dan perintah manusia yang melarang ibadah", "Daniel dan teman-temannya", "Yehuda dan Mesir", "Babel dan Persia"], 0, "Daniel tidak mencari pemberontakan, tetapi tidak mau mengorbankan ibadah kepada Allah."],
+                    ["Mengapa Daniel 2 penting untuk memahami kerajaan dunia?", ["Allah dapat menyatakan dan mengendalikan sejarah kerajaan melalui mimpi Nebukadnezar", "Nebukadnezar adalah nabi Israel", "Babel tidak berkuasa", "Daniel menjadi raja"], 0, "Mimpi patung memperlihatkan kerajaan manusia berada di bawah kedaulatan Allah."],
+                    ["Jika patung dalam Daniel 2 terdiri dari beberapa bahan, pesan besarnya adalah...", ["Kerajaan manusia silih berganti dan akhirnya digantikan kerajaan yang didirikan Allah", "Semua kerajaan kekal", "Babel tidak penting", "Manusia tidak memiliki sejarah"], 0, "Patung melambangkan kerajaan yang berlalu dan kontras dengan kerajaan Allah."],
+                    ["Mengapa tiga sahabat Daniel menolak menyembah patung?", ["Karena penyembahan kepada Allah tidak dapat dikompromikan demi keselamatan pribadi", "Karena mereka tidak suka musik", "Karena patung terlalu besar", "Karena mereka ingin menjadi raja"], 0, "Kesetiaan mereka diuji ketika ketaatan kepada Allah memiliki risiko."],
+                    ["Jika mereka berkata Allah sanggup menyelamatkan tetapi tetap akan setia bila tidak diselamatkan, iman mereka menunjukkan...", ["Kesetiaan kepada Allah tidak didasarkan pada jaminan bahwa hasilnya selalu sesuai keinginan", "Mereka tidak percaya Allah", "Mereka menyerah", "Mereka tidak berdoa"], 0, "Ini adalah contoh iman yang tidak menjadikan Allah sekadar alat untuk memperoleh hasil tertentu."],
+                    ["Mengapa Daniel tetap berdoa walaupun tahu hukum raja telah berubah?", ["Karena hubungan dan kesetiaannya kepada Allah tidak boleh ditentukan oleh tekanan politik", "Karena Daniel ingin dihukum", "Karena ia lupa hukum", "Karena raja tidak penting"], 0, "Daniel tetap menjalankan kebiasaan doanya meskipun konsekuensinya nyata."],
+                    ["Jika Daniel mampu melayani beberapa pemerintahan berbeda, pelajaran pentingnya adalah...", ["Orang percaya dapat menjalankan tanggung jawab publik tanpa kehilangan kesetiaan kepada Allah", "Orang percaya harus selalu menjadi raja", "Politik tidak penting", "Semua pemerintahan sama"], 0, "Daniel menunjukkan integritas di tengah pergantian kerajaan."],
+                    ["Mengapa Daniel 4 penting untuk Nebukadnezar?", ["Kesombongan raja direndahkan untuk menunjukkan bahwa Yang Mahatinggi berkuasa atas kerajaan manusia", "Nebukadnezar menjadi nabi Israel", "Babel menang selamanya", "Daniel menjadi dewa"], 0, "Kesombongan manusia dikontraskan dengan kedaulatan Allah."],
+                    ["Beltsazar melihat tulisan di dinding. Mengapa peristiwa itu penting?", ["Kekuasaan yang merasa aman dapat runtuh ketika Allah menghakiminya", "Babel menjadi lebih kuat", "Daniel kehilangan iman", "Persia kalah"], 0, "Penghakiman Allah menunjukkan batas kekuasaan manusia."],
+                    ["Apa hubungan Daniel 6 dengan Daniel 1?", ["Keduanya menunjukkan pola kesetiaan yang konsisten meski tekanan berubah", "Keduanya hanya tentang makanan", "Keduanya terjadi di Yerusalem", "Keduanya membahas nabi yang sama"], 0, "Daniel tetap konsisten dari masa mudanya sampai usia lanjut."],
+                    ["Jika Daniel menjadi pejabat tinggi tetapi tetap rendah hati di hadapan Allah, prinsipnya adalah...", ["Prestasi publik tidak boleh menggantikan ketergantungan kepada Allah", "Kekuasaan selalu buruk", "Orang beriman tidak boleh bekerja", "Pejabat tidak perlu berdoa"], 0, "Daniel menggabungkan kompetensi publik dengan kesetiaan rohani."],
+                    ["Daniel 7 menggunakan gambaran binatang. Mengapa pembaca perlu berhati-hati?", ["Karena sastra apokaliptik menggunakan simbol yang harus dibaca dalam konteks kitab, bukan ditebak sembarangan", "Karena semua simbol berarti angka", "Karena tidak ada makna", "Karena binatang adalah tokoh sejarah biasa"], 0, "Simbol apokaliptik membutuhkan perhatian pada konteks dan tema kitab."],
+                    ["Tokoh 'Anak Manusia' dalam Daniel 7 kemudian sangat penting dalam Perjanjian Baru karena...", ["Yesus sering memakai istilah 'Anak Manusia' untuk berbicara tentang diri-Nya", "Paulus menjadi Anak Manusia", "Daniel adalah Yesus", "Babel menyembah Yesus"], 0, "Istilah tersebut memiliki latar Daniel 7 dan menjadi salah satu gelar penting yang digunakan Yesus."],
+                    ["Jika Daniel menunjukkan kerajaan Allah akan menang atas kerajaan dunia, respons yang tepat bukanlah...", ["Menebak tanggal akhir zaman secara sembarangan", "Tetap setia", "Percaya Allah berdaulat", "Tidak takut kepada tekanan manusia"], 0, "Nubuat apokaliptik seharusnya membentuk kesetiaan, bukan spekulasi liar."],
+                    ["Mengapa Daniel tetap memuliakan Allah ketika hidup di negeri asing?", ["Identitas umat Allah tidak bergantung pada lokasi geografis semata", "Karena Babel adalah tanah Israel", "Karena Daniel lupa Yerusalem", "Karena Allah hanya hadir di Babel"], 0, "Daniel menunjukkan bahwa Allah tetap berdaulat dan dapat disembah di tengah pembuangan."],
+                    ["Jika semua kerajaan manusia akhirnya terbatas, apa yang menjadi sumber pengharapan?", ["Kerajaan Allah yang tidak bergantung pada kekuasaan manusia", "Kekuatan militer", "Kekayaan raja", "Popularitas"], 0, "Daniel mengarahkan pengharapan kepada pemerintahan Allah."],
+                    ["Mengapa kisah Daniel cocok untuk tema 'iman di tempat kerja'?", ["Daniel tetap jujur, kompeten, dan setia kepada Allah dalam tanggung jawab publik", "Daniel menolak semua pekerjaan", "Daniel tidak pernah berinteraksi dengan pemerintah", "Daniel hidup tanpa aturan"], 0, "Kesetiaan Daniel terlihat bukan hanya dalam doa, tetapi juga dalam integritas pekerjaannya."],
+                    ["Jika seseorang berkata 'Aku akan taat kepada Allah kalau aman,' Daniel membantahnya melalui...", ["Kesetiaan Daniel dan ketiga sahabatnya ketika ketaatan membawa risiko", "Daniel 1 tentang pendidikan", "Daftar raja", "Pembangunan Babel"], 0, "Kesetiaan mereka tidak bergantung pada keamanan pribadi."],
+                    ["Kesimpulan utama Daniel adalah...", ["Allah berdaulat atas kerajaan manusia dan umat-Nya dipanggil tetap setia", "Kerajaan Babel kekal", "Orang percaya harus menguasai politik", "Nabi tidak boleh bekerja"], 0, "Kedaulatan Allah dan ketekunan umat adalah dua tema besar kitab Daniel."]
+                ]
+            },
+
+            {
+                name: "Hosea",
+                theme: "Kasih setia Allah terhadap umat yang tidak setia",
+                questions: [
+                    ["Mengapa pernikahan Hosea dengan Gomer menjadi tindakan simbolis?", ["Kehidupan rumah tangga Hosea menggambarkan ketidaksetiaan Israel terhadap Allah dan kasih setia Allah", "Karena Hosea ingin terkenal", "Karena pernikahan itu tidak memiliki makna", "Karena Gomer adalah ratu"], 0, "Kehidupan keluarga nabi dipakai Allah sebagai gambaran hubungan perjanjian."],
+                    ["Jika Israel menyembah Baal tetapi tetap mengaku sebagai umat Allah, masalah utamanya adalah...", ["Ketidaksetiaan perjanjian dan penyembahan berhala", "Kurangnya tentara", "Bahasa Ibrani", "Tidak punya tanah"], 0, "Hosea melihat penyembahan berhala sebagai bentuk ketidaksetiaan kepada Allah."],
+                    ["Hosea 6:6 menekankan kasih setia lebih daripada korban. Maksudnya bukan...", ["Bahwa korban tidak pernah penting, melainkan bahwa ritual tanpa kasih setia tidak memenuhi kehendak Allah", "Bahwa Allah membenci ibadah", "Bahwa korban adalah dosa", "Bahwa hukum tidak ada"], 0, "Hosea menolak ritual yang kehilangan inti relasi dan kesetiaan kepada Allah."],
+                    ["Mengapa Hosea 11 menggambarkan Allah seperti orang tua yang mengasihi anak?", ["Untuk memperlihatkan kedalaman kasih Allah meskipun Israel memberontak", "Untuk menyatakan Israel tidak berdosa", "Untuk menggambarkan raja Mesir", "Untuk membahas keluarga Hosea"], 0, "Gambaran tersebut menunjukkan kasih dan belas kasih Allah yang mendalam."],
+                    ["Jika Hosea menggunakan bahasa suami-istri untuk Allah dan Israel, dosa Israel digambarkan sebagai...", ["Pengkhianatan terhadap hubungan perjanjian", "Masalah ekonomi", "Kesalahan militer", "Kegagalan pertanian"], 0, "Metafora perkawinan memperkuat seriusnya ketidaksetiaan umat."],
+                    ["Apa paradoks terbesar kitab Hosea?", ["Israel sangat tidak setia, tetapi Allah tetap menunjukkan kasih dan membuka jalan pemulihan", "Israel tidak pernah berdosa", "Allah berhenti mengasihi", "Hosea tidak peduli"], 0, "Kasih Allah justru terlihat kuat karena umat sangat tidak setia."],
+                    ["Jika seseorang mengira kasih Allah berarti dosa tidak masalah, Hosea mengoreksinya karena...", ["Kasih Allah tetap disertai panggilan pertobatan dan konsekuensi dosa", "Allah tidak pernah menghukum", "Dosa tidak nyata", "Kasih berarti bebas melakukan apa saja"], 0, "Kasih setia Allah bukan izin untuk terus memberontak."],
+                    ["Mengapa pengetahuan tentang Allah penting dalam Hosea?", ["Karena kurang mengenal Allah membuat umat mudah jatuh dalam ketidaksetiaan", "Karena pengetahuan akademis menyelamatkan", "Karena Israel tidak bisa membaca", "Karena nabi tidak penting"], 0, "Hosea menyoroti kurangnya pengenalan akan Allah sebagai masalah rohani."],
+                    ["Jika Israel mencari bantuan politik kepada bangsa lain, Hosea melihatnya sebagai...", ["Tanda mereka tidak sungguh mengandalkan Allah", "Tanda mereka semakin saleh", "Tanda pertobatan", "Tanda kemenangan"], 0, "Ketergantungan politik menjadi bagian dari ketidaksetiaan kepada Allah."],
+                    ["Hosea 14 menawarkan pemulihan. Ini menunjukkan bahwa tujuan teguran Allah adalah...", ["Membawa umat kembali kepada-Nya", "Menghancurkan umat selamanya", "Membuat nabi terkenal", "Menghapus sejarah"], 0, "Teguran diarahkan kepada pertobatan dan pemulihan."],
+                    ["Mengapa nama anak-anak Hosea memiliki fungsi profetik?", ["Nama mereka menjadi tanda atau pesan tentang hubungan Allah dengan Israel", "Karena nama anak tidak memiliki arti", "Karena mereka menjadi raja", "Karena mereka nabi besar"], 0, "Nama-nama anak menjadi simbol pesan penghakiman dan relasi perjanjian."],
+                    ["Apa yang membuat Hosea berbeda dari nabi yang hanya menyampaikan hukuman?", ["Bahasa emosional tentang kasih, belas kasih, dan kerinduan Allah", "Tidak ada teguran", "Tidak ada dosa", "Tidak ada penghakiman"], 0, "Hosea sangat kuat menggambarkan hati Allah terhadap umat."],
+                    ["Jika Israel disebut 'Efraim', mengapa pembaca perlu memahami istilah itu?", ["Efraim sering menjadi representasi kerajaan Israel Utara", "Efraim adalah nama Babel", "Efraim adalah nabi", "Efraim adalah kota Mesir"], 0, "Efraim merupakan suku dominan dan dapat digunakan untuk menunjuk kerajaan Israel Utara."],
+                    ["Hubungan Hosea dengan Matius 2:15 menunjukkan bahwa Hosea 11:1 dibaca dalam PB sebagai...", ["Pola atau tipologi Israel yang kemudian diterapkan kepada Yesus", "Nubuat langsung tentang nama Yesus secara eksplisit", "Kisah Hosea menulis Injil", "Ramalan tentang Paulus"], 0, "Matius memakai pola 'keluar dari Mesir' untuk membaca kembali sejarah Israel dalam diri Yesus."],
+                    ["Jika kasih Allah digambarkan seperti kasih orang tua, apakah itu berarti Allah mengabaikan keadilan?", ["Tidak, kasih dan keadilan berjalan bersama dalam relasi perjanjian", "Ya", "Keadilan tidak ada", "Dosa tidak penting"], 0, "Hosea justru menunjukkan kasih Allah dalam konteks seriusnya dosa."],
+                    ["Apa hubungan antara Hosea 1–3 dan Hosea 14?", ["Dari gambaran ketidaksetiaan menuju tawaran pemulihan", "Dari perang menuju pembangunan", "Dari Mesir menuju Roma", "Tidak ada hubungan"], 0, "Alur kitab bergerak dari pengkhianatan menuju harapan pemulihan."],
+                    ["Mengapa penyembahan Baal sangat serius?", ["Karena umat menggantikan Allah dengan ilah lain dan mengkhianati perjanjian", "Karena Baal adalah raja Israel", "Karena Baal adalah nabi", "Karena Baal adalah kota"], 0, "Masalahnya adalah penyembahan kepada ilah lain."],
+                    ["Jika umat hanya mengandalkan ritual tanpa mengenal Allah, Hosea menyebut kondisi itu sebagai...", ["Kesalehan kosong yang tidak menghasilkan kasih setia", "Iman sempurna", "Pertobatan", "Kemenangan"], 0, "Relasi dengan Allah harus menghasilkan kesetiaan nyata."],
+                    ["Apa pesan paling kuat Hosea bagi orang yang merasa dirinya terlalu jauh dari Allah?", ["Kasih Allah membuka jalan kembali melalui pertobatan", "Tidak ada harapan", "Dosa tidak dapat diampuni", "Harus menjadi nabi"], 0, "Hosea adalah salah satu kitab terkuat tentang kasih Allah yang memanggil umat kembali."],
+                    ["Benang merah Hosea adalah...", ["Allah yang setia mengejar umat yang tidak setia dan memanggil mereka kembali", "Israel tidak pernah berdosa", "Politik kerajaan", "Pertanian Israel"], 0, "Kasih setia Allah menjadi pusat emosional dan teologis kitab."]
+                ]
+            },
+
+            {
+                name: "Yoel",
+                theme: "Hari TUHAN, pertobatan dan pencurahan Roh",
+                questions: [
+                    ["Mengapa tulah belalang dalam Yoel dapat berfungsi sebagai gambaran Hari TUHAN?", ["Krisis alam menjadi panggilan untuk menyadari seriusnya keadaan rohani dan datang kepada Allah", "Belalang adalah tentara Babel", "Belalang tidak memiliki makna", "Karena Yoel hanya membahas pertanian"], 0, "Bencana menjadi latar seruan pertobatan."],
+                    ["Yoel 2:12–13 menekankan kembali kepada Allah dengan segenap hati. Mengapa hati penting?", ["Karena pertobatan bukan sekadar tindakan luar tetapi perubahan relasi dengan Allah", "Karena hati tidak berhubungan dengan iman", "Karena ritual dilarang", "Karena puasa tidak penting"], 0, "Pertobatan harus berasal dari hati."],
+                    ["Jika umat merobek pakaian tetapi tidak hati, masalahnya adalah...", ["Simbol pertobatan tidak boleh menggantikan pertobatan yang sungguh", "Pakaian terlalu mahal", "Puasa tidak boleh", "Nabi salah"], 0, "Yoel membedakan ekspresi luar dan perubahan batin."],
+                    ["Mengapa Yoel 2:28 penting bagi Perjanjian Baru?", ["Petrus menghubungkannya dengan pencurahan Roh Kudus pada Pentakosta", "Paulus mengutipnya tentang Babel", "Yesus mengutipnya tentang Bait", "Daniel mengutipnya"], 0, "Kisah Para Rasul 2 membaca peristiwa Pentakosta dalam terang Yoel."],
+                    ["Jika Roh dicurahkan kepada anak laki-laki, perempuan, orang tua, dan orang muda, implikasinya adalah...", ["Karya Roh Allah tidak dibatasi hanya pada kelompok sosial tertentu", "Hanya imam menerima Roh", "Hanya nabi menerima Roh", "Anak tidak boleh menerima Roh"], 0, "Yoel menggambarkan keluasan pencurahan Roh."],
+                    ["Mengapa Hari TUHAN memiliki sisi penghakiman sekaligus keselamatan?", ["Karena kedatangan Allah menjadi penghakiman bagi yang melawan tetapi keselamatan bagi yang berseru kepada-Nya", "Karena Allah berubah pikiran", "Karena hari itu hanya pesta", "Karena tidak ada dosa"], 0, "Hari TUHAN memiliki dua sisi sesuai respons manusia kepada Allah."],
+                    ["Jika pertobatan Yoel disertai puasa dan perkumpulan kudus, tindakan itu seharusnya dipahami sebagai...", ["Respons bersama umat terhadap panggilan Allah", "Ritual tanpa makna", "Cara membeli pengampunan", "Pengganti iman"], 0, "Puasa dan perkumpulan menjadi ekspresi pertobatan umat."],
+                    ["Mengapa Allah disebut pengasih dan penyayang dalam konteks seruan pertobatan?", ["Karakter Allah menjadi dasar keberanian umat untuk kembali kepada-Nya", "Karena dosa tidak penting", "Karena Allah tidak adil", "Karena hukuman dibatalkan otomatis"], 0, "Umat dapat kembali karena Allah penuh kasih setia."],
+                    ["Apa hubungan antara pemulihan hasil tanah dan pemulihan rohani?", ["Keduanya menggambarkan berkat Allah setelah umat kembali kepada-Nya", "Tidak ada hubungan", "Tanah lebih penting daripada Allah", "Roh tidak penting"], 0, "Yoel menghubungkan pemulihan alam dan umat dalam pengharapan."],
+                    ["Mengapa Yoel cocok menjadi jembatan antara nabi dan Kisah Para Rasul?", ["Karena nubuat pencurahan Roh mendapat penggunaan eksplisit dalam khotbah Pentakosta", "Karena Yoel menulis Kisah Para Rasul", "Karena Petrus adalah nabi Yoel", "Karena Pentakosta terjadi di Babel"], 0, "Kisah Para Rasul 2 secara eksplisit mengutip Yoel 2."],
+                    ["Jika seseorang hanya melihat bencana sebagai hukuman, apa yang perlu ditambahkan dari Yoel?", ["Bencana dapat menjadi panggilan untuk bertobat dan berharap kepada belas kasih Allah", "Bencana selalu tidak berarti", "Bencana selalu berarti hukuman pribadi", "Bencana harus diabaikan"], 0, "Yoel mengarahkan umat dari krisis menuju pertobatan."],
+                    ["Mengapa seruan kepada Zion bukan sekadar politik?", ["Karena pusat persoalannya adalah hubungan umat dengan Allah dan Hari TUHAN", "Karena Zion adalah Babel", "Karena Yoel tidak percaya Allah", "Karena hanya tanah yang penting"], 0, "Zion menjadi tempat simbolis karya Allah bagi umat-Nya."],
+                    ["Jika Roh Allah dicurahkan luas, hal itu mengantisipasi...", ["Komunitas umat Allah yang mengalami karya Roh secara luas", "Penghapusan semua nabi", "Kerajaan Babel", "Kejatuhan Israel"], 0, "Yoel memperluas horizon karya Roh."],
+                    ["Apa yang dimaksud dengan 'berseru kepada nama TUHAN' dalam konteks keselamatan?", ["Datang kepada Allah dengan iman dan pertobatan", "Mengucapkan nama tanpa iman", "Menghafal nama nabi", "Menyebut nama raja"], 0, "Seruan tersebut menunjuk pada ketergantungan kepada Allah."],
+                    ["Jika pertobatan hanya dilakukan karena takut hukuman, apa yang kurang?", ["Perubahan hati dan kembali kepada Allah dengan sungguh", "Puasa", "Air mata", "Perkumpulan"], 0, "Yoel menekankan 'segenap hati'."],
+                    ["Mengapa pengharapan Yoel tidak berhenti pada satu generasi?", ["Janji pencurahan Roh memiliki cakupan luas dan kemudian dibaca dalam konteks umat Allah", "Karena Yoel tidak tahu sejarah", "Karena semua nabi sama", "Karena belalang hilang"], 0, "Pengharapan bergerak dari krisis lokal menuju karya Roh yang luas."],
+                    ["Apa hubungan antara Hari TUHAN dan keadilan?", ["Allah akan bertindak terhadap kejahatan sekaligus membela umat yang berseru kepada-Nya", "Hari TUHAN hanya pesta", "Keadilan tidak ada", "Semua bangsa otomatis selamat"], 0, "Hari TUHAN adalah tindakan Allah terhadap dosa dan keselamatan."],
+                    ["Mengapa Yoel tidak boleh dibaca sebagai ramalan bencana semata?", ["Karena inti kitab adalah pertobatan, Hari TUHAN, belas kasih, dan pencurahan Roh", "Karena tidak ada belalang", "Karena Yoel hanya puisi", "Karena sejarah tidak penting"], 0, "Bencana menjadi pintu masuk kepada pesan teologis yang lebih besar."],
+                    ["Jika gereja mengalami pencurahan Roh tetapi tidak ada pertobatan dan kehidupan kudus, apakah itu sesuai semangat Yoel?", ["Tidak; karya Roh dan panggilan pertobatan berjalan bersama", "Ya selalu", "Pertobatan tidak penting", "Roh hanya untuk mukjizat"], 0, "Yoel menggabungkan pertobatan, karya Roh, dan pembaruan umat."],
+                    ["Benang merah Yoel adalah...", ["Krisis menjadi panggilan pertobatan, Hari TUHAN datang, dan Allah menjanjikan pemulihan serta pencurahan Roh", "Belalang sebagai tokoh utama", "Politik Babel", "Pembangunan istana"], 0, "Itulah alur utama kitab Yoel."]
+                ]
+            },
+
+            {
+                name: "Amos",
+                theme: "Keadilan, kebenaran dan kritik terhadap ibadah tanpa keadilan",
+                questions: [
+                    ["Mengapa Amos mengejutkan Israel ketika ia berbicara tentang penghakiman?", ["Israel merasa dirinya umat pilihan dan aman, tetapi Amos menunjukkan bahwa status itu meningkatkan tanggung jawab", "Karena Amos orang Mesir", "Karena Israel tidak punya kota", "Karena Amos bukan nabi"], 0, "Pemilihan tidak berarti bebas dari pertanggungjawaban."],
+                    ["Ungkapan bahwa keadilan harus bergulung seperti air menunjukkan bahwa...", ["Keadilan harus menjadi bagian nyata dan terus-menerus dari kehidupan umat", "Keadilan hanya di pengadilan", "Air adalah simbol kekayaan", "Ibadah tidak penting"], 0, "Amos menolak keadilan yang hanya sesekali atau simbolis."],
+                    ["Mengapa Amos mengkritik orang yang rajin beribadah?", ["Karena ibadah mereka tidak sejalan dengan kehidupan yang menindas orang lemah", "Karena Amos membenci ibadah", "Karena korban selalu salah", "Karena doa tidak penting"], 0, "Masalahnya adalah ketidaksesuaian antara ibadah dan moralitas."],
+                    ["Jika orang kaya menjual orang miskin demi keuntungan, dosa utamanya adalah...", ["Ketidakadilan ekonomi yang memperlakukan manusia seperti komoditas", "Kurangnya persembahan", "Tidak pergi ke Bait", "Tidak menjadi imam"], 0, "Amos sangat keras terhadap eksploitasi kaum lemah."],
+                    ["Mengapa penghakiman Amos berlaku juga bagi bangsa-bangsa sekitar?", ["Karena Allah adalah hakim seluruh bangsa, bukan hanya Israel", "Karena semua bangsa adalah Israel", "Karena Amos raja", "Karena Israel tidak berdosa"], 0, "Amos memperluas cakrawala keadilan Allah."],
+                    ["Apa bahaya merasa aman karena 'hari TUHAN'?", ["Hari TUHAN justru dapat menjadi hari penghakiman bagi umat yang hidup tidak benar", "Hari TUHAN pasti berarti kemenangan Israel", "Hari TUHAN tidak pernah datang", "Allah tidak menghukum"], 0, "Amos membalik ekspektasi populer Israel."],
+                    ["Mengapa visi tali sipat menunjukkan standar Allah?", ["Allah mengukur umat dengan standar kebenaran, bukan kebanggaan mereka sendiri", "Tali sipat adalah senjata", "Israel sedang membangun rumah", "Amos menjadi tukang"], 0, "Tali sipat menjadi simbol standar dan penghakiman."],
+                    ["Jika seseorang berkata kekayaan membuktikan berkat Allah, Amos mengoreksinya dengan...", ["Menunjukkan bahwa kekayaan yang diperoleh melalui penindasan dapat menjadi alasan penghakiman", "Kekayaan selalu dosa", "Orang miskin selalu benar", "Allah membenci orang kaya"], 0, "Masalah Amos adalah ketidakadilan dan eksploitasi, bukan sekadar kepemilikan materi."],
+                    ["Mengapa Amos 5:24 sering dianggap sebagai inti sosial kitab?", ["Karena keadilan dan kebenaran harus menjadi aliran kehidupan umat", "Karena Amos membahas sungai", "Karena Israel tinggal di Mesir", "Karena hukum tidak penting"], 0, "Keadilan bukan aksesori iman."],
+                    ["Apa hubungan antara ibadah dan keadilan dalam Amos?", ["Ibadah yang dibenci Allah adalah ibadah yang tidak disertai kehidupan benar", "Ibadah tidak diperlukan", "Keadilan menggantikan Allah", "Keadilan hanya politik"], 0, "Amos mengkritik ibadah yang menjadi topeng bagi ketidakadilan."],
+                    ["Mengapa Amos tidak berasal dari sekolah nabi tetapi tetap dipanggil?", ["Panggilan Allah tidak terbatas pada status profesional atau lembaga tertentu", "Nabi tidak membutuhkan Allah", "Sekolah nabi dilarang", "Amos adalah raja"], 0, "Amos menyebut dirinya peternak/penggembala dan pemungut buah ara hutan sebelum dipanggil."],
+                    ["Jika masyarakat modern memiliki gereja megah tetapi korupsi dan penindasan tinggi, prinsip Amos yang paling relevan adalah...", ["Kemegahan ibadah tidak menggantikan tuntutan keadilan Allah", "Gereja harus ditutup", "Ibadah tidak penting", "Semua orang kaya berdosa"], 0, "Amos akan mempertanyakan integritas kehidupan di balik simbol religius."],
+                    ["Mengapa Israel tidak dapat memakai status umat pilihan sebagai kartu bebas hukuman?", ["Karena semakin besar privilese, semakin besar pula tanggung jawab perjanjian", "Karena Israel bukan umat pilihan", "Karena Allah tidak punya hukum", "Karena semua bangsa sama"], 0, "Amos menunjukkan tanggung jawab khusus Israel."],
+                    ["Apa kesalahan ketika orang hanya mengambil pesan Amos tentang sosial tanpa Allah?", ["Keadilan Amos berakar pada karakter dan penghakiman Allah", "Allah tidak relevan", "Keadilan hanya politik", "Amos ateis"], 0, "Keadilan sosial dalam Amos berasal dari tuntutan Allah."],
+                    ["Jika nabi dipanggil untuk mengganggu kenyamanan orang yang berkuasa, apa yang Amos ajarkan?", ["Kesetiaan pada firman lebih penting daripada kenyamanan sosial", "Nabi harus selalu menyenangkan pejabat", "Kebenaran harus disembunyikan", "Orang miskin tidak penting"], 0, "Amos tidak mengubah pesan karena tekanan Amazia."],
+                    ["Mengapa Amazia menolak Amos?", ["Pesan Amos mengganggu keamanan dan kepentingan religius-politiknya", "Karena Amos tidak bisa membaca", "Karena Amos berasal dari Babel", "Karena Amos menyembah Baal"], 0, "Amazia sebagai imam di Betel meminta Amos pergi."],
+                    ["Apa hubungan antara kemakmuran Israel dan penghakiman Amos?", ["Kemakmuran tanpa keadilan justru memperbesar kesalahan mereka", "Kemakmuran selalu buruk", "Israel miskin", "Kemakmuran membuktikan keselamatan"], 0, "Masalahnya adalah kemakmuran yang dinikmati melalui penindasan."],
+                    ["Mengapa Amos juga memiliki bagian pengharapan di akhir?", ["Penghakiman bukan kata terakhir; Allah tetap menjanjikan pemulihan Daud", "Amos berubah menjadi nabi lain", "Israel tidak berdosa", "Babel menang"], 0, "Amos 9:11–15 memberikan harapan pemulihan."],
+                    ["Jika keadilan hanya dilakukan ketika menguntungkan kita, apakah itu sesuai Amos?", ["Tidak, keadilan harus menjadi karakter kehidupan umat", "Ya", "Hanya kepada teman", "Hanya kepada orang kaya"], 0, "Bahasa Amos tentang keadilan menekankan konsistensi."],
+                    ["Benang merah Amos adalah...", ["Allah menuntut keadilan dan kebenaran dari umat yang menyandang nama-Nya", "Kekayaan Israel", "Pembangunan Betel", "Pertanian"], 0, "Amos adalah salah satu suara nabi terkuat mengenai keadilan sosial yang berakar pada iman kepada Allah."]
+                ]
+            },
+
+            {
+                name: "Obaja",
+                theme: "Kesombongan Edom, keadilan Allah dan pemulihan",
+                questions: [
+                    ["Mengapa Obaja mengecam Edom ketika Yerusalem jatuh?", ["Edom bukan hanya menyaksikan tetapi bersikap bermusuhan dan mengambil keuntungan dari penderitaan Yehuda", "Karena Edom adalah Babel", "Karena Edom adalah Israel", "Karena Edom membangun Bait"], 0, "Dosa Edom terkait kesombongan dan tindakannya terhadap Yehuda."],
+                    ["Jika seseorang menertawakan penderitaan orang lain karena merasa lebih aman, prinsip Obaja yang paling tepat adalah...", ["Kesombongan dan kegembiraan atas kejatuhan orang lain dapat membawa penghakiman Allah", "Orang kuat selalu benar", "Penderitaan orang lain tidak penting", "Allah tidak peduli"], 0, "Obaja menegur Edom karena sikapnya terhadap kehancuran saudaranya."],
+                    ["Mengapa hubungan Edom-Israel penting?", ["Edom berasal dari garis Esau, sehingga permusuhan mereka memiliki dimensi persaudaraan historis", "Edom adalah keturunan Musa", "Edom berasal dari Mesir", "Edom adalah kota"], 0, "Edom dikaitkan dengan Esau, saudara Yakub."],
+                    ["Kesombongan Edom membuat mereka merasa aman di tempat tinggi. Mengapa rasa aman itu palsu?", ["Allah dapat merendahkan bangsa yang menganggap dirinya tidak tersentuh", "Gunung tidak aman", "Babel lebih kuat", "Edom tidak punya tentara"], 0, "Obaja memakai gambaran tempat tinggi untuk menggambarkan kesombongan."],
+                    ["Jika seseorang memiliki kemampuan tetapi menggunakannya untuk mengeksploitasi orang yang sedang lemah, Obaja mengajarkan...", ["Keuntungan yang dibangun di atas penderitaan orang lain tidak luput dari keadilan Allah", "Keuntungan selalu berkat", "Yang kuat bebas", "Allah tidak melihat"], 0, "Allah menghakimi tindakan Edom terhadap Yehuda."],
+                    ["Apa arti penting Hari TUHAN dalam Obaja?", ["Allah akan bertindak adil terhadap bangsa-bangsa", "Hari itu hanya untuk Israel", "Hari itu pesta Edom", "Tidak ada penghakiman"], 0, "Hari TUHAN menjadi tema penghakiman universal."],
+                    ["Mengapa Obaja sangat singkat tetapi tajam?", ["Karena pesan utamanya terfokus pada penghakiman Edom dan kemenangan pemerintahan Allah", "Karena penulis tidak tahu sejarah", "Karena kitab belum selesai", "Karena tidak memiliki tema"], 0, "Obaja adalah kitab terpendek dalam Perjanjian Lama."],
+                    ["Jika Edom berkata 'siapa yang akan menurunkan aku?', respons teologis Obaja adalah...", ["Tidak ada kesombongan manusia yang dapat mengatasi kedaulatan Allah", "Edom benar", "Gunung menyelamatkan", "Babel akan membantu"], 0, "Allah mampu merendahkan yang meninggikan diri."],
+                    ["Mengapa dosa pasif seperti berdiri jauh dan melihat penderitaan juga disoroti?", ["Karena sikap terhadap penderitaan orang lain dapat menunjukkan ketidakpedulian dan permusuhan", "Karena semua orang harus ikut perang", "Karena diam selalu dosa", "Karena nabi membenci Edom"], 0, "Obaja menggambarkan keterlibatan Edom secara bertahap dalam kejatuhan Yehuda."],
+                    ["Apa hubungan Obaja dengan prinsip 'menuai apa yang ditabur'?", ["Edom mengalami konsekuensi atas perlakuannya terhadap Yehuda", "Semua manusia selalu langsung dihukum", "Tidak ada anugerah", "Allah tidak adil"], 0, "Obaja memakai prinsip keadilan ilahi terhadap Edom."],
+                    ["Jika bangsa kecil merasa tidak penting dalam sejarah, Obaja menunjukkan bahwa...", ["Allah memperhatikan bangsa-bangsa dan tindakan mereka", "Hanya Israel diperhatikan", "Bangsa kecil bebas dosa", "Allah hanya melihat raja"], 0, "Keadilan Allah melampaui ukuran kekuatan politik."],
+                    ["Mengapa pemulihan Zion di akhir kitab penting?", ["Penghakiman terhadap Edom bukan tujuan akhir; pemerintahan menjadi milik TUHAN", "Edom menjadi Israel", "Babel membangun Zion", "Tidak ada harapan"], 0, "Akhir kitab mengarahkan pandangan kepada kerajaan TUHAN."],
+                    ["Jika seseorang berhasil karena memanfaatkan kelemahan orang lain, mengapa Obaja menjadi peringatan?", ["Keberhasilan sementara tidak membatalkan pertanggungjawaban di hadapan Allah", "Keberhasilan selalu berarti benar", "Allah menyukai eksploitasi", "Kelemahan orang lain tidak penting"], 0, "Obaja membongkar ilusi bahwa keuntungan berarti persetujuan Allah."],
+                    ["Apa hubungan Edom dan Esau yang membuat konflik ini makin tragis?", ["Mereka memiliki hubungan saudara melalui Yakub dan Esau", "Mereka tidak berhubungan", "Edom keturunan Daud", "Edom keturunan Daniel"], 0, "Permusuhan antar bangsa ini memiliki latar persaudaraan keluarga."],
+                    ["Jika Obaja dibaca bersama Amos, persamaan terbesarnya adalah...", ["Allah menghakimi kesombongan dan ketidakadilan bangsa", "Keduanya hanya tentang bait", "Keduanya tentang Daniel", "Keduanya menulis Injil"], 0, "Keduanya menekankan keadilan Allah terhadap kesombongan."],
+                    ["Apa yang salah dengan pemikiran 'Aku aman karena posisiku tinggi'?", ["Keamanan manusia tidak dapat mengalahkan kedaulatan Allah", "Posisi tinggi selalu salah", "Gunung selalu berbahaya", "Allah tidak melihat tempat tinggi"], 0, "Kesombongan Edom dibangun di atas ilusi keamanan."],
+                    ["Mengapa tindakan terhadap orang yang jatuh sangat penting bagi Obaja?", ["Karena cara kita memperlakukan penderitaan orang lain mengungkap karakter moral kita", "Karena penderitaan harus dirayakan", "Karena semua harus ikut perang", "Karena Yehuda tidak berdosa"], 0, "Edom dihukum bukan hanya karena sikap batin tetapi tindakan nyata."],
+                    ["Apa pesan bagi bangsa yang merasa lebih unggul?", ["Kesombongan dapat membawa kehancuran karena Allah adalah hakim", "Keunggulan selalu berkat", "Allah mendukung yang kuat", "Tidak ada pertanggungjawaban"], 0, "Obaja meruntuhkan kesombongan Edom."],
+                    ["Jika Hari TUHAN berarti penghakiman, mengapa itu juga menjadi pengharapan?", ["Karena keadilan Allah berarti penindasan dan kesombongan tidak akan menang selamanya", "Karena semua orang pasti selamat", "Karena perang selesai", "Karena Edom menang"], 0, "Penghakiman terhadap kejahatan membuka ruang bagi pemulihan umat Allah."],
+                    ["Benang merah Obaja adalah...", ["Allah merendahkan kesombongan Edom, menghakimi ketidakadilan, dan menegakkan pemerintahan-Nya", "Edom menjadi umat pilihan", "Sejarah Esau", "Pertanian"], 0, "Obaja sangat singkat tetapi kuat dalam tema kesombongan, keadilan, dan kerajaan TUHAN."]
+                ]
+            },
+
+            {
+                name: "Yunus",
+                theme: "Belas kasih Allah, pertobatan bangsa lain dan hati nabi",
+                questions: [
+                    ["Mengapa Yunus melarikan diri ke Tarsis?", ["Ia tidak ingin Niniwe menerima belas kasih Allah dan tidak ingin menyampaikan pesan itu", "Ia tidak mengenal Allah", "Ia ingin menjadi raja", "Ia takut kepada Yerusalem"], 0, "Yunus sendiri menjelaskan bahwa ia tahu Allah penuh kasih dan takut Niniwe diampuni."],
+                    ["Mengapa badai di laut penting dalam alur Yunus?", ["Badai menunjukkan bahwa pelarian nabi tidak dapat menghindari kedaulatan Allah", "Badai hanya fenomena alam tanpa makna", "Niniwe menyerang kapal", "Yunus adalah dewa"], 0, "Badai menjadi bagian dari cara Allah menghentikan pelarian Yunus."],
+                    ["Mengapa para pelaut justru takut kepada TUHAN setelah pengalaman di laut?", ["Mereka melihat kuasa Allah dan merespons dengan hormat serta persembahan", "Mereka sudah orang Israel", "Mereka adalah nabi", "Mereka tinggal di Yerusalem"], 0, "Kontras ini penting: orang kafir merespons Allah sementara nabi sedang melarikan diri."],
+                    ["Apa ironi terbesar dalam kitab Yunus?", ["Nabi tidak mau mengasihi musuh, tetapi Allah menunjukkan belas kasih kepada musuh Israel", "Niniwe tidak bertobat", "Yunus tidak mengenal Allah", "Pelaut tidak takut"], 0, "Ironi moral kitab sangat kuat."],
+                    ["Mengapa pertobatan Niniwe mengejutkan Yunus?", ["Karena ia tidak menginginkan musuhnya diselamatkan", "Karena Niniwe tidak memiliki raja", "Karena Yunus tidak tahu bahasa", "Karena Allah membenci Niniwe"], 0, "Yunus marah justru karena belas kasih Allah."],
+                    ["Apa yang sebenarnya sedang 'didiagnosis' Allah melalui pohon jarak?", ["Hati Yunus yang lebih peduli pada kenyamanannya daripada keselamatan manusia", "Kekuatan Niniwe", "Pertanian Israel", "Cuaca"], 0, "Pohon jarak menjadi alat pengajaran Allah kepada Yunus."],
+                    ["Jika Yunus lebih sedih karena pohon mati daripada karena Niniwe, masalahnya adalah...", ["Prioritas kasihnya terbalik", "Ia terlalu mencintai Allah", "Ia tidak tahu pertanian", "Ia takut kepada pohon"], 0, "Allah menunjukkan bahwa manusia jauh lebih berharga daripada kenyamanan pribadi."],
+                    ["Mengapa kitab Yunus berakhir dengan pertanyaan Allah?", ["Agar pembaca memeriksa apakah hatinya memiliki belas kasih seperti Allah", "Karena kitab belum selesai", "Karena Yunus tidak tahu jawabannya", "Karena Niniwe menang"], 0, "Pertanyaan terakhir sengaja membuat pembaca mengambil posisi moral."],
+                    ["Apa hubungan antara Yunus dan misi kepada bangsa-bangsa?", ["Allah menunjukkan bahwa belas kasih-Nya tidak hanya ditujukan kepada Israel", "Allah hanya mengasihi Israel", "Bangsa lain tidak boleh bertobat", "Yunus bukan nabi"], 0, "Niniwe menjadi contoh bahwa bangsa asing juga dapat merespons Allah."],
+                    ["Jika seseorang berkata 'musuhku tidak pantas menerima pengampunan', Yunus menjadi cermin karena...", ["Yunus sendiri menerima belas kasih Allah tetapi enggan melihat musuhnya menerima belas kasih", "Yunus tidak pernah diampuni", "Niniwe tidak bertobat", "Allah membenci musuh"], 0, "Kontras antara kasih yang diterima dan kasih yang enggan diberikan menjadi inti kitab."],
+                    ["Apa makna tanda Yunus dalam Matius?", ["Yesus menggunakan pengalaman Yunus sebagai pola yang menunjuk kepada kematian dan kebangkitan-Nya", "Yunus adalah Mesias", "Yunus menulis Injil", "Niniwe adalah Yerusalem"], 0, "Yesus memakai 'tanda Yunus' secara tipologis."],
+                    ["Mengapa tiga hari dalam kisah Yunus penting dalam pembacaan Kristen?", ["Yesus menghubungkan pengalaman Yunus dengan pola tiga hari sebelum kebangkitan", "Karena tiga adalah angka keberuntungan", "Karena Yunus adalah Yesus", "Karena Niniwe tiga hari jauhnya"], 0, "Hubungan ini bersifat tipologis, bukan berarti Yunus adalah Mesias."],
+                    ["Apa kesalahan Yunus dalam memahami keadilan?", ["Ia ingin hukuman bagi Niniwe tanpa memberi ruang bagi pertobatan dan belas kasih Allah", "Ia terlalu mengasihi musuh", "Ia tidak percaya dosa", "Ia membenci Israel"], 0, "Yunus sulit menerima bahwa Allah dapat mengampuni orang yang bertobat."],
+                    ["Mengapa Allah tidak langsung mengganti Yunus dengan nabi lain?", ["Allah juga sedang membentuk hati dan pemahaman Yunus", "Karena Yunus satu-satunya manusia", "Karena Niniwe tidak penting", "Karena Allah tidak berkuasa"], 0, "Kitab memperlihatkan bahwa misi Allah juga menjadi proses pembentukan nabi."],
+                    ["Jika Niniwe bertobat setelah satu pesan singkat, kontrasnya dengan Israel menunjukkan...", ["Respons terhadap firman tidak otomatis ditentukan oleh status sebagai umat pilihan", "Israel selalu bertobat", "Niniwe lebih kudus", "Nabi tidak penting"], 0, "Kitab membalik ekspektasi pembaca tentang siapa yang merespons Allah."],
+                    ["Mengapa Allah disebut panjang sabar dan penuh kasih dalam Yunus?", ["Karena karakter itu menjelaskan mengapa Ia memberi kesempatan kepada Niniwe untuk bertobat", "Karena Allah tidak menghukum dosa", "Karena Niniwe tidak berdosa", "Karena Yunus sempurna"], 0, "Belas kasih tidak berarti dosa dianggap baik; Allah memberi ruang untuk pertobatan."],
+                    ["Apa pelajaran dari ikan besar?", ["Allah dapat memakai sarana yang tidak terduga untuk menyelamatkan dan mengarahkan nabi", "Ikan adalah dewa", "Yunus tidak pernah di laut", "Ikan harus disembah"], 0, "Ikan menjadi alat providensial dalam perjalanan Yunus."],
+                    ["Mengapa Yunus bukan terutama kitab tentang ikan?", ["Karena konflik utamanya adalah hati manusia terhadap belas kasih Allah", "Karena ikan tidak ada", "Karena hanya Niniwe penting", "Karena laut tidak penting"], 0, "Ikan hanya bagian dari alur; pusat kitab adalah Allah, Yunus, Niniwe, dan belas kasih."],
+                    ["Jika Allah mengasihi kota Niniwe, apa implikasinya bagi misi umat Allah?", ["Umat dipanggil membawa berita Allah bahkan kepada orang yang tidak mereka sukai", "Misi hanya kepada teman", "Musuh tidak boleh dilayani", "Bangsa lain tidak penting"], 0, "Kasih Allah melampaui batas kelompok."],
+                    ["Benang merah Yunus adalah...", ["Allah menunjukkan belas kasih kepada bangsa lain dan sekaligus menyingkap hati nabi yang enggan mengasihi musuh", "Ikan raksasa", "Perjalanan laut", "Sejarah Niniwe"], 0, "Pertanyaan terakhir kitab bahkan diarahkan kepada hati pembacanya."]
+                ]
+            },
+
+            {
+                name: "Mikha",
+                theme: "Keadilan, kerendahan hati, pengharapan Mesias dan pemulihan",
+                questions: [
+                    ["Mengapa Mikha 6:8 merangkum kehidupan yang dikehendaki Allah?", ["Karena Allah menuntut keadilan, kasih setia, dan kerendahan hati dalam berjalan dengan-Nya", "Karena ritual tidak pernah penting", "Karena hukum dihapus", "Karena Mikha membenci ibadah"], 0, "Ayat tersebut merangkum dimensi etis dan relasional dari kehidupan umat."],
+                    ["Jika pemimpin mengambil tanah orang miskin, kritik Mikha terutama menyangkut...", ["Penyalahgunaan kekuasaan dan ketidakadilan", "Kurangnya ibadah", "Tidak punya tentara", "Masalah bahasa"], 0, "Mikha sangat keras terhadap elite yang mengeksploitasi masyarakat."],
+                    ["Mengapa Mikha 5:1–4 penting bagi Perjanjian Baru?", ["Matius menghubungkan Bethlehem dengan tempat lahir Mesias", "Mikha menulis Injil", "Bethlehem adalah ibu kota Babel", "Yesus lahir di Samaria"], 0, "Matius 2 menggunakan Mikha dalam pembahasan tempat kelahiran Mesias."],
+                    ["Apa ironi Yerusalem dalam Mikha?", ["Kota yang dianggap pusat umat Allah justru dapat menjadi tempat ketidakadilan yang sangat serius", "Yerusalem tidak penting", "Yerusalem selalu sempurna", "Yerusalem adalah Babel"], 0, "Kedekatan dengan tempat kudus tidak menjamin kehidupan yang benar."],
+                    ["Jika seseorang mempersembahkan banyak hal tetapi tetap menindas sesama, Mikha akan bertanya...", ["Apakah ia sungguh hidup dalam keadilan dan kasih setia", "Berapa banyak uangnya", "Apakah ia punya tanah", "Apakah ia raja"], 0, "Mikha mengoreksi pemahaman ibadah yang terpisah dari moralitas."],
+                    ["Apa hubungan Mikha dengan Amos?", ["Keduanya menekankan bahwa iman kepada Allah harus menghasilkan keadilan", "Keduanya hanya tentang kerajaan", "Keduanya hidup di Babel", "Keduanya menulis Injil"], 0, "Tema keadilan sosial sangat kuat dalam kedua kitab."],
+                    ["Mengapa janji pemimpin dari Bethlehem menjadi pengharapan?", ["Allah dapat membawa pemimpin yang menggembalakan umat dari tempat yang kecil dan tidak dianggap", "Bethlehem adalah kota terbesar", "Bethlehem adalah Babel", "Karena tidak ada raja"], 0, "Kontras kecil-besar memperkuat tema cara Allah bekerja."],
+                    ["Jika Allah menghendaki umat berjalan dengan-Nya, implikasinya adalah...", ["Iman bukan hanya mengetahui Allah tetapi menjalani hidup dalam relasi dengan-Nya", "Iman hanya hafalan", "Iman hanya ritual", "Iman hanya politik"], 0, "'Berjalan dengan Allah' menunjuk pada kehidupan yang terus-menerus bersama-Nya."],
+                    ["Mengapa penghakiman Mikha tidak menjadi akhir?", ["Ada janji bahwa sisa umat akan dipulihkan dan Allah akan mengampuni", "Karena dosa tidak ada", "Karena Babel bertobat", "Karena Mikha salah"], 0, "Mikha menggabungkan penghakiman dan pengharapan."],
+                    ["Apa arti 'sisa' dalam kitab nabi?", ["Kelompok yang tersisa dan menjadi bagian dari karya pemulihan Allah", "Semua orang Israel", "Tentara Babel", "Raja Mesir"], 0, "Konsep sisa menunjuk pada umat yang Allah pelihara dalam pengharapan."],
+                    ["Jika orang Kristen hanya mengutip Mikha 6:8 sebagai slogan sosial, apa yang hilang?", ["Ayat itu berbicara tentang kehidupan yang berjalan bersama Allah, bukan sekadar aktivisme terpisah dari iman", "Tidak ada yang hilang", "Keadilan tidak penting", "Allah tidak relevan"], 0, "Keadilan dalam Mikha berakar pada relasi dengan Allah."],
+                    ["Apa hubungan Mikha 5 dengan tema gembala?", ["Pemimpin yang dijanjikan akan menggembalakan umat dalam kekuatan TUHAN", "Raja akan menjadi petani", "Mikha menjadi gembala", "Bethlehem menjadi padang gurun"], 0, "Gambaran pemimpin mencakup fungsi menggembalakan umat."],
+                    ["Mengapa para nabi sering mengkritik elite?", ["Karena mereka memiliki kuasa lebih besar dan karena itu memiliki tanggung jawab besar untuk melindungi yang lemah", "Karena orang kaya selalu berdosa", "Karena raja tidak boleh ada", "Karena nabi membenci pemerintah"], 0, "Kritik diarahkan pada penyalahgunaan kekuasaan, bukan sekadar status."],
+                    ["Jika suatu masyarakat mempunyai hukum tetapi hukum hanya melindungi orang kuat, prinsip Mikha menuntut...", ["Keadilan yang nyata, bukan sekadar aturan formal", "Penghapusan semua hukum", "Pemerintahan nabi", "Tidak ada pengadilan"], 0, "Keadilan harus benar-benar membela yang rentan."],
+                    ["Mengapa pengampunan Allah menjadi penting di akhir Mikha?", ["Karena pemulihan umat akhirnya bergantung pada belas kasih dan kesetiaan Allah", "Karena dosa tidak ada", "Karena manusia sempurna", "Karena Babel memaafkan Israel"], 0, "Mikha 7 menekankan kasih setia Allah kepada umat."],
+                    ["Jika Allah membuang dosa ke tubir-tubir laut dalam gambaran Mikha, pesan utamanya adalah...", ["Allah berkuasa mengampuni dan memulihkan umat sesuai kesetiaan-Nya", "Dosa tidak pernah ada", "Laut adalah dewa", "Israel tidak bertobat"], 0, "Gambaran tersebut menonjolkan belas kasih Allah."],
+                    ["Apa hubungan antara keadilan dan kerendahan hati?", ["Keduanya mencegah manusia menjadikan agama sebagai alat kesombongan atau penindasan", "Tidak ada hubungan", "Kerendahan hati berarti pasif", "Keadilan berarti membalas"], 0, "Mikha menggabungkan etika sosial dan relasi dengan Allah."],
+                    ["Jika pemimpin religius menuntut banyak dari rakyat tetapi hidup mewah dari penderitaan mereka, Mikha akan...", ["Mengecam penyalahgunaan kekuasaan tersebut", "Memuji mereka", "Diam", "Menjadi raja"], 0, "Para pemimpin yang mengeksploitasi umat menjadi sasaran kritik Mikha."],
+                    ["Mengapa Mikha penting dalam memahami Mesias?", ["Ia menghubungkan harapan pemerintahan dan penggembalaan dengan Bethlehem", "Ia adalah rasul", "Ia menulis Injil Yohanes", "Ia melihat Yesus secara langsung"], 0, "Mikha 5 menjadi salah satu teks penting dalam pembahasan kelahiran Mesias."],
+                    ["Benang merah Mikha adalah...", ["Allah menuntut keadilan dan kerendahan hati, menghakimi penindasan, tetapi menjanjikan pemimpin dan pemulihan", "Politik Samaria", "Pertanian", "Perang Babel"], 0, "Keadilan, Mesias, dan belas kasih menjadi tiga poros penting kitab."]
+                ]
+            },
+
+            {
+                name: "Nahum",
+                theme: "Penghakiman Niniwe dan keadilan Allah",
+                questions: [
+                    ["Mengapa Nahum berbeda secara emosional dari Yunus?", ["Yunus menyoroti pertobatan Niniwe, sedangkan Nahum datang ketika Niniwe kembali menjadi objek penghakiman", "Nahum adalah Yunus", "Niniwe tidak pernah ada", "Keduanya identik"], 0, "Kedua kitab harus dibaca bersama untuk melihat pertobatan sementara dan penghakiman berikutnya."],
+                    ["Jika Niniwe pernah bertobat tetapi kemudian kembali kepada kekerasan, pelajaran pentingnya adalah...", ["Pertobatan harus menghasilkan perubahan hidup, bukan sekadar respons sementara", "Pertobatan tidak berguna", "Allah tidak mengampuni", "Dosa tidak penting"], 0, "Nahum menunjukkan bahwa kekerasan Niniwe akhirnya menghadapi penghakiman."],
+                    ["Mengapa Nahum menyebut Allah panjang sabar sekaligus pembalas?", ["Karakter Allah mencakup kesabaran terhadap dosa sekaligus keadilan terhadap kejahatan", "Allah berubah-ubah", "Allah hanya menghukum", "Allah hanya mengampuni"], 0, "Kesabaran tidak berarti Allah membiarkan kejahatan tanpa batas."],
+                    ["Apa fungsi kabar jatuhnya Niniwe bagi Yehuda?", ["Menjadi kabar pembebasan dari penindas yang kuat", "Membuat Yehuda menjadi Babel", "Menghapus semua dosa", "Membuat Yehuda menjadi Mesir"], 0, "Kejatuhan Niniwe menjadi kabar baik bagi bangsa yang tertindas."],
+                    ["Jika suatu kerajaan merasa tidak mungkin dikalahkan, Nahum mengingatkan bahwa...", ["Kekuatan politik tetap berada di bawah penghakiman Allah", "Kerajaan kuat selalu kekal", "Allah tidak berkuasa", "Niniwe adalah kota suci"], 0, "Kesombongan kekaisaran tidak kebal terhadap keadilan Allah."],
+                    ["Mengapa kekerasan Niniwe menjadi tema penting?", ["Allah memperhatikan penindasan dan kekejaman bangsa-bangsa", "Karena perang selalu baik", "Karena semua bangsa harus perang", "Karena Niniwe tidak punya tentara"], 0, "Nahum menggambarkan Niniwe sebagai kota yang penuh kekerasan."],
+                    ["Jika seseorang menggunakan kuasa untuk menindas, Nahum mengajarkan bahwa...", ["Kuasa tersebut tidak akan bertahan selamanya di hadapan Allah", "Kuasa berarti benar", "Allah menyukai kekerasan", "Tidak ada penghakiman"], 0, "Nahum menjadi peringatan bagi kekaisaran yang menindas."],
+                    ["Apa hubungan Nahum dengan Obaja?", ["Keduanya menunjukkan bahwa Allah menghakimi bangsa yang sombong dan menindas", "Keduanya tentang Daniel", "Keduanya menulis Injil", "Keduanya tentang Bait"], 0, "Keadilan Allah terhadap bangsa-bangsa menjadi tema bersama."],
+                    ["Mengapa pembaca Kristen perlu berhati-hati memakai Nahum untuk membenarkan balas dendam pribadi?", ["Penghakiman dalam kitab adalah tindakan Allah sebagai hakim, bukan izin manusia untuk membalas dendam", "Karena Nahum tidak ada", "Karena kejahatan tidak nyata", "Karena semua musuh harus dihukum"], 0, "Kitab tidak memberi manusia lisensi untuk melakukan pembalasan pribadi."],
+                    ["Jika Niniwe adalah ibu kota kekaisaran besar, kehancurannya menunjukkan...", ["Tidak ada kekuatan manusia yang absolut di hadapan Allah", "Kota kecil selalu menang", "Politik tidak penting", "Allah takut kepada raja"], 0, "Kejatuhan Niniwe menunjukkan keterbatasan kekuasaan manusia."],
+                    ["Apa hubungan antara penghakiman dan penghiburan dalam Nahum?", ["Penghakiman terhadap penindas menjadi penghiburan bagi mereka yang tertindas", "Penghakiman selalu buruk", "Penghiburan berarti tidak ada keadilan", "Niniwe diselamatkan"], 0, "Bagi korban penindasan, keadilan Allah merupakan kabar pengharapan."],
+                    ["Jika orang hanya membaca Nahum sebagai kemarahan, apa yang hilang?", ["Konteks keadilan Allah terhadap kekerasan dan penghiburan bagi umat yang tertindas", "Tidak ada yang hilang", "Sejarah Niniwe", "Tema penghakiman"], 0, "Konteks korban dan penindasan penting untuk memahami kitab."],
+                    ["Mengapa kitab Nahum relevan untuk memahami kekaisaran?", ["Ia menunjukkan bahwa kekuasaan politik tidak identik dengan kekekalan atau kebenaran", "Karena Nahum raja", "Karena Niniwe adalah Israel", "Karena politik tidak ada"], 0, "Kekaisaran dapat tampak tak terkalahkan tetapi tetap berada di bawah Allah."],
+                    ["Apa ironi utama Niniwe?", ["Kota yang menebarkan kekerasan akhirnya mengalami kehancuran", "Kota itu menjadi Yerusalem", "Kota itu tidak pernah kuat", "Kota itu menjadi Bait"], 0, "Nasib Niniwe membalik posisi kuasa dan korban."],
+                    ["Mengapa Nahum dapat dibaca sebagai pasangan kontras dengan Yunus?", ["Yunus menunjukkan belas kasih Allah kepada Niniwe, Nahum menunjukkan bahwa kejahatan yang berlanjut tetap dihakimi", "Karena keduanya sama persis", "Karena Nahum menulis Yunus", "Karena Yunus adalah raja"], 0, "Kedua kitab bersama-sama menunjukkan belas kasih dan keadilan Allah."],
+                    ["Jika seseorang berkata 'karena Allah mengampuni, konsekuensi dosa tidak ada,' Nahum menunjukkan...", ["Pengampunan dan keadilan tidak boleh dipisahkan dari pertobatan yang nyata", "Dosa tidak penting", "Allah selalu menghukum", "Pertobatan tidak berguna"], 0, "Nahum menunjukkan konsekuensi dari kejahatan Niniwe."],
+                    ["Apa pelajaran tentang kesombongan nasional?", ["Bangsa tidak boleh menganggap kekuatan mereka sebagai kekebalan moral", "Bangsa kuat selalu benar", "Allah hanya menghakimi Israel", "Nasionalisme menyelamatkan"], 0, "Nahum membongkar rasa aman Niniwe."],
+                    ["Mengapa 'kabar baik' bagi Yehuda muncul dari jatuhnya Niniwe?", ["Penindasan mereka akan berakhir dan ancaman besar disingkirkan", "Yehuda menjadi kaya", "Niniwe bertobat", "Yehuda menjadi Babel"], 0, "Kejatuhan penindas memberi ruang bagi keamanan dan ibadah umat."],
+                    ["Apa yang harus dibedakan ketika membaca kitab penghakiman?", ["Keadilan Allah terhadap kejahatan dan dendam pribadi manusia", "Allah dan manusia sama", "Keadilan dan dosa", "Nabi dan raja"], 0, "Penghakiman ilahi tidak boleh dijadikan pembenaran balas dendam."],
+                    ["Benang merah Nahum adalah...", ["Niniwe yang kejam dan sombong akhirnya dihakimi Allah, menjadi penghiburan bagi umat yang tertindas", "Niniwe bertobat selamanya", "Yunus kembali ke Niniwe", "Babel menang"], 0, "Itulah inti nubuat Nahum."]
+                ]
+            },
+
+            {
+                name: "Habakuk",
+                theme: "Pergumulan iman, keadilan Allah dan hidup oleh iman",
+                questions: [
+                    ["Mengapa Habakuk berbeda dari banyak nabi lain?", ["Ia banyak berbicara kepada Allah tentang masalah yang ia lihat, sehingga kitab berbentuk pergumulan dan jawaban", "Ia tidak percaya Allah", "Ia hanya menulis sejarah", "Ia adalah raja"], 0, "Habakuk membawa pertanyaan sulit langsung kepada Allah."],
+                    ["Pertanyaan awal Habakuk muncul karena...", ["Ia melihat kekerasan dan ketidakadilan tetapi merasa Allah seakan diam", "Ia tidak punya makanan", "Babel sudah jatuh", "Israel menang perang"], 0, "Masalah kejahatan dan diamnya Allah menjadi awal pergumulan."],
+                    ["Mengapa jawaban Allah tentang bangsa Kasdim justru membuat Habakuk semakin bingung?", ["Allah akan memakai bangsa yang lebih jahat untuk menghukum Yehuda", "Karena Kasdim adalah Israel", "Karena Allah tidak menjawab", "Karena Habakuk tidak mendengar"], 0, "Habakuk menghadapi pertanyaan kedua: bagaimana Allah memakai bangsa yang lebih kejam?"],
+                    ["Apa inti pertanyaan kedua Habakuk?", ["Bagaimana Allah yang kudus dapat memakai bangsa yang lebih jahat untuk menghakimi?", "Mengapa Israel kaya", "Mengapa Yerusalem indah", "Mengapa nabi dipanggil"], 0, "Pertanyaan ini memperdalam masalah keadilan ilahi."],
+                    ["Habakuk 2:4 berbicara tentang orang benar hidup oleh iman. Dalam konteks kitab, iman berarti...", ["Tetap mempercayai Allah ketika jawaban dan keadaan belum sepenuhnya dipahami", "Tidak boleh bertanya", "Selalu mendapat apa yang diinginkan", "Tidak perlu bertindak"], 0, "Iman Habakuk adalah ketekunan mempercayai Allah di tengah ketidakpastian."],
+                    ["Mengapa 'penglihatan' harus dinantikan?", ["Karena waktu Allah tidak selalu sama dengan harapan manusia", "Karena Allah lupa", "Karena nabi tidak percaya", "Karena Babel menang"], 0, "Habakuk belajar menunggu tindakan Allah."],
+                    ["Apa fungsi lima celaka dalam Habakuk 2?", ["Menegaskan bahwa kesombongan dan kekerasan bangsa penindas tetap akan dihakimi", "Menghapus dosa Yehuda", "Menyatakan Kasdim selamat", "Mengangkat raja"], 0, "Celaka-celaka itu menunjukkan pertanggungjawaban moral kekuasaan."],
+                    ["Mengapa Habakuk 2:14 memberi horizon pengharapan?", ["Tujuan akhirnya adalah bumi dipenuhi pengenalan akan kemuliaan TUHAN", "Babel menguasai bumi", "Israel hilang", "Manusia menjadi Allah"], 0, "Penghakiman terhadap kekerasan diarahkan menuju pengenalan akan kemuliaan Allah."],
+                    ["Mengapa doa Habakuk 3 berubah menjadi pujian?", ["Habakuk belajar mempercayai karakter Allah bahkan sebelum keadaan berubah", "Karena semua masalah selesai", "Karena Babel bertobat", "Karena ia menjadi raja"], 0, "Perubahan terbesar terjadi pada sikap Habakuk."],
+                    ["Jika pohon ara tidak berbunga tetapi Habakuk tetap bersukacita, apa yang menjadi dasar sukacitanya?", ["Allah sendiri, bukan keberhasilan ekonomi atau keadaan", "Panen", "Kekayaan", "Kemenangan politik"], 0, "Habakuk memindahkan pusat sukacita dari keadaan kepada Allah."],
+                    ["Apa pelajaran dari kalimat 'sekalipun' dalam Habakuk 3?", ["Iman dapat bertahan bahkan ketika hasil yang diharapkan tidak terjadi", "Iman berarti hasil selalu baik", "Allah harus memberi keinginan", "Penderitaan tidak nyata"], 0, "Ini adalah iman yang tidak bergantung pada keadaan ideal."],
+                    ["Mengapa Habakuk tidak langsung diberi jawaban lengkap tentang segala penderitaan?", ["Kitab mengajarkan kepercayaan kepada Allah, bukan penguasaan seluruh misteri-Nya", "Karena Allah tidak tahu", "Karena nabi tidak penting", "Karena tidak ada jawaban"], 0, "Iman sering berarti mempercayai karakter Allah di tengah keterbatasan pemahaman."],
+                    ["Jika seseorang berkata 'Kalau Allah baik, aku tidak boleh bertanya,' Habakuk menunjukkan...", ["Pertanyaan jujur dapat dibawa kepada Allah dalam iman", "Pertanyaan selalu dosa", "Allah tidak menerima doa", "Nabi tidak boleh bertanya"], 0, "Habakuk justru memulai kitab dengan pertanyaan."],
+                    ["Apa bahaya membaca Habakuk 2:4 tanpa konteks?", ["Mengubah iman menjadi slogan tanpa melihat pergumulan tentang keadilan dan menunggu Allah", "Tidak ada bahaya", "Ayat tidak penting", "Habakuk tidak percaya"], 0, "Konteks memperkaya makna iman sebagai ketekunan."],
+                    ["Mengapa Allah tetap dapat dipercaya walau memakai bangsa asing?", ["Karena tindakan Allah berada dalam kedaulatan-Nya dan Ia juga akan menghakimi kesombongan bangsa tersebut", "Karena Kasdim sempurna", "Karena bangsa asing selalu benar", "Karena Israel tidak berdosa"], 0, "Kasdim bukan dibenarkan; mereka juga berada di bawah penghakiman."],
+                    ["Apa hubungan Habakuk dengan Ayub?", ["Keduanya membawa persoalan penderitaan dan keadilan kepada Allah tanpa berhenti pada jawaban sederhana", "Keduanya adalah raja", "Keduanya menulis Injil", "Keduanya tidak pernah bertanya"], 0, "Keduanya menunjukkan iman yang bergumul."],
+                    ["Jika iman hanya kuat ketika keadaan baik, Habakuk 3 membantahnya dengan...", ["Sukacita kepada Allah meskipun hasil ekonomi dan alam tidak mendukung", "Kekayaan Israel", "Kemenangan perang", "Panen berlimpah"], 0, "Iman Habakuk mencapai puncak ketika ia tetap bersukacita dalam kekurangan."],
+                    ["Apa transformasi utama Habakuk?", ["Dari mempertanyakan mengapa Allah diam menuju mempercayai siapa Allah itu", "Dari raja menjadi nabi", "Dari Israel ke Babel", "Dari kaya menjadi miskin"], 0, "Perjalanan spiritualnya adalah dari keluhan menuju kepercayaan."],
+                    ["Mengapa akhir kitab begitu kuat?", ["Karena Habakuk menemukan dasar sukacita yang tidak bergantung pada keadaan", "Karena semua musuh mati", "Karena Yerusalem dibangun", "Karena nabi menjadi raja"], 0, "Akhir kitab menunjukkan kedewasaan iman."],
+                    ["Benang merah Habakuk adalah...", ["Bergumul dengan keadilan Allah, belajar menanti, lalu memilih percaya dan bersukacita dalam Allah", "Sejarah Babel", "Kemenangan Yehuda", "Pembangunan Bait"], 0, "Habakuk adalah kitab pergumulan iman yang berujung pada kepercayaan."]
+                ]
+            },
+
+            {
+                name: "Zefanya",
+                theme: "Hari TUHAN, pertobatan, kerendahan hati dan pemulihan",
+                questions: [
+                    ["Mengapa Hari TUHAN dalam Zefanya menjadi kabar serius bagi Yehuda?", ["Karena penghakiman juga dimulai terhadap umat yang menyandang nama Allah tetapi hidup dalam dosa", "Karena hanya bangsa asing dihukum", "Karena hari itu pesta", "Karena Yehuda sempurna"], 0, "Status umat tidak membuat dosa menjadi kebal terhadap penghakiman."],
+                    ["Jika Zefanya mengecam penyembahan campuran, masalah utamanya adalah...", ["Umat tidak memberikan kesetiaan penuh kepada TUHAN", "Kurangnya korban", "Tidak punya raja", "Tidak ada Bait"], 0, "Kesetiaan kepada Allah tidak dapat dicampur dengan penyembahan ilah lain."],
+                    ["Mengapa 'mencari TUHAN' dikaitkan dengan kerendahan hati?", ["Kerendahan hati mengakui ketergantungan kepada Allah dan meninggalkan kesombongan", "Kerendahan hati berarti tidak melakukan apa-apa", "Orang miskin pasti benar", "Allah tidak peduli"], 0, "Mencari Allah berarti merendahkan diri dan menaati-Nya."],
+                    ["Apa perubahan nada besar pada akhir Zefanya?", ["Dari ancaman penghakiman menuju sukacita Allah atas umat yang dipulihkan", "Dari kemenangan menuju perang", "Dari Mesir menuju Babel", "Dari nabi menuju raja"], 0, "Akhir kitab sangat penuh pengharapan."],
+                    ["Jika Allah digambarkan bersukacita atas umat-Nya, apa yang ditunjukkan?", ["Pemulihan menghasilkan relasi yang penuh kasih antara Allah dan umat", "Allah berubah menjadi manusia", "Umat tidak pernah berdosa", "Penghakiman tidak pernah ada"], 0, "Zefanya berakhir dengan gambaran pemulihan relasional."],
+                    ["Mengapa Zefanya mengkritik orang yang merasa Allah tidak akan berbuat apa-apa?", ["Sikap itu menunjukkan ketidakpedulian rohani dan rasa aman palsu", "Karena mereka terlalu banyak berdoa", "Karena mereka terlalu miskin", "Karena mereka tinggal di Babel"], 0, "Indiferensi rohani menjadi masalah besar."],
+                    ["Apa hubungan Hari TUHAN dengan pertobatan?", ["Peringatan penghakiman menjadi panggilan untuk mencari Allah sebelum terlambat", "Pertobatan tidak penting", "Hari TUHAN hanya untuk bangsa lain", "Tidak ada hubungan"], 0, "Peringatan dimaksudkan membawa umat kepada pertobatan."],
+                    ["Mengapa 'sisa' umat menjadi penting?", ["Allah memelihara umat yang rendah hati dan setia untuk memasuki masa pemulihan", "Sisa berarti semua orang", "Sisa berarti Babel", "Sisa adalah tentara"], 0, "Konsep sisa menjadi bagian dari pengharapan."],
+                    ["Jika masyarakat modern menganggap kekayaan sebagai bukti bahwa Allah tidak akan menghakimi, Zefanya akan...", ["Mengingatkan bahwa kenyamanan material tidak membatalkan pertanggungjawaban moral", "Membenarkan mereka", "Menghapus Hari TUHAN", "Menyalahkan orang miskin"], 0, "Zefanya menentang rasa aman palsu."],
+                    ["Mengapa pemulihan bangsa-bangsa menjadi penting?", ["Allah memiliki visi yang lebih luas daripada satu kelompok politik", "Bangsa lain menjadi Israel secara politik", "Israel hilang", "Babel menang"], 0, "Pengharapan Zefanya memiliki cakupan yang luas."],
+                    ["Jika Allah memurnikan bibir bangsa-bangsa, pesan simbolisnya adalah...", ["Bangsa-bangsa juga dapat diarahkan untuk menyembah Allah dengan benar", "Bahasa Ibrani wajib", "Semua bahasa dihapus", "Bangsa lain menjadi nabi"], 0, "Pemurnian bibir berkaitan dengan penyembahan yang benar."],
+                    ["Mengapa kesombongan menjadi lawan utama pertobatan?", ["Orang sombong merasa tidak membutuhkan Allah", "Orang sombong selalu kaya", "Orang rendah hati tidak berdosa", "Kesombongan bukan masalah"], 0, "Kerendahan hati membuka ruang bagi pertobatan."],
+                    ["Apa hubungan Zefanya dengan Nahum?", ["Keduanya berbicara tentang penghakiman Allah terhadap kejahatan bangsa-bangsa", "Keduanya tentang Pentakosta", "Keduanya menulis Injil", "Keduanya tentang Koresh"], 0, "Keduanya menegaskan kedaulatan dan keadilan Allah."],
+                    ["Mengapa akhir Zefanya begitu indah setelah penghakiman?", ["Untuk menunjukkan bahwa tujuan Allah bukan sekadar menghancurkan tetapi memurnikan dan memulihkan umat", "Karena dosa tidak ada", "Karena penghakiman salah", "Karena nabi berubah"], 0, "Penghakiman membuka jalan bagi pemulihan dalam kerangka kitab."],
+                    ["Jika umat kembali kepada Allah tetapi tetap sombong, apakah itu sesuai Zefanya?", ["Tidak; kerendahan hati menjadi ciri umat yang mencari TUHAN", "Ya", "Kesombongan tidak masalah", "Pertobatan hanya ritual"], 0, "Zefanya mengaitkan pencarian Allah dengan kerendahan hati."],
+                    ["Apa pelajaran tentang identitas umat?", ["Menjadi umat Allah harus terlihat dalam kehidupan yang rendah hati dan taat", "Status saja cukup", "Nama keluarga cukup", "Tempat tinggal cukup"], 0, "Zefanya menolak identitas kosong."],
+                    ["Mengapa Hari TUHAN tidak boleh dipakai untuk menakut-nakuti tanpa panggilan pertobatan?", ["Karena tujuan peringatan nabi adalah membawa manusia kembali kepada Allah", "Karena Hari TUHAN tidak nyata", "Karena hukuman tidak ada", "Karena nabi salah"], 0, "Peringatan profetik selalu terkait respons yang seharusnya."],
+                    ["Jika seseorang merasa hidupnya terlalu rusak untuk dipulihkan, akhir Zefanya memberi...", ["Pengharapan bahwa Allah dapat memulihkan umat yang kembali kepada-Nya", "Tidak ada harapan", "Hukuman selamanya", "Perintah menjadi nabi"], 0, "Pemulihan menjadi salah satu pesan akhir kitab."],
+                    ["Apa transformasi utama dalam Zefanya?", ["Dari kota yang akan dihakimi menuju umat yang dipulihkan dan menjadi sumber sukacita", "Dari Babel ke Mesir", "Dari raja ke imam", "Dari perang ke perdagangan"], 0, "Kontras penghakiman-pemulihan sangat kuat."],
+                    ["Benang merah Zefanya adalah...", ["Hari TUHAN menghakimi dosa, tetapi Allah memanggil umat yang rendah hati dan menjanjikan pemulihan", "Politik Yehuda", "Pertanian", "Pembangunan Bait"], 0, "Itulah alur teologis kitab."]
+                ]
+            },
+
+            {
+                name: "Hagai",
+                theme: "Mendahulukan rumah Allah dan membangun kembali kehidupan umat",
+                questions: [
+                    ["Mengapa Hagai menegur umat yang tinggal di rumah bagus sementara Bait Allah terbengkalai?", ["Prioritas pribadi telah menggantikan tanggung jawab umat terhadap penyembahan kepada Allah", "Rumah pribadi selalu dosa", "Bait tidak penting", "Allah tidak membutuhkan umat"], 0, "Masalahnya adalah prioritas dan sikap umat terhadap tugas yang Allah berikan."],
+                    ["Jika hasil pertanian mereka tidak memuaskan, Hagai mengajak umat memeriksa...", ["Cara hidup dan prioritas mereka di hadapan Allah", "Kualitas tanah saja", "Kekuatan Babel", "Jumlah tentara"], 0, "Hagai menghubungkan kondisi umat dengan prioritas spiritual mereka dalam konteks perjanjian."],
+                    ["Apa arti 'perhatikanlah keadaanmu' dalam Hagai?", ["Umat diminta mengevaluasi kehidupan dan prioritas mereka", "Umat diminta berhenti bekerja", "Umat harus pindah kota", "Umat harus menjadi nabi"], 0, "Hagai mengajak refleksi sebelum bertindak."],
+                    ["Mengapa pembangunan Bait menjadi penting setelah pembuangan?", ["Sebagai bagian dari pemulihan kehidupan umat dan pusat ibadah mereka", "Karena bangunan lebih penting daripada manusia", "Karena Babel memerintah", "Karena Allah tidak bisa hadir tanpa bangunan"], 0, "Bait menjadi simbol pemulihan komunitas dan ibadah."],
+                    ["Jika umat berkata 'belum waktunya membangun rumah TUHAN,' tetapi mereka sibuk memperindah rumah sendiri, masalahnya adalah...", ["Penundaan yang sebenarnya menyembunyikan prioritas yang salah", "Kurangnya uang saja", "Kurangnya nabi", "Tidak ada tugas"], 0, "Hagai membongkar alasan yang tampak rasional tetapi menunjukkan prioritas keliru."],
+                    ["Mengapa Zerubabel dan Yosua penting dalam Hagai?", ["Mereka memimpin komunitas pascapembuangan dalam pembangunan kembali", "Mereka raja Babel", "Mereka nabi abad pertama", "Mereka imam Mesir"], 0, "Zerubabel adalah pemimpin pemerintahan Yehuda dan Yosua imam besar."],
+                    ["Apa yang terjadi setelah umat menaati pesan Hagai?", ["Mereka mulai membangun kembali Bait Allah", "Mereka meninggalkan Yerusalem", "Mereka menyerang Babel", "Mereka berhenti bekerja"], 0, "Respons umat menjadi titik balik kitab."],
+                    ["Mengapa Hagai tidak sekadar bicara tentang gedung?", ["Pembangunan menjadi simbol kembalinya prioritas penyembahan dan ketaatan kepada Allah", "Karena gedung tidak penting", "Karena uang adalah dosa", "Karena umat tidak punya rumah"], 0, "Yang dipersoalkan adalah relasi dan prioritas, bukan arsitektur."],
+                    ["Jika pelayanan gereja sangat aktif tetapi kehidupan pribadi tidak tertata, prinsip Hagai dapat diterapkan dengan...", ["Memeriksa apakah prioritas hidup sungguh menempatkan Allah pada tempat yang benar", "Berhenti melayani", "Membangun gedung lebih besar", "Mengabaikan keluarga"], 0, "Hagai mengajak evaluasi menyeluruh terhadap prioritas."],
+                    ["Mengapa Allah berkata 'Aku menyertai kamu' setelah umat mulai bekerja?", ["Penyertaan Allah menjadi dorongan bagi umat yang taat dan bekerja", "Karena pembangunan otomatis menyelamatkan", "Karena umat sempurna", "Karena Babel membantu"], 0, "Penyertaan Allah menguatkan pekerjaan umat."],
+                    ["Apa hubungan Hagai dengan Zakharia?", ["Keduanya melayani komunitas pascapembuangan dan mendorong pembangunan serta pemulihan", "Keduanya hidup pada zaman Yesus", "Keduanya raja", "Keduanya menulis Injil"], 0, "Kedua nabi aktif pada periode pascapembuangan."],
+                    ["Jika Bait selesai tetapi hati umat tetap tidak benar, apakah pembangunan saja cukup?", ["Tidak; pembangunan harus berada dalam kerangka ketaatan dan pemulihan umat", "Ya selalu", "Bangunan menyelamatkan", "Allah tidak peduli hati"], 0, "Bait bukan jimat; relasi umat dengan Allah tetap penting."],
+                    ["Mengapa Hagai menyinggung keadaan ekonomi?", ["Kondisi material dipakai sebagai kesempatan untuk mengajak umat memeriksa prioritas perjanjian", "Karena nabi adalah ekonom", "Karena uang menyelamatkan", "Karena Allah hanya peduli uang"], 0, "Ekonomi menjadi konteks nyata bagi teguran spiritual."],
+                    ["Jika seseorang selalu berkata 'nanti kalau sudah punya waktu aku akan melayani Tuhan,' Hagai menantangnya dengan...", ["Memeriksa apakah 'nanti' sebenarnya merupakan bentuk penundaan karena prioritas lain", "Meninggalkan sekolah", "Tidak bekerja", "Menjadi nabi"], 0, "Hagai sangat kuat dalam menantang penundaan."],
+                    ["Apa makna janji bahwa kemuliaan rumah yang baru akan lebih besar?", ["Menunjukkan pengharapan Allah terhadap masa depan komunitas pascapembuangan", "Bangunan pasti lebih mewah", "Babel membangun", "Bait Salomo tidak penting"], 0, "Janji tersebut memberi keberanian kepada komunitas yang melihat bangunan mereka sederhana."],
+                    ["Jika komunitas kecil merasa pekerjaannya tidak berarti, Hagai memberi perspektif...", ["Allah dapat memberi makna pada ketaatan sederhana ketika umat bekerja bagi-Nya", "Hanya proyek besar penting", "Jumlah orang menentukan nilai", "Allah hanya melihat hasil"], 0, "Kemuliaan Allah tidak ditentukan ukuran manusia."],
+                    ["Mengapa ketakutan dapat menghambat pembangunan?", ["Tekanan eksternal dapat membuat umat menunda ketaatan", "Takut selalu benar", "Allah tidak menyertai", "Bait tidak penting"], 0, "Hagai mendorong umat agar tidak berhenti karena tekanan."],
+                    ["Apa pelajaran kepemimpinan Zerubabel?", ["Pemimpin perlu merespons firman dan menggerakkan komunitas untuk bertindak", "Pemimpin harus sempurna", "Pemimpin tidak perlu Allah", "Pemimpin hanya mengatur ekonomi"], 0, "Respons kepemimpinan menjadi penting dalam pemulihan."],
+                    ["Jika seseorang mengutamakan kenyamanan pribadi lalu berkata 'Tuhan mengerti,' Hagai mengajak...", ["Jujur memeriksa apakah kenyamanan telah menggantikan panggilan dan tanggung jawab", "Berhenti bekerja", "Meninggalkan rumah", "Menghakimi orang lain"], 0, "Hagai mengarahkan evaluasi diri, bukan sekadar alasan."],
+                    ["Benang merah Hagai adalah...", ["Umat diajak mengoreksi prioritas, membangun kembali rumah TUHAN, dan percaya pada penyertaan-Nya", "Sejarah Babel", "Perang Persia", "Pertanian"], 0, "Prioritas, ketaatan, pembangunan, dan pengharapan menjadi pusat kitab."]
+                ]
+            },
+
+            {
+                name: "Zakharia",
+                theme: "Pemulihan, pengharapan Mesias, Roh dan pemerintahan Allah",
+                questions: [
+                    ["Mengapa Zakharia menggunakan banyak penglihatan?", ["Penglihatan simbolis membantu menjelaskan karya Allah dalam pemulihan umat dan Yerusalem", "Karena Zakharia tidak bisa berbicara", "Karena semua nabi memakai mimpi", "Karena sejarah tidak penting"], 0, "Penglihatan menjadi media profetik utama kitab."],
+                    ["Apa pesan inti 'berbaliklah kepada-Ku, maka Aku akan berbalik kepada kamu'?", ["Pemulihan relasi dengan Allah berkaitan dengan pertobatan umat", "Allah tidak peduli", "Pertobatan tidak penting", "Bangsa lain harus bertobat"], 0, "Ajakan kembali kepada Allah berada di awal rangkaian penglihatan."],
+                    ["Mengapa Yosua imam besar dalam penglihatan digambarkan dengan pakaian kotor?", ["Untuk menggambarkan keadaan najis yang kemudian Allah bersihkan dan pulihkan", "Karena Yosua miskin", "Karena ia tidak punya pakaian", "Karena Bait hancur"], 0, "Pakaian kotor menjadi simbol kenajisan yang ditangani Allah."],
+                    ["Jika Yosua dibersihkan bukan karena kemampuannya sendiri, pesan teologisnya adalah...", ["Allah yang mengambil inisiatif dalam pemulihan dan penyucian", "Manusia menyelamatkan diri", "Imam sempurna", "Dosa tidak ada"], 0, "Allah menghapus kenajisan dan memulihkan imam."],
+                    ["Penglihatan kandil dan dua pohon zaitun menekankan bahwa pembangunan terjadi...", ["Bukan dengan kekuatan atau keperkasaan manusia semata, tetapi oleh Roh Allah", "Hanya dengan tentara", "Dengan uang", "Dengan Babel"], 0, "Zakharia 4 menekankan karya Roh."],
+                    ["Mengapa ayat 'bukan dengan keperkasaan' penting dalam konteks pascapembuangan?", ["Komunitas kecil membutuhkan keyakinan bahwa Allah dapat menyelesaikan pekerjaan-Nya meski sumber daya terbatas", "Karena mereka tidak boleh bekerja", "Karena uang dosa", "Karena Persia tidak berkuasa"], 0, "Pesan ini menguatkan komunitas yang lemah."],
+                    ["Apa hubungan Zakharia dengan Hagai?", ["Keduanya menguatkan komunitas pascapembuangan dalam pembangunan dan pemulihan", "Keduanya hidup pada zaman Nuh", "Keduanya raja", "Keduanya menulis Injil"], 0, "Keduanya berada dalam konteks pascapembuangan."],
+                    ["Mengapa raja yang datang dengan rendah hati dalam Zakharia 9 penting bagi Kristen?", ["Teks tersebut dihubungkan Matius dengan masuknya Yesus ke Yerusalem", "Zakharia melihat Yesus secara langsung", "Raja itu Koresh", "Raja itu Daud"], 0, "Matius 21 menghubungkan gambaran tersebut dengan Yesus."],
+                    ["Apa paradoks raja dalam Zakharia 9?", ["Ia adalah raja tetapi datang dengan rendah hati, bukan dengan simbol kekuasaan perang yang biasa", "Ia bukan raja", "Ia datang dari Babel", "Ia tidak punya kerajaan"], 0, "Gambaran raja rendah hati menjadi kontras dengan pola kekuasaan dunia."],
+                    ["Mengapa Zakharia 12:10 dibaca dalam terang Kristus oleh tradisi Kristen?", ["Perjanjian Baru menghubungkan bahasa tentang orang yang ditikam dengan Yesus", "Karena Zakharia menulis Injil", "Karena semua nubuat identik", "Karena ayat itu menyebut nama Yesus langsung"], 0, "Yohanes 19:37 menghubungkan bahasa tersebut dengan penyaliban Yesus."],
+                    ["Jika teks nubuat memiliki konteks sejarah sendiri tetapi juga dibaca dalam Kristus, prinsip yang baik adalah...", ["Menghormati konteks awal sambil memperhatikan cara Perjanjian Baru membaca teks tersebut", "Menghapus konteks awal", "Menganggap semua detail literal", "Menolak hubungan dengan PB"], 0, "Pembacaan Kristen perlu memperhatikan konteks kitab dan penggunaan PB."],
+                    ["Apa tema besar penglihatan Zakharia tentang Yerusalem?", ["Allah berjanji menyertai, membersihkan, dan memulihkan kota serta umat-Nya", "Yerusalem akan hilang selamanya", "Babel menjadi Yerusalem", "Tidak ada pemulihan"], 0, "Pengharapan pemulihan sangat kuat."],
+                    ["Mengapa pertobatan muncul berulang kali dalam Zakharia?", ["Pemulihan bukan sekadar perubahan keadaan politik tetapi kembali kepada Allah", "Politik tidak penting", "Pertobatan tidak perlu", "Bait menyelamatkan"], 0, "Relasi dengan Allah tetap menjadi pusat."],
+                    ["Apa hubungan imam dan raja dalam Zakharia?", ["Keduanya menjadi bagian dari gambaran kepemimpinan yang dipakai Allah dalam pemulihan", "Imam dan raja selalu sama", "Raja tidak penting", "Imam tidak penting"], 0, "Zakharia menggunakan simbol kepemimpinan religius dan pemerintahan."],
+                    ["Jika pembangunan dilakukan dengan kekuatan manusia saja, Zakharia 4 mengoreksi...", ["Ketergantungan berlebihan pada kemampuan manusia", "Kerja keras", "Doa", "Ketaatan"], 0, "Ayat tersebut bukan melarang usaha, tetapi menegaskan sumber keberhasilan adalah Roh Allah."],
+                    ["Mengapa Zakharia banyak berbicara tentang masa depan?", ["Untuk memberi pengharapan kepada komunitas yang sedang membangun kembali setelah krisis", "Karena ia tidak tahu masa lalu", "Karena sejarah tidak penting", "Karena semua nabi harus bicara masa depan"], 0, "Pengharapan masa depan memberi kekuatan untuk kesetiaan masa kini."],
+                    ["Apa hubungan Zakharia dengan tema kerajaan Allah?", ["Nubuatnya mengarah pada pemerintahan raja yang datang dan kemenangan Allah", "Kerajaan Persia kekal", "Israel menjadi Babel", "Tidak ada kerajaan"], 0, "Tema pemerintahan Mesias dan kemenangan Allah muncul kuat."],
+                    ["Jika umat kecil merasa Allah meninggalkan mereka, Zakharia menjawab dengan...", ["Janji kehadiran dan karya Allah dalam pemulihan mereka", "Meninggalkan Yerusalem", "Mengandalkan Persia", "Tidak melakukan apa-apa"], 0, "Allah berulang kali memberi pengharapan melalui penglihatan nabi."],
+                    ["Mengapa Zakharia penting dalam studi nubuatan Mesianik?", ["Perjanjian Baru menggunakan beberapa teks Zakharia dalam membaca kehidupan dan karya Yesus", "Karena Zakharia adalah rasul", "Karena ia hidup setelah Yesus", "Karena ia menulis Injil"], 0, "Zakharia memiliki sejumlah teks yang dipakai dalam PB."],
+                    ["Benang merah Zakharia adalah...", ["Allah memulihkan umat pascapembuangan, bekerja melalui Roh, dan memberi pengharapan tentang pemerintahan Mesias", "Pembangunan Persia", "Pertanian", "Sejarah Babel"], 0, "Pemulihan dan pengharapan Mesianik menjadi pusat kitab."]
+                ]
+            },
+
+            {
+                name: "Maleakhi",
+                theme: "Kesetiaan perjanjian, ibadah yang benar, imam, keadilan dan kedatangan Tuhan",
+                questions: [
+                    ["Mengapa Maleakhi menegur korban yang cacat?", ["Karena kualitas korban mencerminkan sikap umat terhadap Allah dan mereka memperlakukan ibadah sebagai sesuatu yang remeh", "Karena semua korban salah", "Karena Allah tidak menerima korban", "Karena imam tidak penting"], 0, "Masalahnya adalah sikap tidak hormat dan ibadah yang asal-asalan."],
+                    ["Jika umat memberikan kepada Allah sesuatu yang tidak layak tetapi kepada penguasa mereka memberikan yang terbaik, kontradiksinya adalah...", ["Mereka menganggap Allah kurang layak dihormati daripada manusia", "Mereka sangat saleh", "Mereka miskin", "Mereka tidak punya korban"], 0, "Maleakhi memakai logika itu untuk menunjukkan absurditas sikap umat."],
+                    ["Mengapa imam mendapat teguran khusus?", ["Karena mereka bertanggung jawab mengajar dan menjaga umat dalam penyembahan", "Karena imam tidak boleh bekerja", "Karena imam adalah raja", "Karena imam tidak penting"], 0, "Kegagalan pemimpin rohani berdampak pada umat."],
+                    ["Jika umat berkata 'dalam hal apakah kami menghina Tuhan?', pola pertanyaan itu menunjukkan...", ["Mereka tidak menyadari atau tidak mau mengakui kesalahan yang sedang ditegur", "Mereka sudah bertobat", "Mereka sangat rendah hati", "Mereka tidak punya bahasa"], 0, "Dialog retoris Maleakhi sering memperlihatkan pembelaan diri umat."],
+                    ["Apa yang salah dengan memberi persembahan sambil mengeluh bahwa ibadah adalah beban?", ["Masalahnya bukan hanya jumlah persembahan tetapi hati yang kehilangan hormat kepada Allah", "Allah tidak suka persembahan", "Semua ibadah salah", "Umat tidak boleh memberi"], 0, "Maleakhi menyoroti motivasi dan sikap hati."],
+                    ["Mengapa Maleakhi menegur perceraian dan ketidaksetiaan pernikahan?", ["Karena kesetiaan kepada pasangan berkaitan dengan kesetiaan perjanjian kepada Allah", "Karena pernikahan tidak penting", "Karena semua perceraian sama", "Karena nabi membenci keluarga"], 0, "Maleakhi menghubungkan kehidupan keluarga dengan kesetiaan perjanjian."],
+                    ["Jika seseorang berkata 'Allah tidak peduli bagaimana aku memperlakukan pasangan,' Maleakhi membantahnya dengan...", ["Allah memperhatikan kesetiaan dan ketidakadilan dalam kehidupan relasional", "Allah hanya melihat ibadah", "Pernikahan tidak penting", "Hanya imam yang bertanggung jawab"], 0, "Maleakhi menolak pemisahan ibadah dari kehidupan keluarga."],
+                    ["Mengapa pertanyaan tentang keadilan Allah muncul dalam Maleakhi?", ["Karena umat melihat orang jahat tampak berhasil dan mempertanyakan apakah Allah bertindak", "Karena Allah tidak ada", "Karena semua orang jahat menang", "Karena nabi tidak tahu"], 0, "Maleakhi menjawab kegelisahan tentang keadilan dengan janji kedatangan Tuhan."],
+                    ["Apa fungsi 'utusan' dalam Maleakhi 3?", ["Ia mendahului kedatangan Tuhan dan menyiapkan jalan", "Ia menjadi raja", "Ia menggantikan Allah", "Ia adalah Koresh"], 0, "Konsep utusan menjadi penting dalam pembacaan Kristen terhadap Yohanes Pembaptis."],
+                    ["Mengapa Maleakhi 4 mengaitkan Elia dengan hari Tuhan?", ["Dalam tradisi Kristen, teks ini dihubungkan dengan peran Yohanes Pembaptis yang mempersiapkan jalan", "Elia hidup pada zaman Maleakhi", "Elia adalah raja", "Yohanes adalah Elia secara identitas literal"], 0, "Matius dan Lukas menghubungkan pola pelayanan Yohanes dengan nubuat tentang Elia."],
+                    ["Apa hubungan Maleakhi dengan Injil Lukas?", ["Tema persiapan jalan dan Elia menjadi bagian dari identitas pelayanan Yohanes Pembaptis", "Maleakhi menulis Lukas", "Lukas adalah imam Maleakhi", "Tidak ada hubungan"], 0, "Lukas 1:17 memakai bahasa yang mengingatkan Maleakhi tentang Elia."],
+                    ["Jika ibadah dilakukan hanya karena kewajiban, Maleakhi menuntut...", ["Penghormatan yang sungguh kepada nama Allah", "Lebih banyak korban", "Lebih banyak musik", "Tidak perlu ibadah"], 0, "Maleakhi ingin memulihkan penghormatan kepada Allah."],
+                    ["Mengapa 'kitab peringatan' bagi mereka yang takut akan Tuhan penting?", ["Menunjukkan bahwa Allah memperhatikan kesetiaan meski tidak selalu terlihat secara publik", "Allah lupa umat", "Hanya raja diingat", "Tidak ada penghakiman"], 0, "Maleakhi memberikan pengharapan kepada orang yang tetap setia."],
+                    ["Jika orang fasik tampak makmur, Maleakhi mengajarkan...", ["Jangan menyimpulkan bahwa Allah tidak adil; hari penghakiman akan datang", "Kejahatan pasti menang", "Allah tidak peduli", "Orang benar harus membalas"], 0, "Maleakhi menempatkan ketidakadilan sementara dalam terang hari Tuhan."],
+                    ["Mengapa Maleakhi cocok menjadi kitab terakhir dalam kanon Perjanjian Lama Kristen?", ["Ia menutup dengan harapan tentang utusan, hari Tuhan, dan panggilan untuk kembali kepada Allah", "Karena Maleakhi adalah rasul", "Karena tidak ada nabi setelahnya secara sejarah", "Karena kitab paling panjang"], 0, "Secara kanonik, Maleakhi meninggalkan pembaca dengan ekspektasi akan kedatangan Tuhan."],
+                    ["Apa hubungan Maleakhi 3 dengan pemurnian?", ["Kedatangan Tuhan digambarkan sebagai proses pemurnian umat dan ibadah", "Pemurnian hanya logam", "Allah tidak menghakimi", "Umat tidak berdosa"], 0, "Api pemurni dan sabun penatu menggambarkan tindakan pemurnian."],
+                    ["Jika pemimpin rohani mengajarkan sesuatu tetapi hidupnya bertentangan dengan ajaran, prinsip Maleakhi adalah...", ["Kredibilitas pelayanan rusak karena pemimpin bertanggung jawab mengajar umat dengan benar", "Tidak masalah", "Pemimpin bebas dosa", "Umat tidak perlu belajar"], 0, "Maleakhi menegur imam karena kegagalan mereka memelihara pengetahuan dan ajaran."],
+                    ["Apa hubungan antara memberi persembahan dan mempercayai Allah dalam Maleakhi?", ["Persembahan menjadi bagian dari kesetiaan perjanjian dan kepercayaan, bukan transaksi untuk membeli berkat", "Persembahan membeli keselamatan", "Allah dapat disuap", "Memberi selalu salah"], 0, "Maleakhi membahas persepuluhan dalam kerangka kesetiaan umat kepada Allah."],
+                    ["Mengapa Maleakhi memakai dialog antara Allah dan umat?", ["Untuk memperlihatkan bagaimana manusia dapat menyangkal masalah yang sebenarnya sudah jelas", "Karena Allah tidak tahu jawabannya", "Karena umat sangat taat", "Karena dialog tidak punya makna"], 0, "Dialog membuat teguran terasa seperti pemeriksaan terhadap hati umat."],
+                    ["Benang merah Maleakhi adalah...", ["Allah memanggil umat kembali kepada kesetiaan, ibadah yang benar, keadilan, dan mempersiapkan mereka menyambut kedatangan Tuhan", "Politik Persia", "Pertanian", "Pembangunan Bait"], 0, "Maleakhi menutup rangkaian nabi dengan panggilan kembali dan pengharapan kedatangan Tuhan."]
+                ]
+            }
+
+        ];
+
+        /* ============================================================
+           MEMASTIKAN 17 KITAB × 20 = 340
+        ============================================================ */
+
+        const TOTAL_EXPECTED = 340;
+
+        let allQuestions = [];
+        let currentBook = 0;
+        let answered = 0;
+        let correct = 0;
+        let selectedQuestions = [];
+
+        function buildDatabase() {
+
+            allQuestions = [];
+
+            BOOKS.forEach((book, bookIndex) => {
+
+                book.questions.forEach((item, qIndex) => {
+
+                    allQuestions.push({
+                        id: bookIndex * 20 + qIndex + 1,
+                        bookIndex,
+                        book: book.name,
+                        question: item[0],
+                        options: item[1],
+                        answer: item[2],
+                        explanation: item[3]
+                    });
+
+                });
+
+            });
+
+            if (allQuestions.length !== TOTAL_EXPECTED) {
+                console.warn(
+                    "Jumlah soal saat ini:",
+                    allQuestions.length,
+                    "Target:",
+                    TOTAL_EXPECTED
+                );
+            }
+
+            selectedQuestions = allQuestions.slice();
+        }
+
+        /* ============================================================
+           SIDEBAR
+        ============================================================ */
+
+        function renderSidebar() {
+
+            const list = document.getElementById("bookList");
+
+            list.innerHTML = BOOKS.map((book, index) => `
+
+        <button
+            class="book-btn ${index===currentBook ? "active":""}"
+            onclick="selectBook(${index})"
+        >
+            <span class="book-number">${index+1}</span>
+            ${book.name}
+        </button>
+
+    `).join("");
+        }
+
+        /* ============================================================
+           RENDER SOAL
+        ============================================================ */
+
+        function renderBook(bookIndex) {
+
+            const content = document.getElementById("content");
+
+            const book = BOOKS[bookIndex];
+
+            const questions = allQuestions.filter(
+                q => q.bookIndex === bookIndex
+            );
+
+            content.innerHTML = `
+
+        <div class="hero">
+
+            <div class="hero-top">
+
+                <div>
+                    <span class="badge">
+                        KITAB ${bookIndex+1} DARI 17
+                    </span>
+
+                    <h2>${book.name}</h2>
+
+                    <p>
+                        ${book.theme}
+                    </p>
+                </div>
+
+                <div class="progress-wrap">
+
+                    <div class="progress-label">
+                        <span>Progress kitab</span>
+                        <span id="bookProgressText">0 / 20</span>
+                    </div>
+
+                    <div class="progress">
+                        <div
+                            class="progress-bar"
+                            id="bookProgress"
+                        ></div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="questionContainer"></div>
+    `;
+
+            const container =
+                document.getElementById("questionContainer");
+
+            questions.forEach((q, index) => {
+
+                        const card = document.createElement("div");
+
+                        card.className = "question-card";
+
+                        card.dataset.questionId = q.id;
+
+                        card.innerHTML = `
+
+            <div class="question-head">
+
+                <div class="question-number">
+                    SOAL ${q.id} • ${book.name.toUpperCase()}
+                </div>
+
+                <div class="level">
+                    HOTS • ANALISIS
+                </div>
+
+            </div>
+
+            <div class="question">
+                ${q.question}
+            </div>
+
+            <div class="options">
+
+                ${q.options.map((option,optIndex)=>`
+
+                    <button
+                        class="option"
+                        onclick="
+                            answerQuestion(
+                                ${q.id},
+                                ${optIndex},
+                                this
+                            )
+                        "
+                    >
+                        <strong>
+                            ${String.fromCharCode(65+optIndex)}.
+                        </strong>
+                        ${option}
+                    </button>
+
+                `).join("")}
+
+            </div>
+
+            <div
+                class="result"
+                id="result-${q.id}"
+            ></div>
+
+        `;
+
+        container.appendChild(card);
+
+    });
+
+    updateBookProgress();
+}
+
+/* ============================================================
+   JAWAB SOAL
+============================================================ */
+
+const answeredQuestions = new Set();
+const correctQuestions = new Set();
+
+function answerQuestion(questionId, selected, button){
+
+    if(answeredQuestions.has(questionId)){
+        return;
+    }
+
+    const q = allQuestions.find(
+        item => item.id === questionId
+    );
+
+    if(!q) return;
+
+    answeredQuestions.add(questionId);
+
+    answered++;
+
+    const card =
+        button.closest(".question-card");
+
+    const buttons =
+        card.querySelectorAll(".option");
+
+    buttons.forEach(btn=>{
+        btn.disabled = true;
+    });
+
+    const isCorrect =
+        selected === q.answer;
+
+    if(isCorrect){
+
+        correct++;
+
+        correctQuestions.add(questionId);
+
+        button.classList.add("correct");
+
+    }else{
+
+        button.classList.add("wrong");
+
+        buttons[q.answer].classList.add("correct");
+
+    }
+
+    const result =
+        document.getElementById(`result-${questionId}`);
+
+    result.classList.add(
+        "show",
+        isCorrect
+            ? "correct-box"
+            : "wrong-box"
+    );
+
+    const correctLetter =
+        String.fromCharCode(65 + q.answer);
+
+    result.innerHTML = `
+
+        <div class="result-title">
+            ${isCorrect
+                ? "✅ BENAR! Analisis kamu tepat."
+                : "❌ BELUM TEPAT. Yuk bedah logikanya."
+            }
+        </div>
+
+        <div>
+            Jawaban yang benar:
+            <span class="answer">
+                ${correctLetter}. ${q.options[q.answer]}
+            </span>
+        </div>
+
+        <div class="why">
+            <strong>📖 Pembahasan:</strong>
+            <div class="explanation">
+                ${q.explanation}
+            </div>
+        </div>
+
+    `;
+
+    updateStats();
+    updateBookProgress();
+}
+
+/* ============================================================
+   PROGRESS
+============================================================ */
+
+function updateStats(){
+
+    document.getElementById("answeredStat").textContent =
+        answered;
+
+    document.getElementById("correctStat").textContent =
+        correct;
+
+    const score =
+        answered === 0
+            ? 0
+            : Math.round((correct / answered) * 100);
+
+    document.getElementById("scoreStat").textContent =
+        score + "%";
+}
+
+function updateBookProgress(){
+
+    const questions =
+        allQuestions.filter(
+            q => q.bookIndex === currentBook
+        );
+
+    const done =
+        questions.filter(
+            q => answeredQuestions.has(q.id)
+        ).length;
+
+    const percent =
+        (done / questions.length) * 100;
+
+    const bar =
+        document.getElementById("bookProgress");
+
+    const text =
+        document.getElementById("bookProgressText");
+
+    if(bar){
+        bar.style.width = percent + "%";
+    }
+
+    if(text){
+        text.textContent =
+            `${done} / ${questions.length}`;
+    }
+}
+
+/* ============================================================
+   PILIH KITAB
+============================================================ */
+
+function selectBook(index){
+
+    currentBook = index;
+
+    renderSidebar();
+    renderBook(index);
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+function showAllBooks(){
+
+    currentBook = 0;
+
+    renderSidebar();
+
+    const content =
+        document.getElementById("content");
+
+    content.innerHTML = `
+
+        <div class="hero">
+
+            <span class="badge">
+                BIBLE KNOWLEDGE • HOTS
+            </span>
+
+            <h2>340 Soal Cerdas Cermat Alkitab</h2>
+
+            <p>
+                17 kitab nabi • 20 soal per kitab.
+                Fokus bukan sekadar hafalan, tetapi memahami
+                konteks, hubungan sebab-akibat, pesan teologis,
+                nubuatan, penggenapan, dan hubungan antar kitab.
+            </p>
+
+        </div>
+
+        <div class="question-card">
+
+            <div class="question">
+                📚 Pilih kitab di panel kiri untuk mulai mengerjakan.
+            </div>
+
+            <p style="color:var(--muted);line-height:1.7;">
+                Setiap pilihan langsung diperiksa.
+                Setelah memilih, kamu akan melihat:
+                <br><br>
+                ✅ benar atau ❌ salah<br>
+                📖 jawaban yang benar<br>
+                💡 pembahasan logis dan konteks Alkitab
+            </p>
+
+        </div>
+    `;
+}
+
+/* ============================================================
+   RESET
+============================================================ */
+
+function resetAll(){
+
+    if(!confirm(
+        "Reset seluruh progress 340 soal?"
+    )){
+        return;
+    }
+
+    answeredQuestions.clear();
+    correctQuestions.clear();
+
+    answered = 0;
+    correct = 0;
+
+    updateStats();
+
+    renderSidebar();
+    renderBook(currentBook);
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+}
+
+/* ============================================================
+   SEARCH
+============================================================ */
+
+document
+.getElementById("searchInput")
+.addEventListener("input",function(){
+
+    const keyword =
+        this.value
+        .toLowerCase()
+        .trim();
+
+    if(!keyword){
+
+        renderBook(currentBook);
+
+        return;
+    }
+
+    const results =
+        allQuestions.filter(q=>
+            q.question
+            .toLowerCase()
+            .includes(keyword)
+            ||
+            q.book
+            .toLowerCase()
+            .includes(keyword)
+            ||
+            q.explanation
+            .toLowerCase()
+            .includes(keyword)
+        );
+
+    const content =
+        document.getElementById("content");
+
+    content.innerHTML = `
+
+        <div class="hero">
+
+            <span class="badge">
+                HASIL PENCARIAN
+            </span>
+
+            <h2>${results.length} soal ditemukan</h2>
+
+            <p>
+                Kata kunci:
+                <strong>${keyword}</strong>
+            </p>
+
+        </div>
+
+        <div id="searchResults"></div>
+    `;
+
+    const container =
+        document.getElementById("searchResults");
+
+    if(results.length === 0){
+
+        container.innerHTML = `
+            <div class="empty">
+                Tidak ada soal yang cocok.
+            </div>
+        `;
+
+        return;
+    }
+
+    results.forEach(q=>{
+
+        const card =
+            document.createElement("div");
+
+        card.className =
+            "question-card";
+
+        card.innerHTML = `
+
+            <div class="question-head">
+
+                <div class="question-number">
+                    SOAL ${q.id} • ${q.book.toUpperCase()}
+                </div>
+
+                <div class="level">
+                    HOTS
+                </div>
+
+            </div>
+
+            <div class="question">
+                ${q.question}
+            </div>
+
+            <div class="options">
+
+                ${q.options.map((option,optIndex)=>`
+
+                    <button
+                        class="option"
+                        onclick="
+                            answerQuestion(
+                                ${q.id},
+                                ${optIndex},
+                                this
+                            )
+                        "
+                    >
+                        <strong>
+                            ${String.fromCharCode(65+optIndex)}.
+                        </strong>
+                        ${option}
+                    </button>
+
+                `).join("")}
+
+            </div>
+
+            <div
+                class="result"
+                id="result-${q.id}"
+            ></div>
+
+        `;
+
+        container.appendChild(card);
+
+    });
+
+});
+
+/* ============================================================
+   INIT
+============================================================ */
+
+buildDatabase();
+
+renderSidebar();
+
+renderBook(0);
+
+updateStats();
+
+console.log(
+    `CCA HOTS loaded: ${allQuestions.length} soal`
+);
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,2644 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>THE GREAT JOURNEY — 17 Kitab</title>
+
+    <style>
+         :root {
+            --bg: #08111f;
+            --panel: #0d192b;
+            --panel2: #111f34;
+            --line: #20324c;
+            --text: #e8eef7;
+            --muted: #91a1b8;
+            --accent: #6fa8dc;
+            --accent2: #9ec5ee;
+            --gold: #d9b56d;
+            --danger: #d97979;
+            --shadow: 0 15px 40px rgba(0, 0, 0, .25);
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: radial-gradient(circle at 15% 10%, rgba(111, 168, 220, .08), transparent 30%), radial-gradient(circle at 90% 80%, rgba(217, 181, 109, .05), transparent 30%), var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+        }
+        /* ================= SIDEBAR ================= */
+        
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 305px;
+            background: rgba(8, 17, 31, .97);
+            border-right: 1px solid var(--line);
+            overflow-y: auto;
+            z-index: 100;
+            padding: 25px 18px;
+        }
+        
+        .logo {
+            padding: 5px 8px 22px;
+        }
+        
+        .logo h1 {
+            font-size: 22px;
+            letter-spacing: 2px;
+            color: white;
+        }
+        
+        .logo p {
+            color: var(--gold);
+            font-size: 12px;
+            margin-top: 7px;
+            letter-spacing: 1.5px;
+        }
+        
+        .search {
+            width: 100%;
+            background: #0b1627;
+            border: 1px solid var(--line);
+            color: white;
+            padding: 12px 14px;
+            border-radius: 10px;
+            outline: none;
+            margin-bottom: 15px;
+        }
+        
+        .search:focus {
+            border-color: var(--accent);
+        }
+        
+        .book-list {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        
+        .book-btn {
+            border: 0;
+            background: transparent;
+            color: var(--muted);
+            text-align: left;
+            padding: 10px 12px;
+            border-radius: 9px;
+            cursor: pointer;
+            transition: .2s;
+            font-size: 14px;
+        }
+        
+        .book-btn:hover {
+            background: var(--panel);
+            color: white;
+        }
+        
+        .book-btn.active {
+            background: linear-gradient(90deg, rgba(111, 168, 220, .18), rgba(111, 168, 220, .05));
+            color: white;
+            border-left: 3px solid var(--accent);
+        }
+        
+        .book-number {
+            display: inline-block;
+            width: 27px;
+            color: var(--gold);
+            font-size: 12px;
+        }
+        /* ================= MAIN ================= */
+        
+        .main {
+            margin-left: 305px;
+            padding: 40px;
+            max-width: 1500px;
+        }
+        
+        .hero {
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            padding: 45px;
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            background: linear-gradient(135deg, rgba(111, 168, 220, .12), transparent 45%), linear-gradient(315deg, rgba(217, 181, 109, .07), transparent 45%), var(--panel);
+            box-shadow: var(--shadow);
+            margin-bottom: 25px;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+        }
+        
+        .badge {
+            display: inline-block;
+            color: var(--gold);
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        
+        .hero h2 {
+            font-size: clamp(32px, 5vw, 60px);
+            line-height: 1;
+            margin-bottom: 15px;
+        }
+        
+        .hero p {
+            color: var(--muted);
+            font-size: 16px;
+            line-height: 1.8;
+            max-width: 760px;
+        }
+        
+        .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 22px;
+        }
+        
+        .meta span {
+            padding: 7px 11px;
+            border-radius: 999px;
+            border: 1px solid var(--line);
+            background: #0a1525;
+            color: #b9c7d9;
+            font-size: 12px;
+        }
+        /* ================= GRID ================= */
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 20px;
+        }
+        
+        .card {
+            background: rgba(13, 25, 43, .88);
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+        }
+        
+        .card.full {
+            grid-column: 1/-1;
+        }
+        
+        .card h3 {
+            font-size: 19px;
+            margin-bottom: 15px;
+        }
+        
+        .card h3 .icon {
+            margin-right: 8px;
+        }
+        
+        .card p {
+            color: #c2ccda;
+            line-height: 1.85;
+            margin-bottom: 14px;
+        }
+        
+        .story p {
+            font-size: 15px;
+        }
+        
+        .quote {
+            border-left: 3px solid var(--gold);
+            padding: 14px 18px;
+            margin: 18px 0;
+            background: rgba(217, 181, 109, .05);
+            color: #e9d6a9;
+            line-height: 1.7;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .quote small {
+            display: block;
+            margin-top: 7px;
+            color: var(--muted);
+        }
+        /* ================= CHARACTER ================= */
+        
+        .character-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+        
+        .character {
+            padding: 16px;
+            border: 1px solid var(--line);
+            background: #0b1728;
+            border-radius: 13px;
+        }
+        
+        .character strong {
+            display: block;
+            color: white;
+            margin-bottom: 6px;
+        }
+        
+        .character .role {
+            color: var(--gold);
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+        
+        .character p {
+            font-size: 13px;
+            margin-bottom: 8px;
+            line-height: 1.7;
+        }
+        
+        .ref {
+            color: #83b6e7;
+            font-size: 11px;
+        }
+        /* ================= PROPHECY ================= */
+        
+        .prophecy {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 12px;
+        }
+        
+        .prophecy-item {
+            border: 1px solid var(--line);
+            padding: 16px;
+            border-radius: 13px;
+            background: #0a1626;
+        }
+        
+        .prophecy-item strong {
+            color: #e8d09a;
+            display: block;
+            margin-bottom: 8px;
+        }
+        
+        .prophecy-item p {
+            font-size: 13px;
+        }
+        /* ================= BUTTONS ================= */
+        
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            text-decoration: none;
+            padding: 11px 15px;
+            border-radius: 10px;
+            border: 1px solid var(--line);
+            color: #dce8f5;
+            background: #0b1728;
+            font-size: 13px;
+            transition: .2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-1px);
+            border-color: var(--accent);
+            background: #102139;
+        }
+        
+        .btn.primary {
+            background: rgba(111, 168, 220, .14);
+            border-color: rgba(111, 168, 220, .4);
+        }
+        
+        .btn.gold {
+            background: rgba(217, 181, 109, .1);
+            border-color: rgba(217, 181, 109, .3);
+        }
+        
+        .btn.quiz {
+            background: rgba(123, 91, 173, .12);
+            border-color: rgba(150, 120, 205, .35);
+        }
+        /* ================= VERSES ================= */
+        
+        .verse-list {
+            display: grid;
+            gap: 10px;
+        }
+        
+        .verse {
+            padding: 15px;
+            background: #0a1626;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+        }
+        
+        .verse strong {
+            color: var(--gold);
+            display: block;
+            margin-bottom: 6px;
+        }
+        
+        .verse p {
+            margin: 0;
+            font-size: 14px;
+        }
+        /* ================= TERMS ================= */
+        
+        .term-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .term {
+            padding: 7px 10px;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            font-size: 12px;
+            color: #b7c6d9;
+            background: #0a1626;
+        }
+        /* ================= FOOTER ================= */
+        
+        .footer {
+            text-align: center;
+            color: #697b94;
+            font-size: 12px;
+            padding: 35px 10px 20px;
+            line-height: 1.8;
+        }
+        
+        .next {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+        
+        .next button {
+            flex: 1;
+            background: #0b1728;
+            color: #dce8f5;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            padding: 13px;
+            cursor: pointer;
+        }
+        
+        .next button:hover {
+            border-color: var(--accent);
+        }
+        
+        .progress {
+            position: fixed;
+            top: 0;
+            left: 305px;
+            height: 3px;
+            width: 0%;
+            background: var(--accent);
+            z-index: 200;
+        }
+        /* ================= MOBILE ================= */
+        
+        .mobile-header {
+            display: none;
+        }
+        
+        @media(max-width:900px) {
+            .sidebar {
+                width: 260px;
+                transform: translateX(-100%);
+                transition: .3s;
+            }
+            .sidebar.open {
+                transform: translateX(0);
+            }
+            .main {
+                margin-left: 0;
+                padding: 20px;
+                padding-top: 75px;
+            }
+            .progress {
+                left: 0;
+            }
+            .mobile-header {
+                display: flex;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 60px;
+                background: rgba(8, 17, 31, .95);
+                border-bottom: 1px solid var(--line);
+                z-index: 150;
+                align-items: center;
+                padding: 0 15px;
+                gap: 12px;
+            }
+            .menu {
+                border: 1px solid var(--line);
+                background: #0b1728;
+                color: white;
+                width: 38px;
+                height: 38px;
+                border-radius: 9px;
+                cursor: pointer;
+            }
+            .mobile-header strong {
+                font-size: 14px;
+                letter-spacing: 1px;
+            }
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            .card.full {
+                grid-column: auto;
+            }
+            .character-grid,
+            .prophecy {
+                grid-template-columns: 1fr;
+            }
+            .hero {
+                padding: 30px 23px;
+                min-height: auto;
+            }
+        }
+        /* ================= LOADING ================= */
+        
+        .fade {
+            animation: fade .35s ease;
+        }
+        
+        @keyframes fade {
+            from {
+                opacity: 0;
+                transform: translateY(7px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="progress" id="progress"></div>
+
+    <header class="mobile-header">
+        <button class="menu" onclick="toggleSidebar()">☰</button>
+        <strong>THE GREAT JOURNEY</strong>
+    </header>
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="logo">
+            <h1>THE GREAT JOURNEY</h1>
+            <p>17 KITAB NABI • ALKITAB</p>
+        </div>
+
+        <input type="text" id="search" class="search" placeholder="Cari kitab..." oninput="filterBooks()">
+
+        <div class="book-list" id="bookList"></div>
+
+    </aside>
+
+    <main class="main">
+
+        <section class="hero fade" id="hero"></section>
+
+        <section class="grid fade" id="content"></section>
+
+        <div class="next">
+            <button onclick="previousBook()">← Kitab Sebelumnya</button>
+            <button onclick="nextBook()">Kitab Berikutnya →</button>
+        </div>
+
+        <footer class="footer">
+            <strong>THE GREAT JOURNEY — 17 KITAB</strong><br> Menelusuri suara para nabi dari Yesaya sampai Maleakhi.<br>
+            <br> “Sebab segala sesuatu yang ditulis dahulu, telah ditulis untuk menjadi pelajaran bagi kita.”
+            <br> Roma 15:4
+        </footer>
+
+    </main>
+
+    <script>
+        /* =========================================================
+           DATABASE 17 KITAB
+        ========================================================= */
+
+        const BOOKS = [
+
+            /* ================= YESAYA ================= */
+
+            {
+                id: "yesaya",
+                no: 23,
+                name: "Yesaya",
+                period: "± 740–680 SM",
+                setting: "Yehuda dan Yerusalem",
+                theme: "Kekudusan Allah, penghakiman, pertobatan, pengharapan dan keselamatan",
+
+                story: `
+
+<p>
+Kitab Yesaya dibuka pada masa ketika Yehuda masih memiliki kerajaan,
+tetapi kehidupan rohani dan sosial bangsa itu sedang mengalami kerusakan.
+Yesaya hidup pada zaman raja Uzia, Yotam, Ahas dan Hizkia. Ia dipanggil
+Allah bukan sekadar untuk mengatakan bahwa hukuman akan datang, tetapi
+untuk membuka mata bangsa itu terhadap keadaan hati mereka.
+</p>
+
+<p>
+Panggilan Yesaya terjadi dalam sebuah penglihatan yang sangat kuat.
+Ia melihat Tuhan duduk di atas takhta yang tinggi dan menjulang.
+Para serafim berseru bahwa Tuhan itu kudus. Ketika menyadari kekudusan
+Allah, Yesaya justru melihat dirinya sebagai manusia yang najis bibir.
+Namun Allah menyediakan jalan pemulihan. Setelah Yesaya disucikan,
+ia mendengar pertanyaan: siapa yang akan diutus? Yesaya menjawab,
+“Ini aku, utuslah aku!” (Yesaya 6:8).
+</p>
+
+<p>
+Pelayanan Yesaya berlangsung ketika ancaman politik sangat besar.
+Kerajaan Asyur berkembang menjadi kekuatan yang menakutkan.
+Raja Ahas memilih mengandalkan kekuatan politik daripada mempercayai
+Tuhan. Dalam keadaan tersebut Yesaya menyampaikan tanda Imanuel:
+Allah tidak meninggalkan umat-Nya. Kepada Hizkia, Yesaya juga menyampaikan
+pesan ketika Sanherib, raja Asyur, mengepung Yerusalem. Yerusalem berada
+dalam keadaan genting, tetapi Tuhan menunjukkan bahwa keselamatan tidak
+bergantung pada kekuatan manusia.
+</p>
+
+<p>
+Setelah berbicara tentang dosa dan penghakiman, Yesaya membawa umat
+kepada pengharapan. Ia berbicara mengenai tunas yang akan muncul dari
+keturunan Daud, seorang Raja yang pemerintahannya membawa damai.
+Ia juga berbicara tentang Hamba Tuhan yang menderita, menanggung
+kesalahan banyak orang, dan melalui penderitaan-Nya membawa keselamatan.
+Karena itu, kitab Yesaya tidak berhenti pada kehancuran. Setelah malam
+penghakiman, ada janji pemulihan.
+</p>
+
+<p>
+Pada bagian akhir, perhatian Yesaya semakin luas. Keselamatan Allah
+bukan hanya untuk satu kelompok manusia, melainkan menuju seluruh bangsa.
+Allah menciptakan masa depan baru: umat yang dahulu hancur akan memperoleh
+pengharapan, dan Yerusalem digambarkan sebagai pusat sukacita serta
+pemulihan.
+</p>
+`,
+
+                characters: [{
+                    name: "Yesaya",
+                    role: "Nabi Tuhan",
+                    detail: "Dipanggil dalam penglihatan tentang takhta Allah dan menjadi penyampai pesan Tuhan kepada Yehuda.",
+                    ref: "Yes 1:1; 6:1–8"
+                }, {
+                    name: "Uzia",
+                    role: "Raja Yehuda",
+                    detail: "Raja yang memerintah ketika pelayanan Yesaya dimulai. Tahun kematiannya menjadi latar panggilan Yesaya.",
+                    ref: "Yes 6:1; 2 Taw 26"
+                }, {
+                    name: "Ahas",
+                    role: "Raja Yehuda",
+                    detail: "Menghadapi ancaman politik dan memilih mencari keamanan melalui kekuatan politik, bukan mempercayai Tuhan.",
+                    ref: "Yes 7:1–17"
+                }, {
+                    name: "Hizkia",
+                    role: "Raja Yehuda",
+                    detail: "Raja yang menghadapi ancaman Sanherib. Dalam krisis tersebut ia mencari Tuhan.",
+                    ref: "Yes 36–39"
+                }, {
+                    name: "Sanherib",
+                    role: "Raja Asyur",
+                    detail: "Memimpin serangan terhadap Yehuda dan mengepung Yerusalem.",
+                    ref: "Yes 36–37"
+                }, {
+                    name: "Hamba Tuhan",
+                    role: "Tokoh dalam nubuat",
+                    detail: "Digambarkan sebagai Hamba yang menderita dan menanggung kesalahan banyak orang.",
+                    ref: "Yes 42; 49; 50; 52:13–53:12"
+                }],
+
+                prophecy: [{
+                    title: "Imanuel",
+                    text: "Tanda tentang seorang anak yang disebut Imanuel menjadi bagian penting dalam pengharapan Yesaya.",
+                    ref: "Yesaya 7:14 → Matius 1:22–23"
+                }, {
+                    title: "Raja Damai",
+                    text: "Seorang anak akan memerintah dengan keadilan dan damai, berakar pada janji kepada keturunan Daud.",
+                    ref: "Yesaya 9:5–6 → Lukas 1:32–33"
+                }, {
+                    title: "Hamba yang Menderita",
+                    text: "Hamba Tuhan menderita dan menanggung kesalahan banyak orang.",
+                    ref: "Yesaya 52:13–53:12 → Kisah 8:30–35; 1 Ptr 2:24"
+                }, {
+                    title: "Suara di Padang Gurun",
+                    text: "Ada suara yang menyerukan persiapan jalan bagi Tuhan.",
+                    ref: "Yesaya 40:3 → Matius 3:3"
+                }],
+
+                pb: [
+                    "Yesaya 6 → Yohanes 12:41",
+                    "Yesaya 7:14 → Matius 1:22–23",
+                    "Yesaya 9:5–6 → Lukas 1:32–33",
+                    "Yesaya 40:3 → Matius 3:3",
+                    "Yesaya 53 → Kisah Para Rasul 8:32–35",
+                    "Yesaya 53:5 → 1 Petrus 2:24"
+                ],
+
+                verses: [{
+                    ref: "Yesaya 6:8",
+                    text: "“Ini aku, utuslah aku!”"
+                }, {
+                    ref: "Yesaya 41:10",
+                    text: "Jangan takut, sebab Tuhan menyertai dan menolong umat-Nya."
+                }, {
+                    ref: "Yesaya 53:5",
+                    text: "Hamba Tuhan digambarkan menderita demi membawa pemulihan."
+                }],
+
+                terms: ["Serafim", "Imanuel", "Hamba Tuhan", "Mesias", "Sisa Israel", "Kekudusan"]
+            },
+
+            /* ================= YEREMIA ================= */
+
+            {
+                id: "yeremia",
+                no: 24,
+                name: "Yeremia",
+                period: "± 627–586 SM dan sesudahnya",
+                setting: "Yehuda, Yerusalem dan pembuangan",
+                theme: "Pertobatan, penghukuman, kesetiaan Allah dan perjanjian baru",
+
+                story: `
+
+<p>
+Yeremia dipanggil Allah ketika ia masih muda. Ia hidup pada masa
+Yehuda sedang menuju kehancuran. Asyur telah melemah, Babel mulai bangkit,
+dan para pemimpin Yehuda menghadapi tekanan politik yang sangat besar.
+Namun masalah terdalam bangsa itu bukan hanya politik. Mereka telah
+meninggalkan Tuhan dan mencampurkan penyembahan kepada Allah dengan
+berbagai bentuk penyembahan berhala.
+</p>
+
+<p>
+Yeremia menerima panggilan yang berat. Ia merasa masih terlalu muda,
+tetapi Tuhan mengatakan bahwa sejak sebelum lahir ia telah ditetapkan
+untuk menjadi nabi bagi bangsa-bangsa. Yeremia kemudian menjadi suara
+yang tidak populer. Ia memperingatkan bahwa Yerusalem tidak akan aman
+hanya karena di dalamnya terdapat Bait Allah. Umat harus sungguh-sungguh
+bertobat.
+</p>
+
+<p>
+Yeremia menyampaikan khotbah tentang Bait Allah. Ia menegur orang yang
+merasa aman karena memiliki Bait Allah tetapi pada saat yang sama menindas
+sesama, mencuri, berzinah, dan menyembah berhala. Bagi Yeremia,
+kehadiran simbol keagamaan tidak dapat menggantikan ketaatan kepada Tuhan.
+Karena pesannya keras, ia dibenci, dipukuli, dipenjarakan, dan beberapa
+kali nyaris dibunuh.
+</p>
+
+<p>
+Salah satu kisah paling terkenal terjadi ketika Yeremia dimasukkan ke
+dalam perigi berlumpur. Ia tidak dibunuh karena Ebed-Melekh, seorang
+Etiopia yang bekerja di istana, berani meminta izin raja untuk
+menyelamatkannya. Peristiwa ini menunjukkan bahwa sekalipun Yeremia
+menjadi nabi yang kesepian, Tuhan tetap memelihara hidupnya melalui
+orang lain.
+</p>
+
+<p>
+Pada masa pemerintahan Zedekia, Yerusalem akhirnya jatuh kepada Babel.
+Namun bahkan ketika berbicara mengenai kehancuran, Yeremia menyampaikan
+pengharapan. Ia membeli sebidang tanah sebagai tanda bahwa suatu hari
+kehidupan akan kembali normal. Ia juga menyampaikan janji tentang
+“perjanjian baru”, ketika hukum Tuhan tidak hanya tertulis pada loh batu,
+tetapi ditaruh dalam hati umat.
+</p>
+`,
+
+                characters: [{
+                    name: "Yeremia",
+                    role: "Nabi Tuhan",
+                    detail: "Nabi yang diutus kepada Yehuda menjelang kehancuran Yerusalem.",
+                    ref: "Yer 1:1–10"
+                }, {
+                    name: "Barukh",
+                    role: "Juru tulis Yeremia",
+                    detail: "Mencatat pesan-pesan Yeremia dan membacakannya kepada umat.",
+                    ref: "Yer 36:4–8"
+                }, {
+                    name: "Zedekia",
+                    role: "Raja Yehuda",
+                    detail: "Raja terakhir Yehuda sebelum Yerusalem jatuh kepada Babel.",
+                    ref: "Yer 37–39"
+                }, {
+                    name: "Ebed-Melekh",
+                    role: "Pejabat Etiopia",
+                    detail: "Menyelamatkan Yeremia dari perigi ketika nabi itu hampir mati.",
+                    ref: "Yer 38:7–13"
+                }, {
+                    name: "Nebukadnezar",
+                    role: "Raja Babel",
+                    detail: "Memimpin Babel dalam penaklukan Yerusalem.",
+                    ref: "Yer 39:1–3"
+                }],
+
+                prophecy: [{
+                    title: "Perjanjian Baru",
+                    text: "Allah menjanjikan perjanjian baru yang menyentuh hati manusia.",
+                    ref: "Yeremia 31:31–34 → Ibrani 8:8–12"
+                }, {
+                    title: "Raja dari keturunan Daud",
+                    text: "Allah menjanjikan tunas Daud yang menjalankan keadilan.",
+                    ref: "Yeremia 23:5–6 → Lukas 1:32–33"
+                }, {
+                    title: "Babel",
+                    text: "Babel akan menerima penghakiman Allah setelah dipakai sebagai alat penghukuman.",
+                    ref: "Yeremia 50–51 → Wahyu 18"
+                }],
+
+                pb: [
+                    "Yeremia 31:31–34 → Ibrani 8:8–12",
+                    "Yeremia 31:34 → Ibrani 10:16–17",
+                    "Yeremia 23:5–6 → Lukas 1:32–33",
+                    "Yeremia 7 → Matius 21:13"
+                ],
+
+                verses: [{
+                    ref: "Yeremia 1:5",
+                    text: "Allah mengenal dan menetapkan Yeremia sebelum ia lahir."
+                }, {
+                    ref: "Yeremia 17:7",
+                    text: "Berbahagialah orang yang mengandalkan Tuhan."
+                }, {
+                    ref: "Yeremia 31:33",
+                    text: "Tuhan berjanji menaruh hukum-Nya dalam hati umat."
+                }],
+
+                terms: ["Nabi", "Perjanjian Baru", "Babel", "Pertobatan", "Hati", "Yerusalem"]
+            },
+
+            /* ================= RATAPAN ================= */
+
+            {
+                id: "ratapan",
+                no: 25,
+                name: "Ratapan",
+                period: "Sesudah jatuhnya Yerusalem",
+                setting: "Yerusalem yang telah dihancurkan",
+                theme: "Duka, pengakuan dosa, keadilan Allah dan pengharapan",
+
+                story: `
+
+<p>
+Ratapan merupakan kumpulan puisi yang lahir dari tragedi kehancuran
+Yerusalem. Kota yang sebelumnya menjadi pusat kehidupan bangsa kini
+hancur. Bait Allah telah dirusak, banyak penduduk terbunuh atau dibawa
+ke pembuangan, dan mereka yang tersisa menghadapi penderitaan.
+</p>
+
+<p>
+Kehancuran tersebut tidak digambarkan secara dingin. Yerusalem
+dipersonifikasikan seperti seorang perempuan yang duduk sendirian,
+menangis karena kehilangan anak-anaknya. Puisi-puisi ini memberikan
+ruang bagi umat untuk membawa kesedihan mereka langsung kepada Tuhan.
+</p>
+
+<p>
+Namun Ratapan tidak sekadar mengatakan, “kami menderita.” Kitab ini
+juga mengakui bahwa dosa dan pemberontakan bangsa mempunyai konsekuensi.
+Allah yang kudus tidak mengabaikan ketidaksetiaan umat. Tetapi di tengah
+pengakuan tersebut, muncul salah satu pengakuan iman paling kuat:
+kasih setia Tuhan tidak berakhir.
+</p>
+
+<p>
+Pasal ketiga membawa pembaca dari kegelapan menuju pengharapan.
+Penulis mengingat bahwa kemurahan Tuhan selalu baru setiap pagi.
+Harapan tersebut bukan karena keadaan sudah membaik, melainkan karena
+karakter Tuhan tetap setia.
+</p>
+`,
+
+                characters: [{
+                    name: "Penyair/umat yang meratap",
+                    role: "Suara komunitas",
+                    detail: "Mengungkapkan kesedihan, pengakuan dosa dan pengharapan umat setelah kehancuran Yerusalem.",
+                    ref: "Rat 1–5"
+                }, {
+                    name: "Yerusalem",
+                    role: "Personifikasi kota",
+                    detail: "Digambarkan seperti seorang perempuan yang kehilangan anak-anaknya dan ditinggalkan.",
+                    ref: "Rat 1:1–5"
+                }, {
+                    name: "Tuhan",
+                    role: "Hakim sekaligus sumber pengharapan",
+                    detail: "Tuhan mengizinkan penghukuman tetapi tetap menjadi dasar pengharapan umat.",
+                    ref: "Rat 3:22–24"
+                }],
+
+                prophecy: [{
+                    title: "Pengharapan di tengah kehancuran",
+                    text: "Ratapan menunjukkan bahwa hukuman tidak berarti kasih setia Tuhan berakhir.",
+                    ref: "Ratapan 3:22–23"
+                }],
+
+                pb: [
+                    "Ratapan 3:22–23 → dasar tema kesetiaan Allah dalam Perjanjian Baru",
+                    "Ratapan 3:31–33 → Roma 8:38–39"
+                ],
+
+                verses: [{
+                    ref: "Ratapan 3:22–23",
+                    text: "Kasih setia Tuhan tidak berkesudahan; rahmat-Nya selalu baru tiap pagi."
+                }, {
+                    ref: "Ratapan 3:24",
+                    text: "Tuhan menjadi bagian dan pengharapan umat."
+                }],
+
+                terms: ["Ratapan", "Yerusalem", "Pembuangan", "Penghukuman", "Pengharapan"]
+            },
+
+            /* ================= YEHEZKIEL ================= */
+
+            {
+                id: "yehezkiel",
+                no: 26,
+                name: "Yehezkiel",
+                period: "± 593–571 SM",
+                setting: "Babel dan komunitas Yehuda dalam pembuangan",
+                theme: "Kemuliaan Allah, tanggung jawab pribadi, hati baru dan pemulihan",
+
+                story: `
+
+<p>
+Yehezkiel adalah seorang imam yang ikut berada dalam pembuangan di Babel.
+Di sana ia menerima panggilan Tuhan melalui penglihatan yang luar biasa.
+Ia melihat kemuliaan Tuhan dan makhluk-makhluk surgawi yang bergerak
+dalam penglihatan penuh simbol.
+</p>
+
+<p>
+Pesan penting dari penglihatan itu adalah bahwa Tuhan tidak terkurung
+di Yerusalem. Bangsa Yehuda mungkin kehilangan tanah dan Bait Allah,
+tetapi Allah sendiri tetap berdaulat bahkan di negeri pembuangan.
+Kemuliaan Tuhan menyertai umat-Nya dan sekaligus menegur mereka.
+</p>
+
+<p>
+Yehezkiel menggunakan banyak tindakan simbolis untuk menyampaikan pesan.
+Ia menggambarkan pengepungan Yerusalem, mencukur rambut sebagai tanda
+penghakiman, dan berbicara tentang tanggung jawab setiap orang.
+Ia juga menegur para pemimpin yang digambarkan sebagai gembala yang
+memanfaatkan domba, bukan melindungi mereka.
+</p>
+
+<p>
+Tetapi bagian akhir kitab berubah menjadi sangat penuh harapan.
+Allah berjanji memberikan hati yang baru dan roh yang baru. Dalam
+penglihatan terkenal tentang lembah tulang-tulang kering, tulang-tulang
+yang berserakan kembali menjadi tubuh yang hidup. Gambaran itu menjadi
+simbol pemulihan Israel.
+</p>
+
+<p>
+Yehezkiel kemudian melihat Bait Allah dan sungai yang mengalir dari
+tempat kudus. Air itu membawa kehidupan ke tempat-tempat yang sebelumnya
+mati. Dengan demikian kitab berakhir bukan pada kematian, melainkan
+pada pemulihan dan kehadiran Tuhan.
+`,
+
+                characters: [{
+                    name: "Yehezkiel",
+                    role: "Imam dan nabi",
+                    detail: "Dipanggil Tuhan di tengah pembuangan dan menyampaikan pesan melalui penglihatan serta tindakan simbolis.",
+                    ref: "Yeh 1:1–3; 2:1–3"
+                }, {
+                    name: "Para tua-tua Yehuda",
+                    role: "Pemimpin komunitas",
+                    detail: "Datang kepada Yehezkiel untuk mencari pesan Tuhan tetapi juga ditegur karena berhala dalam hati.",
+                    ref: "Yeh 8:1; 14:1–5"
+                }, {
+                    name: "Raja Zedekia",
+                    role: "Raja Yehuda",
+                    detail: "Kegagalannya menjadi bagian dari konteks politik yang berakhir dengan kehancuran Yerusalem.",
+                    ref: "Yeh 12:10–13"
+                }, {
+                    name: "Gembala Israel",
+                    role: "Metafora pemimpin",
+                    detail: "Para pemimpin ditegur karena mencari keuntungan sendiri dan gagal menggembalakan umat.",
+                    ref: "Yeh 34:1–10"
+                }],
+
+                prophecy: [{
+                    title: "Hati Baru",
+                    text: "Allah menjanjikan hati baru dan roh baru kepada umat-Nya.",
+                    ref: "Yehezkiel 36:25–27 → Yohanes 3:5–8"
+                }, {
+                    title: "Tulang Kering",
+                    text: "Lembah tulang kering menjadi gambaran dramatis tentang pemulihan umat.",
+                    ref: "Yehezkiel 37 → Efesus 2:1–6 sebagai tema kehidupan baru"
+                }, {
+                    title: "Gembala yang satu",
+                    text: "Allah menjanjikan satu gembala dari keturunan Daud.",
+                    ref: "Yehezkiel 34:23–24 → Yohanes 10"
+                }],
+
+                pb: [
+                    "Yehezkiel 34 → Yohanes 10",
+                    "Yehezkiel 36:25–27 → Titus 3:5",
+                    "Yehezkiel 37 → Yohanes 11",
+                    "Yehezkiel 47 → Wahyu 22"
+                ],
+
+                verses: [{
+                    ref: "Yehezkiel 36:26",
+                    text: "Tuhan berjanji memberikan hati yang baru."
+                }, {
+                    ref: "Yehezkiel 37:5",
+                    text: "Tuhan dapat memberikan kehidupan kepada tulang-tulang yang kering."
+                }, {
+                    ref: "Yehezkiel 34:11",
+                    text: "Tuhan sendiri mencari dan menyelamatkan domba-domba-Nya."
+                }],
+
+                terms: ["Kemuliaan Tuhan", "Tulang Kering", "Hati Baru", "Gembala", "Bait Allah"]
+            },
+
+            /* ================= DANIEL ================= */
+
+            {
+                id: "daniel",
+                no: 27,
+                name: "Daniel",
+                period: "± abad ke-6 SM",
+                setting: "Babel dan kerajaan-kerajaan sesudahnya",
+                theme: "Kesetiaan kepada Allah di tengah kekuasaan dunia",
+
+                story: `
+
+<p>
+Daniel hidup pada masa bangsa Yehuda mengalami pembuangan ke Babel.
+Ia dan beberapa pemuda lain dibawa ke lingkungan istana Nebukadnezar.
+Mereka diberi pendidikan dan lingkungan baru yang berusaha membentuk
+identitas mereka.
+</p>
+
+<p>
+Daniel memilih untuk tetap setia kepada Tuhan. Ketika makanan dan
+kebiasaan istana bertentangan dengan keyakinannya, ia meminta agar
+diuji dengan cara yang sederhana. Tuhan memberikan kepadanya
+pengertian dan hikmat.
+</p>
+
+<p>
+Kemudian Daniel menghadapi persoalan besar ketika Nebukadnezar
+mendapat mimpi yang tidak dapat dijelaskan oleh para ahli istana.
+Daniel berdoa bersama teman-temannya. Tuhan kemudian menyatakan
+rahasia tersebut. Daniel menegaskan bahwa hikmat itu bukan berasal
+darinya sendiri, tetapi dari Allah.
+</p>
+
+<p>
+Kisah teman-teman Daniel—Hananya, Misael dan Azarya—juga menunjukkan
+kesetiaan yang sama. Mereka menolak menyembah patung emas Nebukadnezar
+meskipun ancamannya adalah hukuman mati. Mereka percaya Tuhan sanggup
+menyelamatkan, tetapi sekalipun Tuhan tidak menyelamatkan mereka,
+mereka tetap tidak akan menyembah patung itu.
+</p>
+
+<p>
+Daniel sendiri kemudian mengalami ancaman ketika ia tetap berdoa kepada
+Tuhan meskipun ada larangan dari raja Darius. Ia dimasukkan ke gua singa,
+tetapi Tuhan menutup mulut singa. Setelah kisah-kisah kerajaan tersebut,
+Daniel menerima penglihatan tentang kerajaan-kerajaan dunia dan
+pemerintahan kekal Allah.
+`,
+
+                characters: [{
+                    name: "Daniel",
+                    role: "Nabi dan pejabat kerajaan",
+                    detail: "Orang Yehuda dalam pembuangan yang tetap setia kepada Allah sambil melayani dalam pemerintahan asing.",
+                    ref: "Dan 1:6–7"
+                }, {
+                    name: "Hananya, Misael, Azarya",
+                    role: "Sahabat Daniel",
+                    detail: "Menolak menyembah patung emas dan tetap mempercayai Allah.",
+                    ref: "Dan 3"
+                }, {
+                    name: "Nebukadnezar",
+                    role: "Raja Babel",
+                    detail: "Raja besar Babel yang mengalami berbagai peristiwa yang menunjukkan kedaulatan Allah.",
+                    ref: "Dan 1–4"
+                }, {
+                    name: "Belsyazar",
+                    role: "Raja Babel",
+                    detail: "Mengadakan pesta besar dan melihat tulisan misterius di dinding.",
+                    ref: "Dan 5"
+                }, {
+                    name: "Darius",
+                    role: "Raja Media",
+                    detail: "Raja yang mengeluarkan larangan berdoa tetapi kemudian menyaksikan kuasa Allah melalui Daniel.",
+                    ref: "Dan 6"
+                }],
+
+                prophecy: [{
+                    title: "Anak Manusia",
+                    text: "Daniel melihat sosok seperti Anak Manusia menerima kekuasaan dan kerajaan yang kekal.",
+                    ref: "Daniel 7:13–14 → Matius 26:64"
+                }, {
+                    title: "Kerajaan Allah",
+                    text: "Kerajaan-kerajaan manusia akan berlalu, tetapi pemerintahan Allah bersifat kekal.",
+                    ref: "Daniel 2:44 → Lukas 1:33"
+                }, {
+                    title: "Mesias",
+                    text: "Daniel 9 memuat nubuat tentang masa menuju pengurapan dan karya penebusan.",
+                    ref: "Daniel 9:24–27"
+                }],
+
+                pb: [
+                    "Daniel 7:13–14 → Matius 26:64",
+                    "Daniel 7:13–14 → Markus 14:62",
+                    "Daniel 7 → Wahyu 1",
+                    "Daniel 12 → Yohanes 5:28–29"
+                ],
+
+                verses: [{
+                    ref: "Daniel 2:20",
+                    text: "Hikmat dan kekuatan adalah milik Allah."
+                }, {
+                    ref: "Daniel 3:17–18",
+                    text: "Ketiga sahabat Daniel tetap setia kepada Tuhan sekalipun hasil akhirnya tidak sesuai harapan mereka."
+                }, {
+                    ref: "Daniel 6:11",
+                    text: "Daniel tetap berdoa kepada Allah seperti yang biasa dilakukannya."
+                }],
+
+                terms: ["Pembuangan", "Kerajaan Allah", "Anak Manusia", "Gua Singa", "Babel"]
+            },
+
+            /* ================= HOSEA ================= */
+
+            {
+                id: "hosea",
+                no: 28,
+                name: "Hosea",
+                period: "± 750–725 SM",
+                setting: "Kerajaan Israel Utara",
+                theme: "Kasih setia Allah terhadap umat yang tidak setia",
+
+                story: `
+
+<p>
+Hosea melayani ketika kerajaan Israel Utara sedang mengalami kemerosotan
+rohani. Bangsa itu menyembah Baal dan mencari keamanan melalui politik
+serta kekuatan bangsa lain. Hosea menyampaikan pesan Tuhan dengan cara
+yang sangat pribadi.
+</p>
+
+<p>
+Tuhan memerintahkan Hosea mengambil Gomer sebagai istrinya. Kehidupan
+rumah tangga Hosea menjadi gambaran hubungan Allah dengan Israel.
+Ketidaksetiaan Gomer menggambarkan ketidaksetiaan Israel kepada Allah.
+Anak-anak Hosea diberi nama yang menjadi tanda penghakiman Tuhan:
+Jizreel, Lo-Ruhama dan Lo-Ami.
+</p>
+
+<p>
+Tetapi justru melalui kisah tersebut terlihat kedalaman kasih Tuhan.
+Allah tidak menyangkal dosa Israel, tetapi Ia juga tidak berhenti
+mengasihi. Tuhan menggambarkan diri-Nya seperti seorang suami yang
+masih memanggil istrinya pulang.
+</p>
+
+<p>
+Hosea juga menggunakan gambaran seorang ayah yang mengasihi anaknya.
+Israel telah memberontak, tetapi Allah tetap mengingat hubungan
+perjanjian-Nya. Penghakiman diperlukan karena dosa serius, tetapi tujuan
+akhirnya adalah pemulihan.
+`,
+
+                characters: [{
+                    name: "Hosea",
+                    role: "Nabi",
+                    detail: "Hidup dan keluarganya menjadi gambaran simbolis hubungan Allah dengan Israel.",
+                    ref: "Hos 1:1–3"
+                }, {
+                    name: "Gomer",
+                    role: "Istri Hosea",
+                    detail: "Kehidupannya menjadi simbol ketidaksetiaan Israel kepada Allah.",
+                    ref: "Hos 1–3"
+                }, {
+                    name: "Jizreel",
+                    role: "Anak Hosea",
+                    detail: "Namanya berkaitan dengan tempat dan menjadi tanda pesan penghakiman.",
+                    ref: "Hos 1:4–5"
+                }, {
+                    name: "Lo-Ruhama",
+                    role: "Anak Hosea",
+                    detail: "Namanya berarti “tidak dikasihani”, menjadi simbol kondisi Israel.",
+                    ref: "Hos 1:6"
+                }, {
+                    name: "Lo-Ami",
+                    role: "Anak Hosea",
+                    detail: "Namanya berarti “bukan umat-Ku”, tetapi kitab kemudian bergerak menuju pemulihan hubungan.",
+                    ref: "Hos 1:9–10"
+                }],
+
+                prophecy: [{
+                    title: "Dipanggil keluar dari Mesir",
+                    text: "Pengalaman Israel dipakai kembali dalam kisah Yesus.",
+                    ref: "Hosea 11:1 → Matius 2:15"
+                }, {
+                    title: "Umat yang dipulihkan",
+                    text: "Mereka yang dahulu disebut bukan umat akan kembali disebut anak-anak Allah.",
+                    ref: "Hosea 1:10 → Roma 9:25–26"
+                }],
+
+                pb: [
+                    "Hosea 11:1 → Matius 2:15",
+                    "Hosea 1:10 → Roma 9:25–26",
+                    "Hosea 6:6 → Matius 9:13",
+                    "Hosea 6:6 → Matius 12:7"
+                ],
+
+                verses: [{
+                    ref: "Hosea 6:6",
+                    text: "Tuhan menghendaki kasih setia dan pengenalan akan Allah, bukan sekadar ritual."
+                }, {
+                    ref: "Hosea 11:1",
+                    text: "Allah menggambarkan kasih-Nya seperti kasih seorang ayah kepada anak."
+                }],
+
+                terms: ["Baal", "Perjanjian", "Kasih Setia", "Israel", "Pemulihan"]
+            },
+
+            /* ================= YOEL ================= */
+
+            {
+                id: "yoel",
+                no: 29,
+                name: "Yoel",
+                period: "Tanggal tidak pasti",
+                setting: "Yehuda",
+                theme: "Hari Tuhan, pertobatan dan pencurahan Roh",
+
+                story: `
+
+<p>
+Kitab Yoel dimulai dengan sebuah bencana besar berupa serbuan belalang.
+Tanaman hancur dan kehidupan masyarakat terganggu. Yoel tidak hanya
+melihat peristiwa tersebut sebagai masalah pertanian, tetapi menggunakannya
+sebagai panggilan untuk menyadari bahwa manusia harus kembali kepada Tuhan.
+</p>
+
+<p>
+Para imam dipanggil untuk meniup sangkakala dan mengumpulkan umat.
+Tua-tua, anak-anak dan seluruh komunitas diajak datang kepada Tuhan.
+Pesannya bukan sekadar “takutlah terhadap hukuman”, melainkan “berbaliklah
+kepada Tuhan dengan segenap hati.”
+</p>
+
+<p>
+Setelah panggilan pertobatan, Yoel menyampaikan janji pemulihan.
+Tuhan akan memulihkan hasil tanah dan memberikan berkat. Lebih jauh lagi,
+Tuhan berjanji mencurahkan Roh-Nya atas semua manusia—anak laki-laki,
+anak perempuan, orang tua dan hamba-hamba.
+</p>
+
+<p>
+Nubuat ini kemudian menjadi sangat penting dalam Kisah Para Rasul.
+Pada hari Pentakosta, Petrus menjelaskan bahwa peristiwa pencurahan Roh
+Kudus merupakan penggenapan perkataan nabi Yoel.
+`,
+
+                characters: [{
+                    name: "Yoel",
+                    role: "Nabi",
+                    detail: "Menyampaikan panggilan pertobatan dan janji pencurahan Roh Tuhan.",
+                    ref: "Yl 1:1"
+                }, {
+                    name: "Para imam",
+                    role: "Pemimpin ibadah",
+                    detail: "Dipanggil untuk mengumpulkan umat dan memimpin pertobatan nasional.",
+                    ref: "Yl 1:13–14"
+                }, {
+                    name: "Para tua-tua",
+                    role: "Pemimpin umat",
+                    detail: "Bersama seluruh bangsa dipanggil untuk merespons krisis dengan kembali kepada Tuhan.",
+                    ref: "Yl 1:14"
+                }],
+
+                prophecy: [{
+                    title: "Pencurahan Roh",
+                    text: "Roh Tuhan akan dicurahkan atas manusia tanpa dibatasi usia atau status.",
+                    ref: "Yoel 2:28–29 → Kisah 2:16–21"
+                }, {
+                    title: "Hari Tuhan",
+                    text: "Hari Tuhan menjadi tema penghakiman sekaligus keselamatan bagi mereka yang berseru kepada Tuhan.",
+                    ref: "Yoel 2:30–32 → Roma 10:13"
+                }],
+
+                pb: [
+                    "Yoel 2:28–32 → Kisah 2:16–21",
+                    "Yoel 2:32 → Roma 10:13"
+                ],
+
+                verses: [{
+                    ref: "Yoel 2:12",
+                    text: "“Berbaliklah kepada-Ku dengan segenap hatimu.”"
+                }, {
+                    ref: "Yoel 2:13",
+                    text: "Tuhan penuh kasih karunia dan belas kasihan."
+                }, {
+                    ref: "Yoel 2:28",
+                    text: "Tuhan berjanji mencurahkan Roh-Nya atas semua manusia."
+                }],
+
+                terms: ["Hari Tuhan", "Pertobatan", "Roh Kudus", "Pentakosta", "Belalang"]
+            },
+
+            /* ================= AMOS ================= */
+
+            {
+                id: "amos",
+                no: 30,
+                name: "Amos",
+                period: "± 760 SM",
+                setting: "Kerajaan Israel Utara",
+                theme: "Keadilan, kebenaran dan ibadah yang tidak munafik",
+
+                story: `
+
+<p>
+Amos bukan berasal dari keluarga nabi profesional. Ia adalah seorang
+peternak dan pengusaha hasil pohon ara dari Tekoa, wilayah Yehuda.
+Namun Tuhan memanggilnya untuk pergi ke Israel Utara.
+</p>
+
+<p>
+Israel pada masa itu mengalami kemakmuran ekonomi. Dari luar keadaan
+tampak baik. Tetapi Amos melihat sesuatu yang jauh lebih serius:
+orang kaya menindas orang miskin, hukum dapat dibeli, perdagangan tidak
+jujur, dan ibadah tetap berjalan seolah-olah Tuhan tidak melihat
+ketidakadilan.
+</p>
+
+<p>
+Amos menyampaikan serangkaian penglihatan: belalang, api, tali sipat,
+bakul berisi buah-buahan musim kemarau, dan Tuhan berdiri di dekat mezbah.
+Semua gambaran tersebut menunjukkan bahwa kesabaran terhadap dosa
+tidak boleh disalahartikan sebagai persetujuan Tuhan.
+</p>
+
+<p>
+Amazia, imam di Betel, kemudian mengusir Amos. Ia menganggap Amos
+sebagai ancaman politik. Namun Amos menegaskan bahwa ia bukan nabi
+profesional yang mencari keuntungan. Ia berbicara karena Tuhan
+memanggilnya.
+</p>
+
+<p>
+Meski penuh teguran, kitab ini berakhir dengan pengharapan. Tuhan
+menjanjikan pemulihan “pondok Daud yang telah roboh”, yang kemudian
+dikutip dalam sidang para rasul dalam Kisah Para Rasul 15.
+`,
+
+                characters: [{
+                    name: "Amos",
+                    role: "Peternak dan nabi",
+                    detail: "Dipanggil Tuhan dari Tekoa untuk menyampaikan teguran keras kepada Israel Utara.",
+                    ref: "Am 1:1; 7:14–15"
+                }, {
+                    name: "Amazia",
+                    role: "Imam Betel",
+                    detail: "Menolak pesan Amos dan meminta agar ia pergi dari Israel.",
+                    ref: "Am 7:10–17"
+                }, {
+                    name: "Uzia",
+                    role: "Raja Yehuda",
+                    detail: "Memerintah pada zaman Amos.",
+                    ref: "Am 1:1"
+                }, {
+                    name: "Yerobeam II",
+                    role: "Raja Israel",
+                    detail: "Memerintah ketika Israel mengalami kemakmuran tetapi juga ketidakadilan sosial.",
+                    ref: "Am 1:1"
+                }],
+
+                prophecy: [{
+                    title: "Pondok Daud",
+                    text: "Tuhan menjanjikan pemulihan kerajaan Daud.",
+                    ref: "Amos 9:11–12 → Kisah 15:15–18"
+                }, {
+                    title: "Keadilan",
+                    text: "Tuhan menolak ibadah yang tidak disertai keadilan.",
+                    ref: "Amos 5:21–24"
+                }],
+
+                pb: [
+                    "Amos 9:11–12 → Kisah 15:15–18",
+                    "Amos 5:24 → tema keadilan dalam pelayanan Yesus"
+                ],
+
+                verses: [{
+                    ref: "Amos 5:24",
+                    text: "Keadilan diharapkan mengalir seperti sungai."
+                }, {
+                    ref: "Amos 5:14",
+                    text: "Carilah yang baik dan hiduplah."
+                }],
+
+                terms: ["Keadilan", "Betel", "Kemunafikan", "Pondok Daud", "Tali Sipat"]
+            },
+
+            /* ================= OBAJA ================= */
+
+            {
+                id: "obaja",
+                no: 31,
+                name: "Obaja",
+                period: "Tanggal tidak pasti",
+                setting: "Edom dan Yehuda",
+                theme: "Kesombongan bangsa, keadilan Allah dan Hari Tuhan",
+
+                story: `
+
+<p>
+Obaja adalah kitab terpendek dalam Perjanjian Lama. Fokus utamanya adalah
+Edom, bangsa yang memiliki hubungan keluarga dengan Israel melalui Esau
+dan Yakub.
+</p>
+
+<p>
+Masalah Edom bukan hanya permusuhan lama. Ketika Yerusalem mengalami
+kehancuran, Edom bersukacita atas penderitaan saudaranya. Mereka berdiri
+jauh, bahkan mengambil keuntungan dari kehancuran Yehuda.
+</p>
+
+<p>
+Obaja menyatakan bahwa Tuhan melihat tindakan tersebut. Kesombongan
+Edom akan dihancurkan. Prinsip yang muncul sangat jelas: apa yang
+dilakukan manusia kepada orang lain akan dipertanggungjawabkan di hadapan
+Tuhan.
+</p>
+
+<p>
+Pada akhirnya kitab mengarahkan pembaca kepada “Hari Tuhan”, ketika
+kerajaan-kerajaan manusia akan berhadapan dengan pemerintahan Tuhan.
+`,
+
+                characters: [{
+                    name: "Obaja",
+                    role: "Nabi",
+                    detail: "Menyampaikan penghakiman Tuhan terhadap Edom dan pengharapan bagi umat Tuhan.",
+                    ref: "Ob 1"
+                }, {
+                    name: "Edom",
+                    role: "Bangsa keturunan Esau",
+                    detail: "Ditegur karena kesombongan dan sikapnya terhadap Yehuda saat Yerusalem jatuh.",
+                    ref: "Ob 3–14"
+                }, {
+                    name: "Esau",
+                    role: "Leluhur Edom",
+                    detail: "Saudara Yakub yang menjadi leluhur bangsa Edom.",
+                    ref: "Kej 36:1"
+                }],
+
+                prophecy: [{
+                    title: "Hari Tuhan",
+                    text: "Hari Tuhan akan membawa penghakiman atas bangsa-bangsa dan pemulihan umat-Nya.",
+                    ref: "Obaja 15–21"
+                }],
+
+                pb: [
+                    "Obaja 15 → Roma 2:6",
+                    "Obaja 21 → Wahyu 11:15"
+                ],
+
+                verses: [{
+                    ref: "Obaja 15",
+                    text: "Hari Tuhan sudah dekat terhadap segala bangsa."
+                }],
+
+                terms: ["Edom", "Esau", "Yakub", "Kesombongan", "Hari Tuhan"]
+            },
+
+            /* ================= YUNUS ================= */
+
+            {
+                id: "yunus",
+                no: 32,
+                name: "Yunus",
+                period: "± abad ke-8 SM",
+                setting: "Israel dan Niniwe",
+                theme: "Belas kasihan Allah melampaui batas manusia",
+
+                story: `
+
+<p>
+Tuhan mengutus Yunus ke Niniwe, ibu kota kerajaan Asyur. Niniwe dikenal
+sebagai kota besar dan menjadi simbol kekuatan bangsa yang mengancam
+Israel.
+</p>
+
+<p>
+Namun Yunus tidak mau pergi. Ia justru berlayar menuju Tarsis. Di tengah
+perjalanan Tuhan mengirim badai besar. Para pelaut ketakutan dan
+akhirnya mengetahui bahwa badai tersebut berkaitan dengan ketidaktaatan
+Yunus.
+</p>
+
+<p>
+Setelah Yunus berada di laut, Tuhan menyediakan seekor ikan besar yang
+menelan Yunus. Di dalam keadaan tersebut Yunus berdoa. Tuhan kemudian
+membuat ikan itu memuntahkan Yunus ke darat.
+</p>
+
+<p>
+Untuk kedua kalinya Tuhan memerintahkan Yunus pergi ke Niniwe. Kali ini
+Yunus taat. Penduduk Niniwe mendengar pemberitaan tentang penghakiman
+dan mereka bertobat. Bahkan raja Niniwe turun dari takhtanya,
+merendahkan diri dan memerintahkan seluruh rakyat untuk berbalik dari
+kejahatan.
+</p>
+
+<p>
+Yang mengejutkan adalah Yunus justru marah karena Tuhan mengampuni.
+Ia ingin melihat hukuman, sementara Tuhan menunjukkan belas kasihan.
+Melalui tanaman yang tumbuh lalu layu, Tuhan mengajar Yunus bahwa
+belas kasihan Allah lebih besar daripada kepentingan pribadi nabi.
+`,
+
+                characters: [{
+                    name: "Yunus",
+                    role: "Nabi Israel",
+                    detail: "Nabi yang dipanggil ke Niniwe tetapi awalnya melarikan diri karena tidak ingin kota itu menerima belas kasihan.",
+                    ref: "Yun 1:1–3; 4:1–3"
+                }, {
+                    name: "Para pelaut",
+                    role: "Orang asing",
+                    detail: "Takut kepada Tuhan setelah melihat kuasa-Nya atas laut.",
+                    ref: "Yun 1:4–16"
+                }, {
+                    name: "Raja Niniwe",
+                    role: "Pemimpin kota",
+                    detail: "Merespons pemberitaan Yunus dengan pertobatan dan mengajak rakyat merendahkan diri.",
+                    ref: "Yun 3:6–9"
+                }, {
+                    name: "Penduduk Niniwe",
+                    role: "Bangsa yang bertobat",
+                    detail: "Mendengar peringatan Yunus dan meninggalkan kejahatan.",
+                    ref: "Yun 3:5–10"
+                }],
+
+                prophecy: [{
+                    title: "Tanda Yunus",
+                    text: "Yesus menggunakan pengalaman Yunus sebagai tanda yang menunjuk kepada kematian dan kebangkitan-Nya.",
+                    ref: "Yunus 1:17 → Matius 12:39–41"
+                }],
+
+                pb: [
+                    "Yunus 1:17 → Matius 12:40",
+                    "Yunus 3 → Matius 12:41",
+                    "Yunus 4 → tema belas kasihan Allah"
+                ],
+
+                verses: [{
+                    ref: "Yunus 2:9",
+                    text: "Keselamatan adalah dari Tuhan."
+                }, {
+                    ref: "Yunus 4:2",
+                    text: "Yunus sendiri mengakui bahwa Tuhan pengasih, penyayang dan panjang sabar."
+                }],
+
+                terms: ["Niniwe", "Tarsis", "Belas Kasihan", "Pertobatan", "Tanda Yunus"]
+            },
+
+            /* ================= MIKHA ================= */
+
+            {
+                id: "mikha",
+                no: 33,
+                name: "Mikha",
+                period: "± 740–700 SM",
+                setting: "Yehuda dan Israel",
+                theme: "Keadilan, belas kasihan dan pengharapan Mesianik",
+
+                story: `
+
+<p>
+Mikha berasal dari Moresyet dan melayani pada zaman Yotam, Ahas dan
+Hizkia. Ia melihat bagaimana orang-orang kuat menggunakan kekuasaan
+untuk mengambil tanah dan menindas orang miskin.
+</p>
+
+<p>
+Mikha mengecam pemimpin, nabi palsu dan orang kaya yang menggunakan
+sistem sosial untuk keuntungan sendiri. Ia menunjukkan bahwa Tuhan
+melihat ketidakadilan yang mungkin tidak terlihat oleh manusia.
+</p>
+
+<p>
+Namun Mikha juga menyampaikan pengharapan. Setelah penghakiman, bangsa
+akan belajar berjalan dalam jalan Tuhan. Pedang tidak lagi menjadi
+pusat kehidupan mereka. Gambaran ini menunjuk kepada pemerintahan Allah
+yang membawa damai.
+</p>
+
+<p>
+Salah satu nubuat paling terkenal menyebut Betlehem Efrata sebagai
+tempat asal seorang penguasa yang akan menggembalakan Israel. Ketika
+orang-orang majus datang mencari Mesias, nubuat Mikha ini digunakan
+untuk menunjukkan tempat kelahiran Yesus.
+</p>
+
+<p>
+Mikha kemudian merangkum kehidupan yang Tuhan kehendaki: melakukan
+keadilan, mencintai kesetiaan, dan hidup dengan rendah hati di hadapan
+Allah.
+`,
+
+                characters: [{
+                    name: "Mikha",
+                    role: "Nabi",
+                    detail: "Menyampaikan kritik terhadap ketidakadilan dan janji tentang pemulihan.",
+                    ref: "Mi 1:1"
+                }, {
+                    name: "Yotam",
+                    role: "Raja Yehuda",
+                    detail: "Salah satu raja pada zaman pelayanan Mikha.",
+                    ref: "Mi 1:1"
+                }, {
+                    name: "Ahas",
+                    role: "Raja Yehuda",
+                    detail: "Memerintah dalam periode ketika Yehuda menghadapi tekanan politik dan rohani.",
+                    ref: "Mi 1:1"
+                }, {
+                    name: "Hizkia",
+                    role: "Raja Yehuda",
+                    detail: "Memerintah pada masa Mikha dan terkait dengan periode reformasi serta ancaman Asyur.",
+                    ref: "Mi 1:1; Yer 26:18–19"
+                }],
+
+                prophecy: [{
+                    title: "Betlehem",
+                    text: "Seorang penguasa akan muncul dari Betlehem Efrata.",
+                    ref: "Mikha 5:1 → Matius 2:5–6"
+                }, {
+                    title: "Raja Damai",
+                    text: "Bangsa-bangsa akan belajar jalan Tuhan dan peperangan akan dihentikan.",
+                    ref: "Mikha 4:1–4"
+                }],
+
+                pb: [
+                    "Mikha 5:1 → Matius 2:5–6",
+                    "Mikha 7:6 → Matius 10:35–36",
+                    "Mikha 5:3 → Wahyu 12"
+                ],
+
+                verses: [{
+                    ref: "Mikha 6:8",
+                    text: "Tuhan menghendaki keadilan, kasih setia dan kerendahan hati."
+                }, {
+                    ref: "Mikha 5:1",
+                    text: "Betlehem menjadi tempat yang disebut dalam nubuat tentang penguasa Israel."
+                }],
+
+                terms: ["Betlehem", "Keadilan", "Mikha", "Mesias", "Kerendahan Hati"]
+            },
+
+            /* ================= NAHUM ================= */
+
+            {
+                id: "nahum",
+                no: 34,
+                name: "Nahum",
+                period: "± abad ke-7 SM",
+                setting: "Niniwe dan kerajaan Asyur",
+                theme: "Keadilan Allah terhadap penindasan",
+
+                story: `
+
+<p>
+Nahum membawa berita yang sangat berbeda dari Yunus. Yunus melihat
+Niniwe bertobat dan menerima belas kasihan Tuhan. Beberapa waktu
+kemudian, kekuatan Asyur kembali menjadi brutal dan menindas bangsa lain.
+Niniwe kembali menjadi pusat kekerasan.
+</p>
+
+<p>
+Nahum menyatakan bahwa Tuhan tidak mengabaikan kejahatan. Niniwe,
+yang tampak tidak terkalahkan, akan jatuh. Gambaran dalam kitab
+menggunakan bahasa puitis untuk menggambarkan pengepungan, kehancuran
+dan berakhirnya kekuasaan Asyur.
+</p>
+
+<p>
+Bagi bangsa-bangsa yang tertindas, pesan Nahum menjadi kabar penghiburan:
+kekuatan jahat tidak akan berlangsung selamanya. Tuhan tetap menjadi
+hakim atas bangsa-bangsa.
+`,
+
+                characters: [{
+                    name: "Nahum",
+                    role: "Nabi",
+                    detail: "Menyampaikan nubuat tentang jatuhnya Niniwe.",
+                    ref: "Nah 1:1"
+                }, {
+                    name: "Niniwe",
+                    role: "Ibu kota Asyur",
+                    detail: "Menjadi simbol kekuatan imperium Asyur yang akhirnya dihukum.",
+                    ref: "Nah 1–3"
+                }, {
+                    name: "Asyur",
+                    role: "Kekaisaran",
+                    detail: "Kekuatan besar yang dikenal melalui ekspansi dan penindasan.",
+                    ref: "Nah 2–3"
+                }],
+
+                prophecy: [{
+                    title: "Jatuhnya Niniwe",
+                    text: "Niniwe akan dihancurkan dan kekuasaan Asyur akan berakhir.",
+                    ref: "Nahum 2–3"
+                }],
+
+                pb: [
+                    "Nahum 1:7 → Roma 8:31–39 sebagai tema perlindungan Tuhan",
+                    "Nahum 1–3 → tema penghakiman Allah dalam Wahyu"
+                ],
+
+                verses: [{
+                    ref: "Nahum 1:7",
+                    text: "Tuhan adalah tempat perlindungan pada waktu kesusahan."
+                }],
+
+                terms: ["Niniwe", "Asyur", "Penghakiman", "Keadilan", "Penghiburan"]
+            },
+
+            /* ================= HABAKUK ================= */
+
+            {
+                id: "habakuk",
+                no: 35,
+                name: "Habakuk",
+                period: "± akhir abad ke-7 SM",
+                setting: "Yehuda menjelang dominasi Babel",
+                theme: "Iman ketika keadaan tidak masuk akal",
+
+                story: `
+
+<p>
+Habakuk berbeda dari banyak nabi lain karena ia lebih banyak berbicara
+kepada Tuhan mengenai pertanyaannya sendiri. Ia melihat kekerasan,
+ketidakadilan dan pelanggaran hukum di Yehuda. Pertanyaannya sederhana
+tetapi berat: mengapa Tuhan seolah-olah diam?
+</p>
+
+<p>
+Jawaban Tuhan mengejutkan. Tuhan akan membangkitkan orang Kasdim,
+yaitu Babel, sebagai alat penghukuman. Habakuk kembali bertanya:
+bagaimana mungkin Tuhan menggunakan bangsa yang bahkan lebih jahat
+untuk menghukum Yehuda?
+</p>
+
+<p>
+Habakuk kemudian berdiri di tempat pengintaian dan menunggu jawaban.
+Tuhan menyuruhnya menuliskan penglihatan dengan jelas dan mengajarkan
+bahwa orang benar akan hidup oleh iman.
+</p>
+
+<p>
+Pada akhir kitab, Habakuk tidak lagi menuntut agar semua keadaan
+langsung berubah. Ia menyatakan bahwa sekalipun pohon ara tidak berbunga,
+hasil kebun gagal dan ternak tidak tersedia, ia tetap akan bersukacita
+di dalam Tuhan.
+</p>
+
+<p>
+Inilah perjalanan spiritual Habakuk: dari kebingungan, menuju dialog,
+kemudian kepada kepercayaan.
+`,
+
+                characters: [{
+                    name: "Habakuk",
+                    role: "Nabi",
+                    detail: "Mengajukan pertanyaan sulit kepada Tuhan tentang kejahatan dan keadilan.",
+                    ref: "Hab 1:1–4"
+                }, {
+                    name: "Tuhan",
+                    role: "Allah yang menjawab",
+                    detail: "Menjelaskan bahwa Ia tetap berdaulat atas bangsa-bangsa dan meminta umat hidup oleh iman.",
+                    ref: "Hab 1–3"
+                }, {
+                    name: "Orang Kasdim",
+                    role: "Babel",
+                    detail: "Bangsa yang dipakai Tuhan sebagai alat penghukuman tetapi juga akan menerima penghakiman.",
+                    ref: "Hab 1:6–11; 2:5–20"
+                }],
+
+                prophecy: [{
+                    title: "Orang benar hidup oleh iman",
+                    text: "Pernyataan Habakuk menjadi dasar penting bagi ajaran pembenaran oleh iman.",
+                    ref: "Habakuk 2:4 → Roma 1:17; Galatia 3:11; Ibrani 10:38"
+                }],
+
+                pb: [
+                    "Habakuk 2:4 → Roma 1:17",
+                    "Habakuk 2:4 → Galatia 3:11",
+                    "Habakuk 2:4 → Ibrani 10:38"
+                ],
+
+                verses: [{
+                    ref: "Habakuk 2:4",
+                    text: "Orang yang benar akan hidup oleh percayanya."
+                }, {
+                    ref: "Habakuk 3:17–18",
+                    text: "Habakuk memilih tetap bersukacita dalam Tuhan sekalipun keadaan tidak baik."
+                }],
+
+                terms: ["Iman", "Babel", "Orang Benar", "Pertanyaan", "Pengharapan"]
+            },
+
+            /* ================= ZEFANYA ================= */
+
+            {
+                id: "zefanya",
+                no: 36,
+                name: "Zefanya",
+                period: "± zaman Raja Yosia",
+                setting: "Yehuda",
+                theme: "Hari Tuhan, pertobatan dan sisa umat yang rendah hati",
+
+                story: `
+
+<p>
+Zefanya melayani pada zaman Raja Yosia. Yehuda mengalami kemerosotan
+rohani, tetapi kemudian muncul reformasi. Zefanya menyerukan agar umat
+tidak hanya melakukan perubahan lahiriah, melainkan benar-benar mencari
+Tuhan.
+</p>
+
+<p>
+Tema utama kitab adalah “Hari Tuhan”. Hari itu digambarkan sebagai
+waktu penghakiman atas dosa dan kesombongan. Tidak ada status sosial
+yang dapat menyelamatkan seseorang dari keadilan Tuhan.
+</p>
+
+<p>
+Tetapi setelah penghakiman, Zefanya memberikan gambaran tentang “sisa”
+umat yang rendah hati. Mereka tidak mengandalkan kesombongan, tetapi
+berlindung kepada Tuhan.
+</p>
+
+<p>
+Puncaknya adalah gambaran Allah yang bersukacita atas umat-Nya.
+Tuhan bukan hanya hakim; Ia juga penyelamat yang hadir di tengah
+umat dan bersukacita atas mereka.
+`,
+
+                characters: [{
+                    name: "Zefanya",
+                    role: "Nabi",
+                    detail: "Menyampaikan peringatan tentang Hari Tuhan dan panggilan kepada kerendahan hati.",
+                    ref: "Zef 1:1"
+                }, {
+                    name: "Yosia",
+                    role: "Raja Yehuda",
+                    detail: "Raja yang memerintah ketika Zefanya melayani dan melakukan reformasi keagamaan.",
+                    ref: "2 Raj 22–23"
+                }, {
+                    name: "Sisa umat",
+                    role: "Komunitas yang rendah hati",
+                    detail: "Kelompok yang mencari Tuhan dan tidak mengandalkan kesombongan.",
+                    ref: "Zef 3:11–13"
+                }],
+
+                prophecy: [{
+                    title: "Hari Tuhan",
+                    text: "Hari Tuhan membawa penghakiman tetapi juga membuka jalan bagi pemulihan umat yang rendah hati.",
+                    ref: "Zefanya 1; 3"
+                }, {
+                    title: "Tuhan di tengah umat",
+                    text: "Tuhan digambarkan hadir sebagai Raja dan Penyelamat umat-Nya.",
+                    ref: "Zefanya 3:17"
+                }],
+
+                pb: [
+                    "Zefanya 3:17 → tema sukacita keselamatan",
+                    "Zefanya 3:9 → Kisah 2:21"
+                ],
+
+                verses: [{
+                    ref: "Zefanya 2:3",
+                    text: "Carilah Tuhan dan kerendahan hati."
+                }, {
+                    ref: "Zefanya 3:17",
+                    text: "Tuhan hadir sebagai Penyelamat yang bersukacita atas umat-Nya."
+                }],
+
+                terms: ["Hari Tuhan", "Sisa Israel", "Kerendahan Hati", "Yosia", "Pemulihan"]
+            },
+
+            /* ================= HAGAI ================= */
+
+            {
+                id: "hagai",
+                no: 37,
+                name: "Hagai",
+                period: "520 SM",
+                setting: "Yerusalem setelah pembuangan",
+                theme: "Mendahulukan Tuhan dan membangun kembali Bait Allah",
+
+                story: `
+
+<p>
+Setelah pembuangan Babel, sebagian orang Yehuda kembali ke Yerusalem.
+Mereka mulai membangun kembali Bait Allah, tetapi pembangunan itu
+terhenti. Masyarakat kemudian lebih sibuk membangun rumah mereka sendiri
+sementara rumah Tuhan terbengkalai.
+</p>
+
+<p>
+Hagai datang membawa teguran: perhatikan keadaan hidup kalian.
+Mereka bekerja keras tetapi hasilnya sedikit. Mereka memiliki makanan
+tetapi tidak puas. Hagai mengajak mereka mengevaluasi kembali prioritas.
+</p>
+
+<p>
+Zerubabel, gubernur Yehuda, dan Yosua bin Yozadak, imam besar,
+merespons pesan tersebut. Pembangunan Bait Allah dilanjutkan.
+Masyarakat mungkin melihat bangunan baru itu jauh lebih sederhana
+daripada kemegahan Bait Salomo, tetapi Tuhan mengatakan bahwa kemuliaan
+akhir akan lebih besar.
+</p>
+
+<p>
+Hagai kemudian menyampaikan pesan kepada Zerubabel bahwa Tuhan akan
+menggoncangkan bangsa-bangsa. Zerubabel disebut sebagai “cincin meterai”,
+sebuah gambaran mengenai pilihan dan perhatian Tuhan terhadap garis
+keturunan Daud.
+`,
+
+                characters: [{
+                    name: "Hagai",
+                    role: "Nabi",
+                    detail: "Mendorong umat yang kembali dari pembuangan untuk membangun kembali Bait Allah.",
+                    ref: "Hag 1:1"
+                }, {
+                    name: "Zerubabel",
+                    role: "Gubernur Yehuda",
+                    detail: "Pemimpin politik yang merespons panggilan Hagai dan memimpin pembangunan kembali.",
+                    ref: "Hag 1:1; 2:20–23"
+                }, {
+                    name: "Yosua bin Yozadak",
+                    role: "Imam besar",
+                    detail: "Pemimpin keagamaan yang terlibat dalam pembangunan kembali Bait Allah.",
+                    ref: "Hag 1:1; 2:4"
+                }],
+
+                prophecy: [{
+                    title: "Kemuliaan Bait Allah",
+                    text: "Tuhan menjanjikan kemuliaan yang lebih besar bagi rumah-Nya.",
+                    ref: "Hagai 2:6–9"
+                }, {
+                    title: "Zerubabel",
+                    text: "Zerubabel menjadi tanda pilihan Tuhan terhadap garis Daud.",
+                    ref: "Hagai 2:20–23"
+                }],
+
+                pb: [
+                    "Hagai 2:6–9 → Ibrani 12:26–28",
+                    "Hagai 2:9 → tema kehadiran Allah dalam Kristus"
+                ],
+
+                verses: [{
+                    ref: "Hagai 1:5",
+                    text: "“Perhatikanlah keadaanmu!”"
+                }, {
+                    ref: "Hagai 1:8",
+                    text: "Bangunlah rumah Tuhan dan muliakan Dia."
+                }],
+
+                terms: ["Bait Allah", "Zerubabel", "Yosua", "Prioritas", "Pemulihan"]
+            },
+
+            /* ================= ZAKHARIA ================= */
+
+            {
+                id: "zakharia",
+                no: 38,
+                name: "Zakharia",
+                period: "± 520–518 SM dan sesudahnya",
+                setting: "Yerusalem setelah pembuangan",
+                theme: "Pemulihan, Mesias, Roh Tuhan dan pengharapan",
+
+                story: `
+
+<p>
+Zakharia melayani bersama Hagai ketika umat Yehuda sedang membangun
+kembali Yerusalem dan Bait Allah. Ia menerima serangkaian penglihatan
+malam yang penuh simbol.
+</p>
+
+<p>
+Dalam salah satu penglihatan, Zakharia melihat Yosua sang imam besar
+berdiri di hadapan Tuhan sementara Iblis menuduhnya. Yosua mengenakan
+pakaian kotor. Tuhan kemudian menggantinya dengan pakaian bersih.
+Gambaran ini menunjukkan pemulihan dan penyucian.
+</p>
+
+<p>
+Zakharia juga melihat kandil dengan dua pohon zaitun. Pesan penting
+yang diberikan adalah bahwa pekerjaan Tuhan tidak bergantung pada
+kekuatan manusia: “Bukan dengan keperkasaan dan bukan dengan kekuatan,
+melainkan dengan Roh-Ku.”
+</p>
+
+<p>
+Kemudian muncul nubuat mengenai “Tunas” atau “Branch”, yaitu tokoh
+yang berkaitan dengan pemerintahan dan pembangunan Bait Allah.
+Zakharia juga menggambarkan seorang raja yang datang dengan rendah hati
+mengendarai keledai.
+</p>
+
+<p>
+Bagian akhir kitab semakin kaya dengan gambaran eskatologis:
+gembala dipukul, seorang yang ditikam, dan Tuhan datang sebagai Raja.
+Karena itu Zakharia menjadi salah satu kitab nabi yang sangat sering
+dikaitkan dengan kisah sengsara dan kerajaan Kristus dalam Perjanjian Baru.
+`,
+
+                characters: [{
+                    name: "Zakharia",
+                    role: "Nabi",
+                    detail: "Mendorong umat setelah pembuangan melalui penglihatan dan nubuat tentang pemulihan.",
+                    ref: "Za 1:1"
+                }, {
+                    name: "Yosua bin Yozadak",
+                    role: "Imam besar",
+                    detail: "Muncul dalam penglihatan dengan pakaian kotor lalu menerima pakaian bersih.",
+                    ref: "Za 3:1–5"
+                }, {
+                    name: "Zerubabel",
+                    role: "Gubernur Yehuda",
+                    detail: "Memimpin pembangunan dan menerima pesan bahwa pekerjaan Tuhan berlangsung melalui Roh-Nya.",
+                    ref: "Za 4:6–10"
+                }, {
+                    name: "Satan",
+                    role: "Penuduh",
+                    detail: "Dalam penglihatan Zakharia tampil sebagai penuduh Yosua sang imam besar.",
+                    ref: "Za 3:1–2"
+                }, {
+                    name: "Tunas",
+                    role: "Tokoh Mesianik",
+                    detail: "Tokoh simbolis yang dikaitkan dengan pemerintahan dan pekerjaan Allah.",
+                    ref: "Za 3:8; 6:12–13"
+                }],
+
+                prophecy: [{
+                    title: "Raja yang datang dengan rendah hati",
+                    text: "Seorang raja datang ke Yerusalem dengan rendah hati, mengendarai keledai.",
+                    ref: "Zakharia 9:9 → Matius 21:4–5"
+                }, {
+                    title: "Gembala dipukul",
+                    text: "Nubuat tentang gembala yang dipukul muncul dalam konteks penderitaan.",
+                    ref: "Zakharia 13:7 → Matius 26:31"
+                }, {
+                    title: "Yang ditikam",
+                    text: "Ada gambaran mengenai orang yang ditikam dan kemudian menjadi sumber ratapan.",
+                    ref: "Zakharia 12:10 → Yohanes 19:37"
+                }],
+
+                pb: [
+                    "Zakharia 9:9 → Matius 21:4–5",
+                    "Zakharia 11:12–13 → Matius 26:14–16; 27:9–10",
+                    "Zakharia 12:10 → Yohanes 19:37",
+                    "Zakharia 13:7 → Matius 26:31",
+                    "Zakharia 14 → Wahyu 19–21"
+                ],
+
+                verses: [{
+                    ref: "Zakharia 4:6",
+                    text: "Pekerjaan Tuhan bukan bergantung pada kekuatan manusia, melainkan pada Roh-Nya."
+                }, {
+                    ref: "Zakharia 9:9",
+                    text: "Raja datang dengan rendah hati."
+                }],
+
+                terms: ["Tunas", "Roh Tuhan", "Yosua", "Zerubabel", "Raja", "Gembala"]
+            },
+
+            /* ================= MALEAKHI ================= */
+
+            {
+                id: "maleakhi",
+                no: 39,
+                name: "Maleakhi",
+                period: "± abad ke-5 SM",
+                setting: "Yehuda setelah pembuangan",
+                theme: "Kesetiaan perjanjian, ibadah yang benar dan kedatangan Tuhan",
+
+                story: `
+
+<p>
+Maleakhi berbicara kepada komunitas Yehuda setelah mereka kembali dari
+pembuangan. Bait Allah telah berdiri kembali, tetapi masalah rohani
+belum selesai. Mereka mulai berpikir: apakah Tuhan benar-benar mengasihi
+kami?
+</p>
+
+<p>
+Kitab Maleakhi menggunakan bentuk dialog. Tuhan menyampaikan tuduhan,
+dan umat berkali-kali menjawab dengan pertanyaan seperti,
+“Dengan cara bagaimana kami menghina nama-Mu?” Pola tersebut menunjukkan
+bahwa masalah mereka bukan hanya tindakan salah, tetapi hati yang mulai
+tidak peka.
+</p>
+
+<p>
+Para imam mempersembahkan korban yang tidak layak. Mereka memperlakukan
+ibadah seperti kewajiban yang harus dilakukan seminimal mungkin.
+Maleakhi menegaskan bahwa Tuhan layak menerima penghormatan.
+</p>
+
+<p>
+Maleakhi juga menegur ketidaksetiaan dalam keluarga dan masyarakat,
+serta mengingatkan umat akan perjanjian Tuhan. Mereka dipanggil kembali
+kepada kesetiaan.
+</p>
+
+<p>
+Di bagian akhir, Maleakhi berbicara tentang seorang utusan yang akan
+mempersiapkan jalan bagi Tuhan. Ia juga berbicara tentang datangnya Tuhan
+seperti api pemurni dan tentang “Elia” yang akan datang sebelum Hari Tuhan.
+Perjanjian Lama kemudian berakhir dengan harapan akan kedatangan Allah
+dan pemulihan.
+`,
+
+                characters: [{
+                    name: "Maleakhi",
+                    role: "Nabi",
+                    detail: "Menyampaikan pesan Tuhan kepada umat pascapembuangan melalui pola dialog.",
+                    ref: "Mal 1:1"
+                }, {
+                    name: "Para imam",
+                    role: "Pemimpin ibadah",
+                    detail: "Ditegur karena mempersembahkan korban yang tidak layak dan meremehkan kekudusan Tuhan.",
+                    ref: "Mal 1:6–14; 2:1–9"
+                }, {
+                    name: "Umat Yehuda",
+                    role: "Komunitas perjanjian",
+                    detail: "Ditegur karena mempertanyakan kasih Tuhan dan tidak setia dalam kehidupan perjanjian.",
+                    ref: "Mal 1–4"
+                }, {
+                    name: "Utusan Tuhan",
+                    role: "Pembuka jalan",
+                    detail: "Dijanjikan datang untuk mempersiapkan jalan bagi kedatangan Tuhan.",
+                    ref: "Mal 3:1"
+                }, {
+                    name: "Elia",
+                    role: "Tokoh yang dijanjikan",
+                    detail: "Disebut akan datang sebelum Hari Tuhan yang besar.",
+                    ref: "Mal 4:5–6"
+                }],
+
+                prophecy: [{
+                    title: "Utusan yang mempersiapkan jalan",
+                    text: "Seorang utusan akan mempersiapkan jalan sebelum Tuhan datang.",
+                    ref: "Maleakhi 3:1 → Markus 1:2–3"
+                }, {
+                    title: "Elia",
+                    text: "Elia dikaitkan dengan persiapan sebelum Hari Tuhan.",
+                    ref: "Maleakhi 4:5–6 → Matius 11:13–14; Lukas 1:17"
+                }, {
+                    title: "Matahari Kebenaran",
+                    text: "Bagi mereka yang takut akan Tuhan, akan terbit matahari kebenaran dengan kesembuhan.",
+                    ref: "Maleakhi 4:2"
+                }],
+
+                pb: [
+                    "Maleakhi 3:1 → Markus 1:2",
+                    "Maleakhi 3:1 → Matius 11:10",
+                    "Maleakhi 4:5–6 → Matius 11:13–14",
+                    "Maleakhi 4:5–6 → Lukas 1:17"
+                ],
+
+                verses: [{
+                    ref: "Maleakhi 1:11",
+                    text: "Nama Tuhan akan menjadi besar di antara bangsa-bangsa."
+                }, {
+                    ref: "Maleakhi 3:1",
+                    text: "Tuhan menjanjikan utusan yang mempersiapkan jalan."
+                }, {
+                    ref: "Maleakhi 4:2",
+                    text: "Matahari kebenaran terbit membawa kesembuhan."
+                }],
+
+                terms: ["Utusan", "Elia", "Perjanjian", "Ibadah", "Pemurnian", "Hari Tuhan"]
+            }
+
+        ];
+
+
+        /* =========================================================
+           FUNGSI URL
+        ========================================================= */
+
+        function bibleURL() {
+            return "https://www.alkitab.sabda.org/home3.php?lang=id";
+        }
+
+        function commentaryURL(book) {
+            return "https://www.alkitab.sabda.org/commentary.php?book=" +
+                book.no +
+                "&version=tb";
+        }
+
+        function quizURL(book) {
+            return "soal.html?book=" + book.id;
+        }
+
+        function interpretationURL() {
+            return "https://learning.sabda.org/baca.php?b=penafsiran";
+        }
+
+
+        /* =========================================================
+           NAVIGATION
+        ========================================================= */
+
+        let currentIndex = 0;
+
+        function renderNav() {
+
+            const list = document.getElementById("bookList");
+
+            list.innerHTML = BOOKS.map((book, index) => `
+        <button
+            class="book-btn ${index===currentIndex ? "active":""}"
+            onclick="showBook(${index})"
+        >
+            <span class="book-number">${String(book.no-22).padStart(2,"0")}</span>
+            ${book.name}
+        </button>
+    `).join("");
+        }
+
+
+        function filterBooks() {
+
+            const query =
+                document.getElementById("search")
+                .value
+                .toLowerCase()
+                .trim();
+
+            document.querySelectorAll(".book-btn").forEach((button, index) => {
+
+                const book = BOOKS[index];
+
+                button.style.display =
+                    book.name.toLowerCase().includes(query) ?
+                    "block" :
+                    "none";
+
+            });
+        }
+
+
+        /* =========================================================
+           RENDER BOOK
+        ========================================================= */
+
+        function showBook(index) {
+
+            if (index < 0) index = BOOKS.length - 1;
+            if (index >= BOOKS.length) index = 0;
+
+            currentIndex = index;
+
+            const b = BOOKS[index];
+
+            renderNav();
+
+            document.getElementById("hero").innerHTML = `
+        <div class="hero-content">
+
+            <div class="badge">
+                PERJALANAN ${String(index+1).padStart(2,"0")} / 17
+            </div>
+
+            <h2>${b.name}</h2>
+
+            <p>
+                ${b.theme}
+            </p>
+
+            <div class="meta">
+                <span>📅 ${b.period}</span>
+                <span>📍 ${b.setting}</span>
+                <span>📖 Nabi-Nabi</span>
+            </div>
+
+        </div>
+    `;
+
+            document.getElementById("content").innerHTML = `
+
+        <!-- INTRO -->
+
+        <article class="card full">
+            <h3>
+                <span class="icon">🧭</span>
+                Memasuki Kitab ${b.name}
+            </h3>
+
+            <div class="story">
+                ${b.story}
+            </div>
+
+            <div class="links">
+
+                <a
+                    class="btn primary"
+                    href="${bibleURL()}"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    📖 Baca Alkitab SABDA
+                </a>
+
+                <a
+                    class="btn gold"
+                    href="${commentaryURL(b)}"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    🔎 Tafsiran / Catatan ${b.name}
+                </a>
+
+                <a
+                    class="btn quiz"
+                    href="${quizURL(b)}"
+                >
+                    🧠 Soal HOTS ${b.name}
+                </a>
+
+            </div>
+        </article>
+
+
+        <!-- TOKOH -->
+
+        <article class="card full">
+
+            <h3>
+                <span class="icon">👥</span>
+                Tokoh-Tokoh dan Perannya
+            </h3>
+
+            <div class="character-grid">
+
+                ${b.characters.map(c=>`
+
+                    <div class="character">
+
+                        <strong>${c.name}</strong>
+
+                        <div class="role">
+                            ${c.role}
+                        </div>
+
+                        <p>
+                            ${c.detail}
+                        </p>
+
+                        <div class="ref">
+                            📌 ${c.ref}
+                        </div>
+
+                    </div>
+
+                `).join("")}
+
+            </div>
+
+        </article>
+
+
+        <!-- NUBUAT -->
+
+        <article class="card full">
+
+            <h3>
+                <span class="icon">✨</span>
+                Nubuat dan Benang Merah kepada Kristus
+            </h3>
+
+            <div class="prophecy">
+
+                ${b.prophecy.map(p=>`
+
+                    <div class="prophecy-item">
+
+                        <strong>
+                            ${p.title}
+                        </strong>
+
+                        <p>
+                            ${p.text}
+                        </p>
+
+                        <div class="ref">
+                            📖 ${p.ref}
+                        </div>
+
+                    </div>
+
+                `).join("")}
+
+            </div>
+
+        </article>
+
+
+        <!-- PB -->
+
+        <article class="card">
+
+            <h3>
+                <span class="icon">✝️</span>
+                Hubungan dengan Perjanjian Baru
+            </h3>
+
+            <div class="verse-list">
+
+                ${b.pb.map(item=>`
+
+                    <div class="verse">
+                        <p>${item}</p>
+                    </div>
+
+                `).join("")}
+
+            </div>
+
+        </article>
+
+
+        <!-- AYAT -->
+
+        <article class="card">
+
+            <h3>
+                <span class="icon">📜</span>
+                Ayat Kunci
+            </h3>
+
+            <div class="verse-list">
+
+                ${b.verses.map(v=>`
+
+                    <div class="verse">
+
+                        <strong>
+                            ${v.ref}
+                        </strong>
+
+                        <p>
+                            ${v.text}
+                        </p>
+
+                    </div>
+
+                `).join("")}
+
+            </div>
+
+        </article>
+
+
+        <!-- STUDY -->
+
+        <article class="card full">
+
+            <h3>
+                <span class="icon">🔬</span>
+                Belajar Lebih Dalam
+            </h3>
+
+            <p>
+                Jangan berhenti pada membaca cerita. Perhatikan siapa yang
+                berbicara, kepada siapa pesan diberikan, apa masalah yang
+                sedang terjadi, bagaimana konteks sejarahnya, dan bagaimana
+                pesan kitab tersebut mengarahkan pembaca kepada karya Allah.
+            </p>
+
+            <div class="links">
+
+                <a
+                    class="btn primary"
+                    href="${bibleURL()}"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    📖 Alkitab SABDA
+                </a>
+
+                <a
+                    class="btn gold"
+                    href="${commentaryURL(b)}"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    📚 Tafsiran ${b.name}
+                </a>
+
+                <a
+                    class="btn"
+                    href="${interpretationURL()}"
+                    target="_blank"
+                    rel="noopener"
+                >
+                    🧠 Cara Menafsir Alkitab
+                </a>
+
+                <a
+                    class="btn quiz"
+                    href="${quizURL(b)}"
+                >
+                    🎯 Kerjakan 20 Soal HOTS
+                </a>
+
+            </div>
+
+        </article>
+
+
+        <!-- ISTILAH -->
+
+        <article class="card full">
+
+            <h3>
+                <span class="icon">📚</span>
+                Kata Kunci / Istilah Penting
+            </h3>
+
+            <div class="term-list">
+
+                ${b.terms.map(term=>`
+                    <span class="term">
+                        ${term}
+                    </span>
+                `).join("")}
+
+            </div>
+
+        </article>
+
+
+        <!-- REFLECTION -->
+
+        <article class="card full">
+
+            <h3>
+                <span class="icon">🕯️</span>
+                Benang Merah
+            </h3>
+
+            <div class="quote">
+
+                Kitab ${b.name} tidak berdiri sendirian.
+                Ia merupakan bagian dari perjalanan besar Alkitab:
+                manusia jatuh, Tuhan menegur, manusia dipanggil untuk
+                kembali, dan Allah terus menyatakan rencana keselamatan-Nya.
+
+                <small>
+                    THE GREAT JOURNEY — dari suara para nabi menuju
+                    penggenapan dalam Kristus.
+                </small>
+
+            </div>
+
+        </article>
+
+    `;
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+    if(window.innerWidth <= 900){
+        document.getElementById("sidebar").classList.remove("open");
+    }
+}
+
+
+/* =========================================================
+   NEXT / PREVIOUS
+========================================================= */
+
+function nextBook(){
+    showBook(currentIndex + 1);
+}
+
+function previousBook(){
+    showBook(currentIndex - 1);
+}
+
+
+/* =========================================================
+   MOBILE SIDEBAR
+========================================================= */
+
+function toggleSidebar(){
+
+    document
+        .getElementById("sidebar")
+        .classList.toggle("open");
+
+}
+
+
+/* =========================================================
+   READING PROGRESS
+========================================================= */
+
+window.addEventListener("scroll",()=>{
+
+    const scrollTop =
+        window.scrollY;
+
+    const height =
+        document.documentElement.scrollHeight
+        - document.documentElement.clientHeight;
+
+    const percentage =
+        height > 0
+        ? (scrollTop / height) * 100
+        : 0;
+
+    document.getElementById("progress")
+        .style.width =
+        Math.min(100,percentage) + "%";
+
+});
+
+
+/* =========================================================
+   KEYBOARD NAVIGATION
+========================================================= */
+
+document.addEventListener("keydown",(event)=>{
+
+    if(event.key === "ArrowRight"){
+        nextBook();
+    }
+
+    if(event.key === "ArrowLeft"){
+        previousBook();
+    }
+
+});
+
+
+/* =========================================================
+   START
+========================================================= */
+
+renderNav();
+showBook(0);
+    </script>
+
+</body>
+
+</html>
